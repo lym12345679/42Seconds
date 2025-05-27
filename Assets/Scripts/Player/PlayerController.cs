@@ -19,9 +19,12 @@ public class PlayerController : MonoBehaviour
     //跳跃相关数据
     private int jumpCount = 2;// 可跳跃次数
     public int currentJumpCount = 0;// 当前剩余跳跃次数
+    private float jumpSpeed = 5f; // 跳跃速度
+    private bool isLeaveGround = false; // 是否离开地面
+    /*
     public bool isJumping = false;// 是否正在跳跃
     private float jumpTick = 0.5f;// 跳跃持续时间
-    private float currentJumpTick = 0f;// 当前跳跃计时
+    private float currentJumpTick = 0f;// 当前跳跃计时*/
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,10 +46,10 @@ public class PlayerController : MonoBehaviour
         {
             OnPlayerMove();
         }
-        if (isJumping)
+        /*if (isJumping)
         {
             OnPlayerJump();
-        }
+        }*/
         SprintAction();
 
     }
@@ -101,21 +104,46 @@ public class PlayerController : MonoBehaviour
     //跳跃次数重置条件
     private void CheckJumpCondition()
     {
-        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, Vector2.down, .52f);
+        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, Vector2.down, .53f);
+        bool isGrounded = false;
         foreach (var h in hit)
         {
             if (h.collider != null && h.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
-                currentJumpCount = jumpCount;
+                isGrounded = true; // 检测到地面
+            }
+        }
+
+        if (isGrounded)
+        {
+            isLeaveGround = false; // 重置离开地面标记
+            currentJumpCount = jumpCount;
+            Debug.Log("Player is on the ground, jump count reset to: " + currentJumpCount);
+        }
+        else
+        {
+            if (!isLeaveGround)
+            {
+                isLeaveGround = true; // 标记玩家已离开地面
+                currentJumpCount--; // 减少跳跃次数
             }
         }
     }
     // 玩家跳跃输入检测
     private void OnPlayerJumpInputed()
     {
-        SetJumpState(true);
+        //SetJumpState(true);
+        if (!isLeaveGround)
+        {
+            isLeaveGround = true; // 标记玩家离开地面
+        }
+        else
+        {
+            currentJumpCount--;
+        }
+        rb.velocity = new Vector2(rb.velocity.x, jumpSpeed); // 重置垂直速度
     }
-    // 玩家跳跃逻辑:参考iwanna
+    /*// 玩家跳跃逻辑:参考iwanna
     private void OnPlayerJump()
     {
         if (Input.GetKey(KeyCode.Space) && isJumping && currentJumpTick < jumpTick)
@@ -139,7 +167,7 @@ public class PlayerController : MonoBehaviour
             currentJumpCount--;
             currentJumpTick = 0f;
         }
-    }
+    }*/
     #endregion
 
     #region 冲刺相关
