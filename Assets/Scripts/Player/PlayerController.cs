@@ -187,15 +187,20 @@ public class PlayerController : MonoBehaviour
         bool hitWall = false;
         foreach (var h in hit)
         {
-            if (h.collider != null && h.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+            if (h.collider != null && h.collider.tag == "Wall")
             {
                 hitWall = true; // 检测到墙壁
+            }
+            if (h.collider != null && h.collider.tag == "Trap")
+            {
+                h.collider.GetComponent<Trap>().OnPlayerSprintInToTrap(GetComponent<Collider2D>());
+                hitWall = true; // 检测到陷阱
+                //Debug.Log("Player hit a trap while sprinting!");
             }
         }
         if (hitWall)
         {
-            SetSprintState(false); // 如果碰到墙壁，停止冲刺
-            currentSprintTick = 0f; // 重置冲刺计时
+            sprintDirection = -sprintDirection; // 改变冲刺方向
             //Debug.Log("Player hit a wall while sprinting!");
         }
     }
