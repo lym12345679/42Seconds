@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Traps;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -118,7 +119,7 @@ public class PlayerController : MonoBehaviour
         {
             isLeaveGround = false; // 重置离开地面标记
             currentJumpCount = jumpCount;
-            Debug.Log("Player is on the ground, jump count reset to: " + currentJumpCount);
+            //Debug.Log("Player is on the ground, jump count reset to: " + currentJumpCount);
         }
         else
         {
