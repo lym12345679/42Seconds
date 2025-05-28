@@ -12,6 +12,7 @@ namespace Game.Instance
             if (Instance == null)
             {
                 Instance = this as T; // 设置单例实例
+                transform.SetParent(null);
                 DontDestroyOnLoad(gameObject); // 保持在场景切换时不销毁
             }
             else

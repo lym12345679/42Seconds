@@ -1,8 +1,6 @@
-
 using Game.Instance;
 using UnityEngine;
-
-namespace Level
+namespace Game.Level
 {
 
     public class LevelManager : GeneralInstance<LevelManager>
@@ -23,13 +21,12 @@ namespace Level
             }
             // 更新当前时间
             currentTime += Time.deltaTime;
-
             // 检查是否超过最大时间
             if (currentTime >= levelMaxTime)
             {
-                // 触发关卡结束逻辑
-                OnlevelWin();
+                OnlevelWin(); // 调用关卡胜利方法
             }
+
         }
         private void Init()
         {
