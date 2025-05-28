@@ -19,12 +19,15 @@ namespace Game.Traps
             scaleEffect = null;
         }
         #region 设置尖刺的通常位移、旋转和缩放效果
-        public void SetGeneralPositionEffect(Vector2 vector, float timeToMove, Action<PositionEffect> endHander = null)
+        public void SetGeneralPositionEffect(Vector2 vector, float timeToMove,
+            SpikePersentageHanderEnum spikePersentageHanderEnum = SpikePersentageHanderEnum.X,
+            Action<PositionEffect> endHander = null)
         {
             Vector3 endPosition = transform.position + (Vector3)vector;
             positionEffect = new PositionEffect()
                 .SetEndPosition(endPosition)
                 .SetDuration(timeToMove * 2)
+                .SetPercentageHandler(SpikePersentageHander.GetHandler(spikePersentageHanderEnum))
                 .SetEndHandler(endHander);
             /*.SetPercentageHandler((t) =>
             {
@@ -32,22 +35,28 @@ namespace Game.Traps
                 return t; // 返回线性插值
             }); // 默认使用线性插值*/
         }
-        public void SetGeneralRotationEffect(float rotation, float timeToRotate, Action<RotationEffect> endHandler = null)
+        public void SetGeneralRotationEffect(float rotation, float timeToRotate,
+            SpikePersentageHanderEnum spikePersentageHanderEnum = SpikePersentageHanderEnum.X,
+            Action<RotationEffect> endHandler = null)
         {
             // 计算结束时的旋转角度
             Vector3 endRotation = transform.rotation.eulerAngles + new Vector3(0, 0, rotation);
             rotationEffect = new RotationEffect()
                 .SetEndRotation(endRotation)
                 .SetDuration(timeToRotate * 2)
+                .SetPercentageHandler(SpikePersentageHander.GetHandler(spikePersentageHanderEnum))
                 .SetEndHandler(endHandler);
         }
 
-        public void SetGeneralScaleEffect(Vector2 scale, float timeToScale, Action<ScaleEffect> endHandler = null)
+        public void SetGeneralScaleEffect(Vector2 scale, float timeToScale,
+            SpikePersentageHanderEnum spikePersentageHanderEnum = SpikePersentageHanderEnum.X,
+            Action<ScaleEffect> endHandler = null)
         {
             Vector3 endScale = transform.localScale + (Vector3)scale;
             scaleEffect = new ScaleEffect()
                 .SetEndScale(endScale)
                 .SetDuration(timeToScale * 2)
+                .SetPercentageHandler(SpikePersentageHander.GetHandler(spikePersentageHanderEnum))
                 .SetEndHandler(endHandler);
         }
 

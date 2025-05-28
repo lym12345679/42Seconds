@@ -10,7 +10,7 @@ namespace Game.Traps
     {
         public SpikeMessageListSO spikeMessageListSO; // 存储尖刺的位移、旋转和缩放信息
         public SpikeEffectController spikeEffectController; // 控制尖刺效果的脚本
-        private List<SpikeMessage> spikeMessages = new List<SpikeMessage>(); // 存储尖刺的位移、旋转和缩放信息列表
+        private List<SpikeMessageSOWithTime> spikeMessages = new List<SpikeMessageSOWithTime>(); // 存储尖刺的位移、旋转和缩放信息列表
         private Vector3 currentPosition;
         private float currentTime
         {
@@ -20,14 +20,21 @@ namespace Game.Traps
         {
             if (spikeMessageListSO != null)
             {
-                spikeMessages = spikeMessageListSO.SpikeMessages.ConvertAll(message => new SpikeMessage
+                spikeMessages = spikeMessageListSO.SpikeMessages.ConvertAll(message => new SpikeMessageSOWithTime
                 {
-                    Name = message.Name,
                     StartTime = message.StartTime,
-                    Vector = message.Vector,
-                    Rotation = message.Rotation,
-                    Scale = message.Scale,
-                    Flash = message.Flash
+                    SpikeMessage = new SpikeMessageSO
+                    {
+                        Name = message.Name,
+                        IsMove = message.SpikeMessage.IsMove,
+                        IsRotate = message.SpikeMessage.IsRotate,
+                        IsScale = message.SpikeMessage.IsScale,
+                        IsFlash = message.SpikeMessage.IsFlash,
+                        Vector = message.SpikeMessage.Vector,
+                        Rotation = message.SpikeMessage.Rotation,
+                        Scale = message.SpikeMessage.Scale,
+                        Flash = message.SpikeMessage.Flash,
+                    },
                 }); // 将SO中的消息转换为列表
             }
             if (spikeEffectController != null)
@@ -43,28 +50,29 @@ namespace Game.Traps
         {
             for (int i = 0; i < spikeMessages.Count; i++)
             {
-                SpikeMessage spikeMessage = spikeMessages[i];
+                SpikeMessageSOWithTime spikeMessage = spikeMessages[i];
                 if (spikeMessage.StartTime <= currentTime)
                 {
                     // 如果时间到了，就开始执行效果
-                    StartEffect(spikeMessage);
+                    StartEffect(spikeMessage.SpikeMessage);
+                    Debug.Log("启动:" + spikeMessage.Name + "效果，应开始时间：" + spikeMessage.StartTime + " 当前时间：" + currentTime);
                     // 从列表中移除已执行的消息
                     spikeMessages.RemoveAt(i);
                     i--; // 调整索引以避免跳过下一个元素
                 }
             }
         }
-        private void StartEffect(SpikeMessage spikeMessage)
+        private void StartEffect(SpikeMessageSO spikeMessage)
         {
             // 设置尖刺的闪现效果
-            if (spikeMessage.Flash.IsFlash)
+            if (spikeMessage.IsFlash)
             {
                 this.transform.position = spikeMessage.Flash.Position; // 直接设置位置
             }
             if (spikeEffectController != null)
             {
                 // 设置尖刺的位移效果
-                if (spikeMessage.Vector.IsMove)
+                if (spikeMessage.IsMove)
                 {
                     /*Action<PositionEffect> endHandler = (e) =>
                     {
@@ -72,18 +80,16 @@ namespace Game.Traps
                     };*/
                     spikeEffectController.SetGeneralPositionEffect(spikeMessage.Vector.Vector, spikeMessage.Vector.Duration);
                 }
-                if (spikeMessage.Rotation.IsRotate)
+                if (spikeMessage.IsRotate)
                 {
                     // 设置尖刺的旋转效果
                     spikeEffectController.SetGeneralRotationEffect(spikeMessage.Rotation.Rotation, spikeMessage.Rotation.Duration);
                 }
-                if (spikeMessage.Scale.IsScale)
+                if (spikeMessage.IsScale)
                 {
                     // 设置尖刺的缩放效果
                     spikeEffectController.SetGeneralScaleEffect(spikeMessage.Scale.Scale, spikeMessage.Scale.Duration);
                 }
-
-                Debug.Log("启动:" + spikeMessage.Name + "效果，应开始时间：" + spikeMessage.StartTime + " 当前时间：" + currentTime);
                 // 启动效果
                 spikeEffectController.StartEffect();
             }
