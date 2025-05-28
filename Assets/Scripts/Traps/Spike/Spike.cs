@@ -11,6 +11,7 @@ namespace Game.Traps
         public SpikeMessageListSO spikeMessageListSO; // 存储尖刺的位移、旋转和缩放信息
         public SpikeEffectController spikeEffectController; // 控制尖刺效果的脚本
         private List<SpikeMessage> spikeMessages = new List<SpikeMessage>(); // 存储尖刺的位移、旋转和缩放信息列表
+        private Vector3 currentPosition;
         private float currentTime
         {
             get { return LevelManager.Instance.currentTime; } // 获取当前时间
@@ -55,6 +56,11 @@ namespace Game.Traps
         }
         private void StartEffect(SpikeMessage spikeMessage)
         {
+            // 设置尖刺的闪现效果
+            if (spikeMessage.Flash.IsFlash)
+            {
+                this.transform.position = spikeMessage.Flash.Position; // 直接设置位置
+            }
             if (spikeEffectController != null)
             {
                 // 设置尖刺的位移效果
@@ -76,11 +82,7 @@ namespace Game.Traps
                     // 设置尖刺的缩放效果
                     spikeEffectController.SetGeneralScaleEffect(spikeMessage.Scale.Scale, spikeMessage.Scale.Duration);
                 }
-                // 设置尖刺的闪现效果
-                if (spikeMessage.Flash.IsFlash)
-                {
-                    this.transform.position = spikeMessage.Flash.Position; // 直接设置位置
-                }
+
                 Debug.Log("启动:" + spikeMessage.Name + "效果，应开始时间：" + spikeMessage.StartTime + " 当前时间：" + currentTime);
                 // 启动效果
                 spikeEffectController.StartEffect();
