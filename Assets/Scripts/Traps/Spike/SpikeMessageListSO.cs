@@ -43,7 +43,6 @@ namespace Game.Traps
         public string Name;
         public float StartTime; // 时间
         public SpikeMessageSO SpikeMessage; // 尖刺的位移、旋转和缩放信息
-
     }
     [Serializable]
     [CreateAssetMenu(fileName = "SpikeMessageSO", menuName = "ScriptableObjects/SpikeMessageSO")]
@@ -106,6 +105,7 @@ namespace Game.Traps
             throw new ArgumentException($"No handler found for {handlerEnum}");
         }
     }
+
     public enum SpikePersentageHanderEnum
     {
         X,

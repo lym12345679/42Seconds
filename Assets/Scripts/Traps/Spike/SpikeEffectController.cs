@@ -20,6 +20,7 @@ namespace Game.Traps
         }
         #region 设置尖刺的通常位移、旋转和缩放效果
         public void SetGeneralPositionEffect(Vector2 vector, float timeToMove,
+            PositionEffectMode positionEffectMode = PositionEffectMode.Once,
             SpikePersentageHanderEnum spikePersentageHanderEnum = SpikePersentageHanderEnum.X,
             Action<PositionEffect> endHander = null)
         {
@@ -28,6 +29,7 @@ namespace Game.Traps
                 .SetEndPosition(endPosition)
                 .SetDuration(timeToMove * 2)
                 .SetPercentageHandler(SpikePersentageHander.GetHandler(spikePersentageHanderEnum))
+                .SetEffectMode(positionEffectMode)
                 .SetEndHandler(endHander);
             /*.SetPercentageHandler((t) =>
             {
@@ -36,6 +38,7 @@ namespace Game.Traps
             }); // 默认使用线性插值*/
         }
         public void SetGeneralRotationEffect(float rotation, float timeToRotate,
+            RotationEffectMode rotationEffectMode = RotationEffectMode.Once,
             SpikePersentageHanderEnum spikePersentageHanderEnum = SpikePersentageHanderEnum.X,
             Action<RotationEffect> endHandler = null)
         {
@@ -44,11 +47,13 @@ namespace Game.Traps
             rotationEffect = new RotationEffect()
                 .SetEndRotation(endRotation)
                 .SetDuration(timeToRotate * 2)
+                .SetEffectMode(rotationEffectMode)
                 .SetPercentageHandler(SpikePersentageHander.GetHandler(spikePersentageHanderEnum))
                 .SetEndHandler(endHandler);
         }
 
         public void SetGeneralScaleEffect(Vector2 scale, float timeToScale,
+            ScaleEffectMode scaleEffectMode = ScaleEffectMode.Once,
             SpikePersentageHanderEnum spikePersentageHanderEnum = SpikePersentageHanderEnum.X,
             Action<ScaleEffect> endHandler = null)
         {
@@ -56,26 +61,28 @@ namespace Game.Traps
             scaleEffect = new ScaleEffect()
                 .SetEndScale(endScale)
                 .SetDuration(timeToScale * 2)
+                .SetEffectMode(scaleEffectMode)
                 .SetPercentageHandler(SpikePersentageHander.GetHandler(spikePersentageHanderEnum))
                 .SetEndHandler(endHandler);
         }
 
-        public void SetFlashEffect(Vector2 position)
-        {
-            Vector3 endPosition = transform.position + (Vector3)position;
-            transform.position = endPosition;
-        }
         #endregion
-        public void StartEffect()
+        public void StartPositionEffect()
         {
             if (positionEffect != null)
             {
                 StartPositionEffect(transform, positionEffect);
             }
+        }
+        public void StartRotationEffect()
+        {
             if (rotationEffect != null)
             {
                 StartRotationEffect(transform, rotationEffect);
             }
+        }
+        public void StartScaleEffect()
+        {
             if (scaleEffect != null)
             {
                 StartScaleEffect(transform, scaleEffect);
