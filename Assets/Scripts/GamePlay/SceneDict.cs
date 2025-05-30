@@ -6,7 +6,7 @@ namespace Game.Scene
 {
     public enum SceneType
     {
-        MainMenu,
+        Menu,
         LevelSelector,
         Level1,
     }

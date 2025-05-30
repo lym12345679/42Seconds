@@ -43,5 +43,15 @@ namespace Game
             // 恢复游戏逻辑
             Time.timeScale = 1f; // 将时间缩放设置为1，恢复游戏
         }
+
+        public static void ExitGame()
+        {
+            // 退出游戏逻辑
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false; // 在编辑器中停止播放
+#else
+            Application.Quit(); // 在构建的应用程序中退出
+#endif
+        }
     }
 }

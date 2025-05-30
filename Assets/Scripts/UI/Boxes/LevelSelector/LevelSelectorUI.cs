@@ -8,6 +8,7 @@ namespace Game.UI
     public class LevelSelectorUI : UIGeneralBox<LevelSelectorUI, string, string>
     {
         public static LevelSelectorUI Instance { get; private set; }
+        public List<LevelSelectorUIBtn> LevelSelectorUIBtns = new List<LevelSelectorUIBtn>();
 
         private void Awake()
         {

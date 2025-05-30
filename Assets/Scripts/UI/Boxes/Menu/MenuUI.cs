@@ -18,6 +18,20 @@ namespace Game.UI
             Debug.Log("MenuUI Closed");
         }
 
+        public void GoToLevelSelector()
+        {
+            GamePlayManager.LoadScene(SceneType.LevelSelector);
+        }
+
+        public void OpenSetting()
+        {
+            SettingUI.Open(" ");
+        }
+
+        public void ExitGame()
+        {
+        }
+
         public void StartGame()
         {
             Debug.Log("Start Game");
