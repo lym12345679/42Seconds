@@ -1,26 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace Game.UI
 {
     public enum BoxEnum
     {
         MessageBox,
+        MenuUI,
+        CGUI,
+        LevelSelectorUI,
+        LevelUI
     }
+
     public static class UIBoxDict
     {
         //用字典存储所有的UIEnum和类型
         public static Dictionary<System.Type, string> BoxTypeDic = new Dictionary<System.Type, string>()
         {
-            {typeof(MessageBox),BoxEnum.MessageBox.ToString()}
+            { typeof(MessageBox), BoxEnum.MessageBox.ToString() },
+            { typeof(MenuUI), BoxEnum.MenuUI.ToString() },
+            { typeof(CGUI), BoxEnum.CGUI.ToString() },
+            { typeof(LevelSelectorUI), BoxEnum.LevelSelectorUI.ToString() },
+            { typeof(LevelUI), BoxEnum.LevelUI.ToString() }
         };
+
         //用字典存储所有的UI预制体路径
         public static Dictionary<string, string> BoxPathDic = new Dictionary<string, string>
         {
-            {BoxEnum.MessageBox.ToString(),"Prefabs/UI/MessageBox"}
+            { BoxEnum.MessageBox.ToString(), "Prefabs/UI/MessageBox" },
+            { BoxEnum.MenuUI.ToString(), "Prefabs/UI/Menu/MenuUI" },
+            { BoxEnum.CGUI.ToString(), "Prefabs/UI/CG/CGUI" },
+            { BoxEnum.LevelSelectorUI.ToString(), "Prefabs/UI/LevelSelector/LevelSelectorUI" },
+            { BoxEnum.LevelUI.ToString(), "Prefabs/UI/Level/LevelUI" }
         };
-
     }
 }
-
-
