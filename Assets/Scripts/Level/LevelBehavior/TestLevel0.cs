@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using Game.Traps;
 using MizukiTool.UIEffect;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace Game.Level
@@ -113,6 +111,7 @@ namespace Game.Level
 
         protected override Action GetAction()
         {
+            //Debug.Log(currentTime);
             return Selector(
                 () => Condition(currentTime >= 3f && currentTime < 5f,
                     () => Selector(

@@ -8,11 +8,12 @@ namespace Game.UI
     {
         MessageBox,
         MenuUI,
-        CGUI,
+        TextShowUI,
         LevelSelectorUI,
         LevelUI,
         PauseUI,
-        SettingUI
+        SettingUI,
+        FailedUI
     }
 
     public static class UIBoxDict
@@ -22,11 +23,12 @@ namespace Game.UI
         {
             { typeof(MessageBox), BoxEnum.MessageBox.ToString() },
             { typeof(MenuUI), BoxEnum.MenuUI.ToString() },
-            { typeof(CGUI), BoxEnum.CGUI.ToString() },
+            { typeof(CGUI), BoxEnum.TextShowUI.ToString() },
             { typeof(LevelSelectorUI), BoxEnum.LevelSelectorUI.ToString() },
             { typeof(LevelUI), BoxEnum.LevelUI.ToString() },
             { typeof(PauseUI), BoxEnum.PauseUI.ToString() },
-            { typeof(SettingUI), BoxEnum.SettingUI.ToString() }
+            { typeof(SettingUI), BoxEnum.SettingUI.ToString() },
+            { typeof(FailedUI), BoxEnum.FailedUI.ToString() }
         };
 
         //用字典存储所有的UI预制体路径
@@ -34,11 +36,12 @@ namespace Game.UI
         {
             { BoxEnum.MessageBox.ToString(), "Prefabs/UI/MessageBox" },
             { BoxEnum.MenuUI.ToString(), "Prefabs/UI/Menu/MenuUI" },
-            { BoxEnum.CGUI.ToString(), "Prefabs/UI/CG/CGUI" },
+            { BoxEnum.TextShowUI.ToString(), "Prefabs/UI/TextShow/TextShowUI" },
             { BoxEnum.LevelSelectorUI.ToString(), "Prefabs/UI/LevelSelector/LevelSelectorUI" },
             { BoxEnum.LevelUI.ToString(), "Prefabs/UI/Level/LevelUI" },
             { BoxEnum.PauseUI.ToString(), "Prefabs/UI/Pause/PauseUI" },
-            { BoxEnum.SettingUI.ToString(), "Prefabs/UI/Setting/SettingUI" }
+            { BoxEnum.SettingUI.ToString(), "Prefabs/UI/Setting/SettingUI" },
+            { BoxEnum.FailedUI.ToString(), "Prefabs/UI/Failed/FailedUI" }
         };
     }
 }

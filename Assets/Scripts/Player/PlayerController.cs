@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     //跳跃相关数据
     private readonly int jumpCount = 2; // 可跳跃次数
     public int currentJumpCount = 0; // 当前剩余跳跃次数
-    private readonly float jumpSpeed = 5f; // 跳跃速度
+    private readonly float jumpSpeed = 10f; // 跳跃速度
 
     private bool isLeaveGround = false; // 是否离开地面
     private readonly float playerHight = .5f; // 玩家高度
@@ -262,7 +262,7 @@ public class PlayerController : MonoBehaviour
             collisionPoint += p.point;
         }
 
-        Debug.Log(other.contacts.Length);
+        //Debug.Log(other.contacts.Length);
         collisionPoint /= other.contacts.Length; // 计算碰撞点的平均位置
         if (other.gameObject.CompareTag("Trap"))
         {
@@ -293,7 +293,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnGroundEnter(Collision2D other, Vector2 collisionPoint)
     {
-        Debug.Log("Player collided with ground at: " + collisionPoint);
+        //Debug.Log("Player collided with ground at: " + collisionPoint);
         if (isSprinting && collisionPoint.y > transform.position.y - playerHight &&
             collisionPoint.y < transform.position.y + playerHight)
         {

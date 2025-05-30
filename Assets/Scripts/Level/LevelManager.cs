@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Game.Instance;
 using Game.KeyBoard;
 using Game.UI;
@@ -11,6 +12,7 @@ namespace Game.Level
         [HideInInspector] public float CurrentTime = 0f; // 关卡时间
         private float levelMaxTime = 42f; // 关卡最大时间，单位为秒
         private bool isGamePlaying = true; // 游戏是否正在进行
+        private bool isGameLose = false;
 
         private void Update()
         {
@@ -25,12 +27,12 @@ namespace Game.Level
                 {
                     if (PauseUI.Instance.IsOpen)
                     {
-                        isGamePlaying = false; // 设置游戏为非进行中状态
+                        isGamePlaying = true; // 设置游戏为非进行中状态
                         PauseUI.Instance.Close(); // 如果暂停界面已经打开，则关闭它
                     }
                     else
                     {
-                        isGamePlaying = true; // 设置游戏为进行中状态
+                        isGamePlaying = false; // 设置游戏为进行中状态
                         PauseUI.Instance.PauseGame(); // 如果暂停界面没有打开，则打开它
                     }
                 }
@@ -49,7 +51,7 @@ namespace Game.Level
 
         private void GamePlay()
         {
-            if (isGamePlaying)
+            if (!isGamePlaying)
             {
                 return; // 如果游戏已经在进行中，则不执行任何操作
             }
@@ -72,6 +74,11 @@ namespace Game.Level
 
         public void OnlevelWin()
         {
+            if (isGameLose)
+            {
+                return;
+            }
+
             Debug.Log("关卡胜利！"); // 这里可以添加关卡胜利的逻辑
         }
 
@@ -79,9 +86,15 @@ namespace Game.Level
 
         public void OnPlayerDead()
         {
-            isGamePlaying = false; // 设置游戏为非进行中状态
-            GamePlayManager.PauseGame();
+            StartCoroutine(PauseDelay());
+            isGameLose = true; // 设置游戏为失败状态
             Debug.Log("玩家死亡，游戏暂停！"); // 这里可以添加玩家死亡的逻辑
+        }
+
+        private IEnumerator PauseDelay()
+        {
+            yield return new WaitForSeconds(1f); // 等待1秒
+            FailedUI.Open("");
         }
 
         #endregion
