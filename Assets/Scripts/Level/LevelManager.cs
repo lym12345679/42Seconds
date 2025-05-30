@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Level
 {
-    public class LevelManager : GeneralInstance<LevelManager>
+    public class LevelManager : GeneralMonoInstance<LevelManager>
     {
         [HideInInspector] public float CurrentTime = 0f; // 关卡时间
         private float levelMaxTime = 42f; // 关卡最大时间，单位为秒

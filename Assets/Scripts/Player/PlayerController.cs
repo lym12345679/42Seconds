@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Game;
 using Game.Level;
 using Game.Traps;
 using UnityEngine;
