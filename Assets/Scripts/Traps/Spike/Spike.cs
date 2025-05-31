@@ -69,7 +69,7 @@ namespace Game.Traps
 
         public void Flash(Vector2 position)
         {
-            transform.position = position;
+            transform.localPosition = position;
         }
 
         #endregion

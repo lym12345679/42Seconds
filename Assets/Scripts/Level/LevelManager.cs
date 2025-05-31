@@ -4,6 +4,7 @@ using Game.Instance;
 using Game.KeyBoard;
 using Game.Scene;
 using Game.UI;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Level
@@ -16,9 +17,19 @@ namespace Game.Level
         private bool isGameLose = false;
         public SceneType CurrentSceneType = SceneType.Level1; // 当前场景类型
 
+        private void Start()
+        {
+            LevelUI.Open("");
+        }
+
         private void Update()
         {
             Pause();
+        }
+
+        void FixedUpdate()
+        {
+            GamePlay();
         }
 
         private void Pause()
@@ -46,10 +57,6 @@ namespace Game.Level
             }
         }
 
-        void FixedUpdate()
-        {
-            GamePlay();
-        }
 
         private void GamePlay()
         {

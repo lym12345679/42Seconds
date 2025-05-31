@@ -1,16 +1,21 @@
 ﻿using System;
+using System.Collections;
 using Game.Recycle;
 using Game.Traps;
 using MizukiTool.UIEffect;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.Level
 {
     public class TestLevel0 : LevelBehaviorTree
     {
+        [FormerlySerializedAs("LocalPosition")]
+        public Transform LocalTransform;
+
         #region bool值
 
-        #region Stage1 3~5s
+        #region Stage1 2.5~5s
 
         private bool seconds2p5 = false;
         private bool seconds2p75 = false; // 用于标记是否经过2.75秒
@@ -25,8 +30,9 @@ namespace Game.Level
 
         #endregion
 
-        #region Stage2 7~10s
+        #region Stage2 6~10s
 
+        private bool seconds6 = false; // 用于标记是否经过6秒
         private bool seconds7 = false; // 用于标记是否经过7秒
         private bool seconds8 = false; // 用于标记是否经过8秒
         private bool seconds9 = false; // 用于标记是否经过9秒
@@ -138,9 +144,10 @@ namespace Game.Level
                         () => Condition(currentTime > 4.75f && seconds4p5 && !seconds4p75,
                             () => { return Second4p75Action(); })
                     )),
-                () => Condition(currentTime >= 7f && currentTime < 10f,
+                () => Condition(currentTime >= 6f && currentTime < 10f,
                     () => Selector(
-                        () => Condition(!seconds7, () => { return Second7Action(); }),
+                        () => Condition(!seconds6, () => { return Second6Action(); }),
+                        () => Condition(currentTime > 7f && seconds6 && !seconds7, () => { return Second7Action(); }),
                         () => Condition(currentTime > 8f && seconds7 && !seconds8, () => { return Second8Action(); }),
                         () => Condition(currentTime > 9f && seconds8 && !seconds9, () => { return Second9Action(); })
                     )),
@@ -354,12 +361,25 @@ namespace Game.Level
 
         #region Stage2 7~10s
 
+        private Action Second6Action()
+        {
+            StartCoroutine(WaitToWarn(6, 0.5f));
+            StartCoroutine(WaitToWarn(7, 0.5f));
+            StartCoroutine(WaitToWarn(8, 0.5f));
+            seconds6 = true; // 设置经过7秒的标志
+            return null; // 返回一个空的动作
+        }
+
         private Action Second7Action()
         {
             //Debug.Log("7 seconds passed");
             Stage2Move1(6);
             Stage2Move1(7);
             Stage2Move1(8);
+            StartCoroutine(WaitToWarn(3, 0.5f));
+            StartCoroutine(WaitToWarn(4, 0.5f));
+            StartCoroutine(WaitToWarn(10, 0.5f));
+            StartCoroutine(WaitToWarn(11, 0.5f));
             seconds7 = true; // 设置经过7秒的标志
             return null; // 返回一个空的动作
         }
@@ -374,6 +394,11 @@ namespace Game.Level
             Stage2Move2(6);
             Stage2Move2(7);
             Stage2Move2(8);
+
+            StartCoroutine(WaitToWarn(0, 0.5f));
+            StartCoroutine(WaitToWarn(1, 0.5f));
+            StartCoroutine(WaitToWarn(13, 0.5f));
+            StartCoroutine(WaitToWarn(14, 0.5f));
             seconds8 = true; // 设置经过8秒的标志
             return null; // 返回一个空的动作
         }
@@ -412,6 +437,14 @@ namespace Game.Level
             Stage3Move1(1);
             Stage3Move2(13);
             Stage3Move2(14);
+            StartCoroutine(WaitToWarn(2, .5f));
+            StartCoroutine(WaitToWarn(3, .5f));
+            StartCoroutine(WaitToWarn(4, .5f));
+            StartCoroutine(WaitToWarn(5, .5f));
+            StartCoroutine(WaitToWarn(9, .5f));
+            StartCoroutine(WaitToWarn(10, .5f));
+            StartCoroutine(WaitToWarn(11, .5f));
+            StartCoroutine(WaitToWarn(12, .5f));
             seconds11 = true; // 设置经过11秒的标志
             // 在这里添加11秒时的动作
             return null; // 返回一个空的动作
@@ -491,6 +524,8 @@ namespace Game.Level
             Stage5Move1(10);
             Stage5Move1(11);
             Stage5Move1(12);
+
+
             seconds14 = true; // 设置经过14秒的标志
 
             // 在这里添加14秒时的动作
@@ -515,6 +550,10 @@ namespace Game.Level
             Stage5Flash(12);
             Stage5Flash(13);
             Stage5Flash(14);
+            GeneralWarn1(0);
+            GeneralWarn1(14);
+            GeneralWarn1(1);
+            GeneralWarn1(13);
             seconds14p75 = true; // 设置经过14.75秒的标志
 
             // 在这里添加14.75秒时的动作
@@ -550,6 +589,8 @@ namespace Game.Level
             //Debug.Log("15 seconds passed");
             Stage6Move1(0);
             Stage6Move1(14);
+            GeneralWarn1(2);
+            GeneralWarn1(12);
             seconds15 = true; // 设置经过15秒的标志
             return null; // 返回一个空的动作
         }
@@ -559,6 +600,8 @@ namespace Game.Level
             //Debug.Log("15.25 seconds passed");
             Stage6Move1(1);
             Stage6Move1(13);
+            GeneralWarn1(3);
+            GeneralWarn1(11);
             seconds15p25 = true; // 设置经过15.25秒的标志
             return null; // 返回一个空的动作
         }
@@ -568,6 +611,8 @@ namespace Game.Level
             //Debug.Log("15.5 seconds passed");
             Stage6Move1(2);
             Stage6Move1(12);
+            GeneralWarn1(4);
+            GeneralWarn1(10);
             seconds15p5 = true; // 设置经过15.5秒的标志
             return null; // 返回一个空的动作
         }
@@ -577,6 +622,8 @@ namespace Game.Level
             //Debug.Log("15.75 seconds passed");
             Stage6Move1(3);
             Stage6Move1(11);
+            GeneralWarn1(5);
+            GeneralWarn1(9);
             seconds15p75 = true; // 设置经过15.75秒的标志
             return null; // 返回一个空的动作
         }
@@ -586,6 +633,8 @@ namespace Game.Level
             //Debug.Log("16 seconds passed");
             Stage6Move1(4);
             Stage6Move1(10);
+            GeneralWarn1(6);
+            GeneralWarn1(8);
             seconds16 = true; // 设置经过16秒的标志
             return null; // 返回一个空的动作
         }
@@ -595,6 +644,7 @@ namespace Game.Level
             //Debug.Log("16.25 seconds passed");
             Stage6Move1(5);
             Stage6Move1(9);
+            GeneralWarn1(7);
             seconds16p25 = true; // 设置经过16.25秒的标志
             return null; // 返回一个空的动作
         }
@@ -723,6 +773,11 @@ namespace Game.Level
             Stage7Move2(12);
             Stage7Move2(13);
             Stage7Move2(14);
+            StartCoroutine(WaitToWarn(5, 1f));
+            StartCoroutine(WaitToWarn(6, 1f));
+            StartCoroutine(WaitToWarn(7, 1f));
+            StartCoroutine(WaitToWarn(8, 1f));
+            StartCoroutine(WaitToWarn(9, 1f));
             seconds20p5 = true; // 设置经过20.5秒的标志
             return null; // 返回一个空的动作
         }
@@ -754,6 +809,11 @@ namespace Game.Level
             Stage8Move1(7);
             Stage8Move1(8);
             Stage8Move1(9);
+            StartCoroutine(WaitToWarn(0, .5f));
+            StartCoroutine(WaitToWarn(1, .5f));
+            StartCoroutine(WaitToWarn(2, .5f));
+            StartCoroutine(WaitToWarn(3, .5f));
+            StartCoroutine(WaitToWarn(4, .5f));
             seconds22 = true; // 设置经过22秒的标志
             return null; // 返回一个空的动作
         }
@@ -778,6 +838,11 @@ namespace Game.Level
             Stage8Move2(7);
             Stage8Move2(8);
             Stage8Move2(9);
+            StartCoroutine(WaitToWarn(10, .5f));
+            StartCoroutine(WaitToWarn(11, .5f));
+            StartCoroutine(WaitToWarn(12, .5f));
+            StartCoroutine(WaitToWarn(13, .5f));
+            StartCoroutine(WaitToWarn(14, .5f));
             seconds24 = true; // 设置经过24秒的标志
             return null; // 返回一个空的动作
         }
@@ -802,6 +867,11 @@ namespace Game.Level
             Stage8Move2(2);
             Stage8Move2(3);
             Stage8Move2(4);
+            StartCoroutine(WaitToWarn(0, .5f));
+            StartCoroutine(WaitToWarn(1, .5f));
+            StartCoroutine(WaitToWarn(2, .5f));
+            StartCoroutine(WaitToWarn(3, .5f));
+            StartCoroutine(WaitToWarn(4, .5f));
             seconds26 = true; // 设置经过26秒的标志
             return null; // 返回一个空的动作
         }
@@ -826,6 +896,11 @@ namespace Game.Level
             Stage8Move2(12);
             Stage8Move2(13);
             Stage8Move2(14);
+            StartCoroutine(WaitToWarn(10, .5f));
+            StartCoroutine(WaitToWarn(11, .5f));
+            StartCoroutine(WaitToWarn(12, .5f));
+            StartCoroutine(WaitToWarn(13, .5f));
+            StartCoroutine(WaitToWarn(14, .5f));
             seconds28 = true; // 设置经过28秒的标志
             return null; // 返回一个空的动作
         }
@@ -850,6 +925,11 @@ namespace Game.Level
             Stage8Move2(2);
             Stage8Move2(3);
             Stage8Move2(4);
+            StartCoroutine(WaitToWarn(5, .5f));
+            StartCoroutine(WaitToWarn(6, .5f));
+            StartCoroutine(WaitToWarn(7, .5f));
+            StartCoroutine(WaitToWarn(8, .5f));
+            StartCoroutine(WaitToWarn(9, .5f));
             seconds30 = true; // 设置经过30秒的标志
             return null; // 返回一个空的动作
         }
@@ -879,6 +959,9 @@ namespace Game.Level
             Stage8Move2(12);
             Stage8Move2(13);
             Stage8Move2(14);
+            StartCoroutine(WaitToWarn(0, .5f));
+            StartCoroutine(WaitToWarn(1, .5f));
+            StartCoroutine(WaitToWarn(2, .5f));
             seconds32 = true; // 设置经过32秒的标志
             return null; // 返回一个空的动作
         }
@@ -903,6 +986,9 @@ namespace Game.Level
             Stage9Move1(0);
             Stage9Move1(1);
             Stage9Move1(2);
+            StartCoroutine(WaitToWarn(3, .5f));
+            StartCoroutine(WaitToWarn(4, .5f));
+            StartCoroutine(WaitToWarn(5, .5f));
             seconds33 = true; // 设置经过33秒的标志
             return null; // 返回一个空的动作
         }
@@ -913,6 +999,9 @@ namespace Game.Level
             Stage9Move1(3);
             Stage9Move1(4);
             Stage9Move1(5);
+            StartCoroutine(WaitToWarn(6, .5f));
+            StartCoroutine(WaitToWarn(7, .5f));
+            StartCoroutine(WaitToWarn(8, .5f));
             seconds34 = true; // 设置经过34秒的标志
             return null; // 返回一个空的动作
         }
@@ -926,6 +1015,9 @@ namespace Game.Level
             Stage9Move2(0);
             Stage9Move2(1);
             Stage9Move2(2);
+            StartCoroutine(WaitToWarn(9, .5f));
+            StartCoroutine(WaitToWarn(10, .5f));
+            StartCoroutine(WaitToWarn(11, .5f));
             seconds35 = true; // 设置经过35秒的标志
             return null; // 返回一个空的动作
         }
@@ -939,6 +1031,9 @@ namespace Game.Level
             Stage9Move2(3);
             Stage9Move2(4);
             Stage9Move2(5);
+            StartCoroutine(WaitToWarn(12, .5f));
+            StartCoroutine(WaitToWarn(13, .5f));
+            StartCoroutine(WaitToWarn(14, .5f));
             seconds36 = true; // 设置经过36秒的标志
             return null; // 返回一个空的动作
         }
@@ -967,6 +1062,16 @@ namespace Game.Level
             Stage9Move2(14);
             Stage9Scale(5);
             Stage9Flash(5);
+            StartCoroutine(WaitToWarn(0, .5f));
+            StartCoroutine(WaitToWarn(1, .5f));
+            StartCoroutine(WaitToWarn(2, .5f));
+            StartCoroutine(WaitToWarn(3, .5f));
+            StartCoroutine(WaitToWarn(4, .5f));
+            StartCoroutine(WaitToWarn(10, .5f));
+            StartCoroutine(WaitToWarn(11, .5f));
+            StartCoroutine(WaitToWarn(12, .5f));
+            StartCoroutine(WaitToWarn(13, .5f));
+            StartCoroutine(WaitToWarn(14, .5f));
             seconds38 = true; // 设置经过38秒的标志
             return null; // 返回一个空的动作
         }
@@ -1025,14 +1130,27 @@ namespace Game.Level
 
         #endregion
 
-        private void GeneralWarn1(int n)
+
+        public void GeneralWarn1(int n, float y = 1f)
         {
             RecyclePool.Request(RecycleItemEnum.Warn,
                 (c) =>
                 {
                     c.GameObject.transform.position =
-                        spikeList[n].transform.position + new Vector3(0, 1, 0);
+                        LocalTransform.position + new Vector3(n, y, 0);
                 });
+        }
+
+        private IEnumerator WaitToWarn(int n, float t)
+        {
+            yield return new WaitForSeconds(t);
+            GeneralWarn1(n);
+        }
+
+        private IEnumerator WaitToWarn2(int n, float t)
+        {
+            yield return new WaitForSeconds(t);
+            GeneralWarn1(n);
         }
     }
 }
