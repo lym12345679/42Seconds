@@ -14,7 +14,7 @@ namespace Game.UI
 
         private void FixedUpdate()
         {
-            timeText.text = Mathf.FloorToInt(LevelManager.Instance.CurrentTime).ToString();
+            timeText.text = Mathf.FloorToInt(42 - LevelManager.Instance.CurrentTime).ToString();
         }
 
         public override void GetParams(string param)

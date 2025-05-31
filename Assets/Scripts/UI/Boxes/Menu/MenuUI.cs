@@ -30,6 +30,7 @@ namespace Game.UI
 
         public void ExitGame()
         {
+            GamePlayManager.ExitGame();
         }
 
         public void StartGame()
