@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.32349634, a: 1}
+  m_Color: {r: 0, g: 0.39048553, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e147d21174b3c0641a6a299c193c60de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeMessageListSO: {fileID: 11400000, guid: 0413bebafc406fa4abb77fe0958028ee, type: 2}
   spikeEffectController: {fileID: 1635145904645128345}
 --- !u!114 &1635145904645128345
 MonoBehaviour:
@@ -157,7 +156,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
+    - - {x: 0, y: 0.5439494}
+      - {x: -0.4696318, y: -0.27301142}
+      - {x: 0.46916062, y: -0.27324703}
   m_UseDelaunayMesh: 0
