@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Game.UI;
+using Game.Recycle;
 using UnityEngine;
+
 namespace Game.UI
 {
     public class TestUIManager : MonoBehaviour
@@ -9,14 +8,22 @@ namespace Game.UI
         // Start is called before the first frame update
         void Start()
         {
-            MessageBox.Open(new Message("测试标题", "测试内容"));
+            //MessageBox.Open(new Message("测试标题", "测试内容"));
         }
 
         // Update is called once per frame
         void Update()
         {
+        }
 
+        private void FixedUpdate()
+        {
+            RecyclePool.Request(RecycleItemEnum.Warn,
+                (c) =>
+                {
+                    c.GameObject.transform.position = new Vector3(Random.Range(-5f, 5f),
+                        Random.Range(-5f, 5f), 0);
+                });
         }
     }
-
 }

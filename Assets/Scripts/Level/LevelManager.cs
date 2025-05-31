@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Game.Instance;
 using Game.KeyBoard;
+using Game.Scene;
 using Game.UI;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace Game.Level
         private float levelMaxTime = 42f; // 关卡最大时间，单位为秒
         private bool isGamePlaying = true; // 游戏是否正在进行
         private bool isGameLose = false;
+        public SceneType CurrentSceneType = SceneType.Level1; // 当前场景类型
 
         private void Update()
         {

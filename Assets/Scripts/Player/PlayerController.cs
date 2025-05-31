@@ -78,13 +78,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector3.left * Time.deltaTime * 5f);
+            transform.Translate(Time.deltaTime * 5f * Vector3.left);
             ChangeDirection();
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * Time.deltaTime * 5f);
+            transform.Translate(Time.deltaTime * 5f * Vector3.right);
             ChangeDirection();
         }
     }
@@ -94,12 +94,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             direction = -1;
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale =
+                new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             direction = 1;
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale =
+                new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
     }
 

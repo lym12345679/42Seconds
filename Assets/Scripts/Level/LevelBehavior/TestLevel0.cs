@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Recycle;
 using Game.Traps;
 using MizukiTool.UIEffect;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace Game.Level
 
         #region Stage1 3~5s
 
+        private bool seconds2p5 = false;
+        private bool seconds2p75 = false; // 用于标记是否经过2.75秒
         private bool seconds3 = false; // 用于标记是否经过3秒
         private bool seconds3p25 = false; // 用于标记是否经过3.25秒
         private bool seconds3p5 = false; // 用于标记是否经过3.5秒
@@ -113,9 +116,13 @@ namespace Game.Level
         {
             //Debug.Log(currentTime);
             return Selector(
-                () => Condition(currentTime >= 3f && currentTime < 5f,
+                () => Condition(currentTime >= 2.5f && currentTime < 5f,
                     () => Selector(
-                        () => Condition(!seconds3, () => { return Second3Action(); }),
+                        () => Condition(!seconds2p5, () => { return Second2p5Action(); }),
+                        () => Condition(currentTime > 2.75f && seconds2p5 && !seconds2p75,
+                            () => { return Second2p75Action(); }),
+                        () => Condition(currentTime > 3f && seconds2p5 && !seconds3,
+                            () => { return Second3Action(); }),
                         () => Condition(currentTime > 3.25f && seconds3 && !seconds3p25,
                             () => { return Second3p25Action(); }),
                         () => Condition(currentTime > 3.5f && seconds3p25 && !seconds3p5,
@@ -238,11 +245,31 @@ namespace Game.Level
 
         #region Stage1 3~5s
 
+        private Action Second2p5Action()
+        {
+            //Debug.Log("2.5 seconds passed");
+            GeneralWarn1(0); // 警告第一个尖刺
+            GeneralWarn1(14); // 警告第16个尖刺
+            seconds2p5 = true; // 设置经过2.5秒的标志
+            return null; // 返回一个空的动作
+        }
+
+        private Action Second2p75Action()
+        {
+            //Debug.Log("2.75 seconds passed");
+            GeneralWarn1(1); // 警告第二个尖刺
+            GeneralWarn1(13); // 警告第15个尖刺
+            seconds2p75 = true; // 设置经过2.75秒的标志
+            return null; // 返回一个空的动作
+        }
+
         private Action Second3Action()
         {
             Debug.Log(spikeList.Count + " spikes in the list");
             Stage1Move(0); // 移动第一个尖刺
             Stage1Move(14); // 移动第16个尖刺
+            GeneralWarn1(2);
+            GeneralWarn1(12); // 警告第13个尖刺
             seconds3 = true; // 设置经过3秒的标志
             return null; // 返回一个空的动作
         }
@@ -251,6 +278,8 @@ namespace Game.Level
         {
             Stage1Move(1); // 移动第二个尖刺
             Stage1Move(13); // 移动第15个尖刺
+            GeneralWarn1(3);
+            GeneralWarn1(11); // 警告第12个尖刺
             seconds3p25 = true; // 设置经过3.25秒的标志
             return null; // 返回一个空的动作
         }
@@ -259,6 +288,8 @@ namespace Game.Level
         {
             Stage1Move(2); // 移动第三个尖刺
             Stage1Move(12); // 移动第14个尖刺
+            GeneralWarn1(4); // 警告第五个尖刺
+            GeneralWarn1(10);
             seconds3p5 = true; // 设置经过3.5秒的标志
             return null; // 返回一个空的动作
         }
@@ -268,6 +299,8 @@ namespace Game.Level
             //Debug.Log("3.75 seconds passed");
             Stage1Move(3); // 移动第四个尖刺
             Stage1Move(11); // 移动第13个尖刺
+            GeneralWarn1(5); // 警告第六个尖刺
+            GeneralWarn1(9); // 警告第十个尖刺
             seconds3p75 = true; // 设置经过3.75秒的标志
             return null; // 返回一个空的动作
         }
@@ -277,6 +310,8 @@ namespace Game.Level
             //Debug.Log("4 seconds passed");
             Stage1Move(4); // 移动第五个尖刺
             Stage1Move(10); // 移动第12个尖刺
+            GeneralWarn1(6);
+            GeneralWarn1(8);
             seconds4 = true; // 设置经过4秒的标志
             return null; // 返回一个空的动作
         }
@@ -286,6 +321,7 @@ namespace Game.Level
             //Debug.Log("4.25 seconds passed");
             Stage1Move(5); // 移动第六个尖刺
             Stage1Move(9); // 移动第11个尖刺
+            GeneralWarn1(7);
             seconds4p25 = true; // 设置经过4.25秒的标志
             return null; // 返回一个空的动作
         }
@@ -306,6 +342,7 @@ namespace Game.Level
             seconds4p75 = true; // 设置经过4.75秒的标志
             return null; // 返回一个空的动作
         }
+
 
         private void Stage1Move(int n)
         {
@@ -987,5 +1024,15 @@ namespace Game.Level
         }
 
         #endregion
+
+        private void GeneralWarn1(int n)
+        {
+            RecyclePool.Request(RecycleItemEnum.Warn,
+                (c) =>
+                {
+                    c.GameObject.transform.position =
+                        spikeList[n].transform.position + new Vector3(0, 1, 0);
+                });
+        }
     }
 }

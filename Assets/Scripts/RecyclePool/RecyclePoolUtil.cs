@@ -45,6 +45,8 @@ namespace Game.Recycle
             {
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.DialogItem,
                     Resources.Load<GameObject>("Prefabs/Recycle/TextItem"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.Warn,
+                    Resources.Load<GameObject>("Prefabs/Recycle/Warn"));
             };
             RecyclePoolUtil.SetRigisterAction(action);
         }
@@ -53,5 +55,6 @@ namespace Game.Recycle
     public enum RecycleItemEnum
     {
         DialogItem,
+        Warn
     }
 }
