@@ -1,104 +1,162 @@
 ﻿using System;
-using Game.Recycle;
+using System.Collections.Generic;
 using Game.Traps;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Game.Recycle;
+
 
 namespace Game.Level
 {
-    public class Level1 : LevelBehaviorTree
+    public class LevelOne : MonoBehaviour
     {
-        [FormerlySerializedAs("LocalPosition")]
-        public Transform LocalTransform;
+        private LevelBehavior levelBehavior;
+        public List<Spike> Spikes = new List<Spike>();
+        public Transform Location;
 
-        protected override Action GetAction()
+        private void Awake()
         {
-            return Selector(
-                () => Condition(currentTime > 3f && currentTime < 10f,
-                    () => Selector(
-                        () => Condition(currentTime > 3.5f && !targetTime[3.5f], Second3p5Action),
-                        () => Condition(currentTime > 4f && !targetTime[4f], Second4Action),
-                        () => Condition(currentTime > 4.5f && !targetTime[4.5f], Second4p5Action),
-                        () => Condition(currentTime > 5f && !targetTime[5f], Second5Action),
-                        () => Condition(currentTime > 5.5f && !targetTime[5.5f], Second5p5Action),
-                        () => Condition(currentTime > 6f && !targetTime[6f], Second6Action),
-                        () => Condition(currentTime > 6.5f && !targetTime[6.5f], Second6p5Action),
-                        () => Condition(currentTime > 7f && !targetTime[7f], Second7Action),
-                        () => Condition(currentTime > 9f && !targetTime[9f], Second9Action)
-                    )),
-                () => Condition(currentTime > 10f && currentTime < 14f,
-                    () => Selector(
-                        () => Condition(currentTime > 10.5f && !targetTime[10.5f], Second10p5Action),
-                        () => Condition(currentTime > 11f && !targetTime[11f], Second11Action),
-                        () => Condition(currentTime > 11.5f && !targetTime[11.5f], Second11p5Action),
-                        () => Condition(currentTime > 12f && !targetTime[12f], Second12Action),
-                        () => Condition(currentTime > 13f && !targetTime[13f], Second13Action)
-                    )),
-                () => Condition(currentTime > 14f && currentTime < 19f,
-                    () => Selector(
-                        () => Condition(currentTime > 14f && !targetTime[14f], Second14Action),
-                        () => Condition(currentTime > 14.5f && !targetTime[14.5f], Second14p5Action),
-                        () => Condition(currentTime > 16f && !targetTime[16f], Second16Action),
-                        () => Condition(currentTime > 17f && !targetTime[17f], Second17Action),
-                        () => Condition(currentTime > 17.5f && !targetTime[17.5f], Second17p5Action),
-                        () => Condition(currentTime > 18.5f && !targetTime[18.5f], Second18p5Action)
-                    )),
-                () => Condition(currentTime > 20f && currentTime < 26f,
-                    () => Selector(
-                        () => Condition(currentTime > 20f && !targetTime[20f], Second20Action),
-                        () => Condition(currentTime > 20.5f && !targetTime[20.5f], Second20p5Action),
-                        () => Condition(currentTime > 21f && !targetTime[21f], Second21Action),
-                        () => Condition(currentTime > 21.5f && !targetTime[21.5f], Second21p5Action),
-                        () => Condition(currentTime > 22f && !targetTime[22f], Second22Action),
-                        () => Condition(currentTime > 22.5f && !targetTime[22.5f], Second22p5Action),
-                        () => Condition(currentTime > 23f && !targetTime[23f], Second23Action),
-                        () => Condition(currentTime > 23.5f && !targetTime[23.5f], Second23p5Action),
-                        () => Condition(currentTime > 24f && !targetTime[24f], Second24Action),
-                        () => Condition(currentTime > 24.5f && !targetTime[24.5f], Second24p5Action),
-                        () => Condition(currentTime > 25f && !targetTime[25f], Second25Action),
-                        () => Condition(currentTime > 25.5f && !targetTime[25.5f], Second25p5Action)
-                    )),
-                () => Condition(currentTime > 26f && currentTime < 31f,
-                    () => Selector(
-                        () => Condition(currentTime > 26f && !targetTime[26f], Second26Action),
-                        () => Condition(currentTime > 26.5f && !targetTime[26.5f], Second26p5Action),
-                        () => Condition(currentTime > 27f && !targetTime[27f], Second27Action),
-                        () => Condition(currentTime > 27.5f && !targetTime[27.5f], Second27p5Action),
-                        () => Condition(currentTime > 28f && !targetTime[28f], Second28Action),
-                        () => Condition(currentTime > 28.5f && !targetTime[28.5f], Second28p5Action),
-                        () => Condition(currentTime > 29f && !targetTime[29f], Second29Action),
-                        () => Condition(currentTime > 29.5f && !targetTime[29.5f], Second29p5Action),
-                        () => Condition(currentTime > 30.5f && !targetTime[30.5f], Second30p5Action)
-                    )),
-                () => Condition(currentTime > 31f && currentTime < 38f,
-                    () => Selector(
-                        () => Condition(currentTime > 31f && !targetTime[31f], Second31Action),
-                        () => Condition(currentTime > 31.5f && !targetTime[31.5f], Second31p5Action),
-                        () => Condition(currentTime > 32f && !targetTime[32f], Second32Action),
-                        () => Condition(currentTime > 32.5f && !targetTime[32.5f], Second32p5Action),
-                        () => Condition(currentTime > 33f && !targetTime[33f], Second33Action),
-                        () => Condition(currentTime > 33.5f && !targetTime[33.5f], Second33p5Action),
-                        () => Condition(currentTime > 34f && !targetTime[34f], Second34Action),
-                        () => Condition(currentTime > 34.5f && !targetTime[34.5f], Second34p5Action),
-                        () => Condition(currentTime > 35f && !targetTime[35f], Second35Action),
-                        () => Condition(currentTime > 35.5f && !targetTime[35.5f], Second35p5Action),
-                        () => Condition(currentTime > 36f && !targetTime[36f], Second36Action),
-                        () => Condition(currentTime > 36.5f && !targetTime[36.5f], Second36p5Action),
-                        () => Condition(currentTime > 37.5f && !targetTime[37.5f], Second37p5Action)
-                    )),
-                () => Condition(currentTime > 38f && currentTime < 42f,
-                    () => Selector(
-                        () => Condition(currentTime > 39.5f && !targetTime[39.5f], Second39p5Action),
-                        () => Condition(currentTime > 40f && !targetTime[40f], Second40Action)
-                    ))
-            );
+            Initialize();
+        }
+
+        private void FixedUpdate()
+        {
+            levelBehavior.OnFixedUpdate(); // 更新关卡行为树
+        }
+
+        public void Initialize()
+        {
+            //8s
+            levelBehavior = new LevelBehavior();
+            LevelBehavior c1 = Stage1(levelBehavior);
+            LevelBehavior c2 = Stage2(c1);
+            LevelBehavior c3 = Stage3(c2);
+            LevelBehavior c4 = Stage4(c3);
+            LevelBehavior c5 = Stage5(c4);
+            LevelBehavior c6 = Stage6(c5);
+            LevelBehavior c7 = Stage7(c6);
+        }
+
+        private LevelBehavior Stage1(LevelBehavior l)
+        {
+            LevelBehavior d0 = l.AddChild().SetDelay(3f);
+            LevelBehavior a0 = d0.AddChild().SetAction(Second3p5Action);
+            LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
+            LevelBehavior a1 = d1.AddChild().SetAction(Second4Action);
+            LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
+            LevelBehavior a2 = d2.AddChild().SetAction(Second4p5Action);
+            LevelBehavior d3 = a2.AddChild().SetDelay(0.5f);
+            LevelBehavior a3 = d3.AddChild().SetAction(Second5Action);
+            LevelBehavior d4 = a3.AddChild().SetDelay(0.5f);
+            LevelBehavior a4 = d4.AddChild().SetAction(Second5p5Action);
+            LevelBehavior d5 = a4.AddChild().SetDelay(0.5f);
+            LevelBehavior a5 = d5.AddChild().SetAction(Second6Action);
+            LevelBehavior d6 = a5.AddChild().SetDelay(0.5f);
+            LevelBehavior a6 = d6.AddChild().SetAction(Second6p5Action);
+            LevelBehavior d7 = a6.AddChild().SetDelay(1f);
+            LevelBehavior a7 = d7.AddChild().SetAction(Second7Action);
+            LevelBehavior d8 = a7.AddChild().SetDelay(0.5f);
+            return d8;
+        }
+
+        private LevelBehavior Stage2(LevelBehavior l)
+        {
+            LevelBehavior d0 = l.AddChild().SetDelay(0.5f);
+            LevelBehavior a0 = d0.AddChild().SetAction(Second10p5Action);
+            LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
+            LevelBehavior a1 = d1.AddChild().SetAction(Second11Action);
+            LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
+            LevelBehavior a2 = d2.AddChild().SetAction(Second11p5Action);
+            LevelBehavior d3 = a2.AddChild().SetDelay(1f);
+            LevelBehavior a3 = d3.AddChild().SetAction(Second12Action);
+            LevelBehavior d4 = a3.AddChild().SetDelay(1f);
+            LevelBehavior a4 = d4.AddChild().SetAction(Second13Action);
+            LevelBehavior d5 = a4.AddChild().SetDelay(1f);
+            LevelBehavior a5 = d5.AddChild().SetAction(Second14Action);
+            LevelBehavior d6 = a5.AddChild().SetDelay(0.5f);
+            LevelBehavior a6 = d6.AddChild().SetAction(Second14p5Action);
+            LevelBehavior d7 = a6.AddChild().SetDelay(0.5f);
+            return d7;
+        }
+
+        private LevelBehavior Stage3(LevelBehavior l)
+        {
+            LevelBehavior d0 = l.AddChild().SetDelay(0.5f);
+            LevelBehavior a0 = d0.AddChild().SetAction(Second16Action);
+            LevelBehavior d1 = a0.AddChild().SetDelay(1f);
+            LevelBehavior a1 = d1.AddChild().SetAction(Second17Action);
+            LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
+            LevelBehavior a2 = d2.AddChild().SetAction(Second17p5Action);
+            LevelBehavior d3 = a2.AddChild().SetDelay(1f);
+            LevelBehavior a3 = d3.AddChild().SetAction(Second18p5Action);
+            LevelBehavior d4 = a3.AddChild().SetDelay(1.5f);
+            LevelBehavior a4 = d4.AddChild().SetAction(Second20Action);
+            LevelBehavior d5 = a4.AddChild().SetDelay(0.5f);
+            return d5;
+        }
+
+        private LevelBehavior Stage4(LevelBehavior l)
+        {
+            LevelBehavior d0 = l.AddChild().SetDelay(0.5f);
+            LevelBehavior a0 = d0.AddChild().SetAction(Second20p5Action);
+            LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
+            LevelBehavior a1 = d1.AddChild().SetAction(Second21Action);
+            LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
+            LevelBehavior a2 = d2.AddChild().SetAction(Second21p5Action);
+            LevelBehavior d3 = a2.AddChild().SetDelay(0.5f);
+            LevelBehavior a3 = d3.AddChild().SetAction(Second22Action);
+            LevelBehavior d4 = a3.AddChild().SetDelay(0.5f);
+            LevelBehavior a4 = d4.AddChild().SetAction(Second22p5Action);
+            LevelBehavior d5 = a4.AddChild().SetDelay(0.5f);
+            return d5;
+        }
+
+        private LevelBehavior Stage5(LevelBehavior l)
+        {
+            LevelBehavior d0 = l.AddChild().SetDelay(0.5f);
+            LevelBehavior a0 = d0.AddChild().SetAction(Second23Action);
+            LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
+            LevelBehavior a1 = d1.AddChild().SetAction(Second23p5Action);
+            LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
+            LevelBehavior a2 = d2.AddChild().SetAction(Second24Action);
+            LevelBehavior d3 = a2.AddChild().SetDelay(0.5f);
+            LevelBehavior a3 = d3.AddChild().SetAction(Second24p5Action);
+            LevelBehavior d4 = a3.AddChild().SetDelay(0.5f);
+            return d4;
+        }
+
+        private LevelBehavior Stage6(LevelBehavior l)
+        {
+            LevelBehavior d0 = l.AddChild().SetDelay(0.5f);
+            LevelBehavior a0 = d0.AddChild().SetAction(Second25Action);
+            LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
+            LevelBehavior a1 = d1.AddChild().SetAction(Second25p5Action);
+            LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
+            LevelBehavior a2 = d2.AddChild().SetAction(Second26Action);
+            LevelBehavior d3 = a2.AddChild().SetDelay(0.5f);
+            LevelBehavior a3 = d3.AddChild().SetAction(Second26p5Action);
+            LevelBehavior d4 = a3.AddChild().SetDelay(0.5f);
+            return d4;
+        }
+
+        private LevelBehavior Stage7(LevelBehavior l)
+        {
+            LevelBehavior d0 = l.AddChild().SetDelay(0.5f);
+            LevelBehavior a0 = d0.AddChild().SetAction(Second27Action);
+            LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
+            LevelBehavior a1 = d1.AddChild().SetAction(Second27p5Action);
+            LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
+            LevelBehavior a2 = d2.AddChild().SetAction(Second28Action);
+            LevelBehavior d3 = a2.AddChild().SetDelay(0.5f);
+            LevelBehavior a3 = d3.AddChild().SetAction(Second28p5Action);
+            LevelBehavior d4 = a3.AddChild().SetDelay(0.5f);
+            return d4;
         }
 
         #region Operation
 
         private void SpikeMove(int n, float t = 0f, float x = 0f, float y = 0f)
         {
-            spikeList[n].Move(
+            Spikes[n].Move(
                 new Vector3(x, y, 0),
                 t);
         }
@@ -111,7 +169,7 @@ namespace Game.Level
         /// <param name="y"></param>
         private void SpikeFlash1(int n, float x = 0f, float y = 0f)
         {
-            spikeList[n].Flash(
+            Spikes[n].Flash(
                 new Vector3(x + 10, y + 11, 0));
         }
 
@@ -123,8 +181,8 @@ namespace Game.Level
         /// <param name="y"></param>
         private void SpikeFlash2(int n, float x = 0f, float y = 0f)
         {
-            spikeList[n].Flash(
-                new Vector3(spikeList[n].transform.position.x + x, spikeList[n].transform.position.y + y, 0));
+            Spikes[n].Flash(
+                new Vector3(Spikes[n].transform.position.x + x, Spikes[n].transform.position.y + y, 0));
         }
 
         private void SpikeWarn(int n, float x = 0f, float y = 0f)
@@ -141,100 +199,79 @@ namespace Game.Level
 
         #region 3.5~9s
 
-        private Action Second3p5Action()
+        private void Second3p5Action()
         {
-            targetTime[3.5f] = true;
             SpikeWarn(0, 0, 1);
             SpikeWarn(14, 0, 1);
-            return null;
         }
 
-        private Action Second4Action()
+        private void Second4Action()
         {
-            targetTime[4f] = true;
             SpikeMove(0, 1f, 0, 1);
             SpikeMove(14, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second4p5Action()
+        private void Second4p5Action()
         {
-            targetTime[4.5f] = true;
             SpikeWarn(2, 0, 1);
             SpikeWarn(12, 0, 1);
-            return null;
         }
 
-        private Action Second5Action()
+        private void Second5Action()
         {
-            targetTime[5f] = true;
             SpikeMove(0, 1f, 0, -1);
             SpikeMove(14, 1f, 0, -1);
             SpikeMove(2, 1f, 0, 1);
             SpikeMove(12, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second5p5Action()
+        private void Second5p5Action()
         {
-            targetTime[5.5f] = true;
             SpikeWarn(4, 0, 1);
             SpikeWarn(10, 0, 1);
-            return null;
         }
 
-        private Action Second6Action()
+        private void Second6Action()
         {
-            targetTime[6f] = true;
             SpikeMove(2, 1f, 0, -1);
             SpikeMove(12, 1f, 0, -1);
             SpikeMove(4, 1f, 0, 1);
             SpikeMove(10, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second6p5Action()
+        private void Second6p5Action()
         {
-            targetTime[6.5f] = true;
             SpikeWarn(6, 0, 1);
             SpikeWarn(8, 0, 1);
-            return null;
         }
 
-        private Action Second7Action()
+        private void Second7Action()
         {
-            targetTime[7f] = true;
             SpikeMove(4, 1f, 0, -1);
             SpikeMove(10, 1f, 0, -1);
             SpikeMove(6, 1f, 0, 1);
             SpikeMove(8, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second9Action()
+        private void Second9Action()
         {
-            targetTime[9f] = true;
             SpikeMove(6, 1f, 0, -1);
             SpikeMove(8, 1f, 0, -1);
-            return null;
         }
 
         #endregion
 
         #region 10~13.5s
 
-        private Action Second10p5Action()
+        private void Second10p5Action()
         {
-            targetTime[10.5f] = true;
             SpikeWarn(6, 0, 1);
             SpikeWarn(7, 0, 1);
             SpikeWarn(8, 0, 1);
-            return null;
         }
 
-        private Action Second11Action()
+        private void Second11Action()
         {
-            targetTime[11f] = true;
             SpikeWarn(3, 0, 1);
             SpikeWarn(4, 0, 1);
             SpikeWarn(10, 0, 1);
@@ -242,14 +279,10 @@ namespace Game.Level
             SpikeMove(6, 1f, 0, 1);
             SpikeMove(7, 1f, 0, 1);
             SpikeMove(8, 1f, 0, 1);
-
-            return null;
         }
 
-        private Action Second11p5Action()
+        private void Second11p5Action()
         {
-            targetTime[11.5f] = true;
-
             SpikeWarn(0, 0, 1);
             SpikeWarn(1, 0, 1);
             SpikeWarn(13, 0, 1);
@@ -259,24 +292,18 @@ namespace Game.Level
             SpikeMove(11, 1f, 0, 1);
             SpikeMove(3, 1f, 0, 1);
             SpikeMove(4, 1f, 0, 1);
-
-            return null;
         }
 
-        private Action Second12Action()
+        private void Second12Action()
         {
-            targetTime[12f] = true;
             SpikeMove(0, 1f, 0, 1);
             SpikeMove(1, 1f, 0, 1);
             SpikeMove(13, 1f, 0, 1);
             SpikeMove(14, 1f, 0, 1);
-            return null;
         }
 
-
-        private Action Second13Action()
+        private void Second13Action()
         {
-            targetTime[13f] = true;
             SpikeMove(0, 1f, 0, -1);
             SpikeMove(1, 1f, 0, -1);
             SpikeMove(3, 1f, 0, -1);
@@ -288,16 +315,14 @@ namespace Game.Level
             SpikeMove(11, 1f, 0, -1);
             SpikeMove(13, 1f, 0, -1);
             SpikeMove(14, 1f, 0, -1);
-            return null;
         }
 
         #endregion
 
         #region 14~19s
 
-        private Action Second14Action()
+        private void Second14Action()
         {
-            targetTime[14f] = true;
             SpikeWarn(0, 0, 1);
             SpikeWarn(1, 0, 1);
             SpikeWarn(6, 0, 1);
@@ -305,12 +330,10 @@ namespace Game.Level
             SpikeWarn(8, 0, 1);
             SpikeWarn(13, 0, 1);
             SpikeWarn(14, 0, 1);
-            return null;
         }
 
-        private Action Second14p5Action()
+        private void Second14p5Action()
         {
-            targetTime[14.5f] = true;
             SpikeMove(0, 1f, 0, 1);
             SpikeMove(1, 1f, 0, 1);
             SpikeMove(6, 1f, 0, 1);
@@ -318,22 +341,18 @@ namespace Game.Level
             SpikeMove(8, 1f, 0, 1);
             SpikeMove(13, 1f, 0, 1);
             SpikeMove(14, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second16Action()
+        private void Second16Action()
         {
-            targetTime[16f] = true;
             SpikeMove(0, 1f, 0, -1);
             SpikeMove(1, 1f, 0, -1);
             SpikeMove(13, 1f, 0, -1);
             SpikeMove(14, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second17Action()
+        private void Second17Action()
         {
-            targetTime[17f] = true;
             SpikeWarn(2, 0, 1);
             SpikeWarn(3, 0, 1);
             SpikeWarn(4, 0, 1);
@@ -342,12 +361,10 @@ namespace Game.Level
             SpikeWarn(10, 0, 1);
             SpikeWarn(11, 0, 1);
             SpikeWarn(12, 0, 1);
-            return null;
         }
 
-        private Action Second17p5Action()
+        private void Second17p5Action()
         {
-            targetTime[17.5f] = true;
             SpikeMove(2, 1f, 0, 1);
             SpikeMove(3, 1f, 0, 1);
             SpikeMove(4, 1f, 0, 1);
@@ -356,12 +373,10 @@ namespace Game.Level
             SpikeMove(10, 1f, 0, 1);
             SpikeMove(11, 1f, 0, 1);
             SpikeMove(12, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second18p5Action()
+        private void Second18p5Action()
         {
-            targetTime[18.5f] = true;
             SpikeMove(2, 1f, 0, -1);
             SpikeMove(3, 1f, 0, -1);
             SpikeMove(4, 1f, 0, -1);
@@ -373,215 +388,171 @@ namespace Game.Level
             SpikeMove(10, 1f, 0, -1);
             SpikeMove(11, 1f, 0, -1);
             SpikeMove(12, 1f, 0, -1);
-            return null;
         }
 
         #endregion
 
-
         #region 20~26s
 
-        private Action Second20Action()
+        private void Second20Action()
         {
-            targetTime[20f] = true;
             SpikeWarn(0, 0, 1);
             SpikeWarn(14, 0, 1);
-            return null;
         }
 
-        private Action Second20p5Action()
+        private void Second20p5Action()
         {
-            targetTime[20.5f] = true;
             SpikeWarn(1, 0, 1);
             SpikeWarn(13, 0, 1);
             SpikeMove(0, 1f, 0, 1);
             SpikeMove(14, 1f, 0, 1);
-
-            return null;
         }
 
-        private Action Second21Action()
+        private void Second21Action()
         {
-            targetTime[21f] = true;
             SpikeWarn(2, 0, 1);
             SpikeWarn(12, 0, 1);
             SpikeMove(1, 1f, 0, 1);
             SpikeMove(13, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second21p5Action()
+        private void Second21p5Action()
         {
-            targetTime[21.5f] = true;
             SpikeWarn(3, 0, 1);
             SpikeWarn(11, 0, 1);
             SpikeMove(2, 1f, 0, 1);
             SpikeMove(12, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second22Action()
+        private void Second22Action()
         {
-            targetTime[22f] = true;
             SpikeWarn(4, 0, 1);
             SpikeWarn(10, 0, 1);
             SpikeMove(3, 1f, 0, 1);
             SpikeMove(11, 1f, 0, 1);
             SpikeMove(14, 1f, 0, -1);
             SpikeMove(0, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second22p5Action()
+        private void Second22p5Action()
         {
-            targetTime[22.5f] = true;
             SpikeWarn(5, 0, 1);
             SpikeWarn(9, 0, 1);
             SpikeMove(4, 1f, 0, 1);
             SpikeMove(10, 1f, 0, 1);
             SpikeMove(13, 1f, 0, -1);
             SpikeMove(1, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second23Action()
+        private void Second23Action()
         {
-            targetTime[23f] = true;
             SpikeWarn(6, 0, 1);
             SpikeWarn(8, 0, 1);
             SpikeMove(5, 1f, 0, 1);
             SpikeMove(9, 1f, 0, 1);
             SpikeMove(12, 1f, 0, -1);
             SpikeMove(2, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second23p5Action()
+        private void Second23p5Action()
         {
-            targetTime[23.5f] = true;
             SpikeWarn(7, 0, 1);
             SpikeMove(6, 1f, 0, 1);
             SpikeMove(8, 1f, 0, 1);
             SpikeMove(11, 1f, 0, -1);
             SpikeMove(3, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second24Action()
+        private void Second24Action()
         {
-            targetTime[24f] = true;
             SpikeMove(7, 1f, 0, 1);
             SpikeMove(10, 1f, 0, -1);
             SpikeMove(4, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second24p5Action()
+        private void Second24p5Action()
         {
-            targetTime[24.5f] = true;
             SpikeMove(9, 1f, 0, -1);
             SpikeMove(5, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second25Action()
+        private void Second25Action()
         {
-            targetTime[25f] = true;
             SpikeMove(8, 1f, 0, -1);
             SpikeMove(6, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second25p5Action()
+        private void Second25p5Action()
         {
-            targetTime[25.5f] = true;
             SpikeMove(7, 1f, 0, -1);
-            return null;
         }
 
         #endregion
 
         #region 26~31s
 
-        private Action Second26Action()
+        private void Second26Action()
         {
-            targetTime[26f] = true;
             SpikeWarn(0, 0, 1);
             SpikeWarn(1, 0, 1);
             SpikeWarn(13, 0, 1);
             SpikeWarn(14, 0, 1);
-            return null;
         }
 
-        private Action Second26p5Action()
+        private void Second26p5Action()
         {
-            targetTime[26.5f] = true;
             SpikeMove(0, 1f, 0, 1);
             SpikeMove(1, 1f, 0, 1);
             SpikeMove(13, 1f, 0, 1);
             SpikeMove(14, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second27Action()
+        private void Second27Action()
         {
-            targetTime[27f] = true;
             SpikeWarn(2, 0, 1);
             SpikeWarn(3, 0, 1);
             SpikeWarn(11, 0, 1);
             SpikeWarn(12, 0, 1);
-            return null;
         }
 
-        private Action Second27p5Action()
+        private void Second27p5Action()
         {
-            targetTime[27.5f] = true;
             SpikeMove(2, 1f, 0, 1);
             SpikeMove(3, 1f, 0, 1);
             SpikeMove(11, 1f, 0, 1);
             SpikeMove(12, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second28Action()
+        private void Second28Action()
         {
-            targetTime[28f] = true;
             SpikeWarn(4, 0, 1);
             SpikeWarn(5, 0, 1);
             SpikeWarn(9, 0, 1);
             SpikeWarn(10, 0, 1);
-            return null;
         }
 
-        private Action Second28p5Action()
+        private void Second28p5Action()
         {
-            targetTime[28.5f] = true;
             SpikeMove(4, 1f, 0, 1);
             SpikeMove(5, 1f, 0, 1);
             SpikeMove(9, 1f, 0, 1);
             SpikeMove(10, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second29Action()
+        private void Second29Action()
         {
-            targetTime[29f] = true;
             SpikeWarn(6, 0, 1);
             SpikeWarn(7, 0, 1);
-            return null;
         }
 
-        private Action Second29p5Action()
+        private void Second29p5Action()
         {
-            targetTime[29.5f] = true;
             SpikeMove(6, 1f, 0, 1);
             SpikeMove(7, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second30p5Action()
+        private void Second30p5Action()
         {
-            targetTime[30.5f] = true;
             SpikeMove(0, 1f, 0, -1);
             SpikeMove(1, 1f, 0, -1);
             SpikeMove(2, 1f, 0, -1);
@@ -596,51 +567,41 @@ namespace Game.Level
             SpikeMove(12, 1f, 0, -1);
             SpikeMove(13, 1f, 0, -1);
             SpikeMove(14, 1f, 0, -1);
-            return null;
         }
 
         #endregion
 
         #region 31~38s
 
-        private Action Second31Action()
+        private void Second31Action()
         {
-            targetTime[31f] = true;
             SpikeWarn(5, 0, 1);
             SpikeWarn(6, 0, 1);
             SpikeWarn(7, 0, 1);
             SpikeWarn(8, 0, 1);
             SpikeWarn(9, 0, 1);
-            return null;
         }
 
-        private Action Second31p5Action()
+        private void Second31p5Action()
         {
-            targetTime[31.5f] = true;
-
             SpikeMove(5, 1f, 0, 1);
             SpikeMove(6, 1f, 0, 1);
             SpikeMove(7, 1f, 0, 1);
             SpikeMove(8, 1f, 0, 1);
             SpikeMove(9, 1f, 0, 1);
-            return null;
         }
 
-        private Action Second32Action()
+        private void Second32Action()
         {
-            targetTime[32f] = true;
             SpikeWarn(0, 0, 1);
             SpikeWarn(1, 0, 1);
             SpikeWarn(2, 0, 1);
             SpikeWarn(3, 0, 1);
             SpikeWarn(4, 0, 1);
-            return null;
         }
 
-        private Action Second32p5Action()
+        private void Second32p5Action()
         {
-            targetTime[32.5f] = true;
-
             SpikeMove(0, 1f, 0, 1);
             SpikeMove(1, 1f, 0, 1);
             SpikeMove(2, 1f, 0, 1);
@@ -651,24 +612,19 @@ namespace Game.Level
             SpikeMove(7, 1f, 0, -1);
             SpikeMove(8, 1f, 0, -1);
             SpikeMove(9, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second33Action()
+        private void Second33Action()
         {
-            targetTime[33f] = true;
             SpikeWarn(10, 0, 1);
             SpikeWarn(11, 0, 1);
             SpikeWarn(12, 0, 1);
             SpikeWarn(13, 0, 1);
             SpikeWarn(14, 0, 1);
-            return null;
         }
 
-        private Action Second33p5Action()
+        private void Second33p5Action()
         {
-            targetTime[33.5f] = true;
-
             SpikeMove(10, 1, 0, 1);
             SpikeMove(11, 1, 0, 1);
             SpikeMove(12, 1, 0, 1);
@@ -679,24 +635,19 @@ namespace Game.Level
             SpikeMove(2, 1, 0, -1);
             SpikeMove(3, 1, 0, -1);
             SpikeMove(4, 1, 0, -1);
-            return null;
         }
 
-        private Action Second34Action()
+        private void Second34Action()
         {
-            targetTime[34f] = true;
             SpikeWarn(5, 0, 1);
             SpikeWarn(6, 0, 1);
             SpikeWarn(7, 0, 1);
             SpikeWarn(8, 0, 1);
             SpikeWarn(9, 0, 1);
-            return null;
         }
 
-        private Action Second34p5Action()
+        private void Second34p5Action()
         {
-            targetTime[34.5f] = true;
-
             SpikeMove(5, 1f, 0, 1);
             SpikeMove(6, 1f, 0, 1);
             SpikeMove(7, 1f, 0, 1);
@@ -707,24 +658,19 @@ namespace Game.Level
             SpikeMove(12, 1f, 0, -1);
             SpikeMove(13, 1f, 0, -1);
             SpikeMove(14, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second35Action()
+        private void Second35Action()
         {
-            targetTime[35f] = true;
             SpikeWarn(0, 0, 1);
             SpikeWarn(1, 0, 1);
             SpikeWarn(2, 0, 1);
             SpikeWarn(3, 0, 1);
             SpikeWarn(4, 0, 1);
-            return null;
         }
 
-        private Action Second35p5Action()
+        private void Second35p5Action()
         {
-            targetTime[35.5f] = true;
-
             SpikeMove(0, 1f, 0, 1);
             SpikeMove(1, 1f, 0, 1);
             SpikeMove(2, 1f, 0, 1);
@@ -735,24 +681,19 @@ namespace Game.Level
             SpikeMove(7, 1f, 0, -1);
             SpikeMove(8, 1f, 0, -1);
             SpikeMove(9, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second36Action()
+        private void Second36Action()
         {
-            targetTime[36f] = true;
             SpikeWarn(10, 0, 1);
             SpikeWarn(11, 0, 1);
             SpikeWarn(12, 0, 1);
             SpikeWarn(13, 0, 1);
             SpikeWarn(14, 0, 1);
-            return null;
         }
 
-        private Action Second36p5Action()
+        private void Second36p5Action()
         {
-            targetTime[36.5f] = true;
-
             SpikeMove(10, 1f, 0, 1);
             SpikeMove(11, 1f, 0, 1);
             SpikeMove(12, 1f, 0, 1);
@@ -763,28 +704,23 @@ namespace Game.Level
             SpikeMove(2, 1f, 0, -1);
             SpikeMove(3, 1f, 0, -1);
             SpikeMove(4, 1f, 0, -1);
-            return null;
         }
 
-        private Action Second37p5Action()
+        private void Second37p5Action()
         {
-            targetTime[37.5f] = true;
-
             SpikeMove(10, 1f, 0, -1);
             SpikeMove(11, 1f, 0, -1);
             SpikeMove(12, 1f, 0, -1);
             SpikeMove(13, 1f, 0, -1);
             SpikeMove(14, 1f, 0, -1);
-            return null;
         }
 
         #endregion
 
         #region 38~42s
 
-        private Action Second39p5Action()
+        private void Second39p5Action()
         {
-            targetTime[39.5f] = true;
             SpikeWarn(0, 0, 1);
             SpikeWarn(1, 0, 1);
             SpikeWarn(2, 0, 1);
@@ -795,13 +731,10 @@ namespace Game.Level
             SpikeWarn(12, 0, 1);
             SpikeWarn(13, 0, 1);
             SpikeWarn(14, 0, 1);
-
-            return null;
         }
 
-        private Action Second40Action()
+        private void Second40Action()
         {
-            targetTime[40f] = true;
             SpikeMove(0, 2f, 0, 6);
             SpikeMove(1, 2f, 0, 6);
             SpikeMove(2, 2f, 0, 6);
@@ -812,7 +745,6 @@ namespace Game.Level
             SpikeMove(12, 2f, 0, 6);
             SpikeMove(13, 2f, 0, 6);
             SpikeMove(14, 2f, 0, 6);
-            return null;
         }
 
         #endregion
