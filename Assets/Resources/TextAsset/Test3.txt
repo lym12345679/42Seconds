@@ -1,0 +1,6 @@
+<#nextid=a>id跳转;
+<#id=a #nextid=b>id=1;
+<#id=b #nextid=c>id=2;
+<#id=c #nextid=d>id=3;
+<#id=d>id=4;
+id=5;

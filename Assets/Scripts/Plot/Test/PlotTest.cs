@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Plot;
-using Game.TextShow;
 using Game.UI;
 using UnityEngine;
+
 namespace Game.Plot
 {
     public class PlotTest : MonoBehaviour
@@ -22,8 +22,6 @@ namespace Game.Plot
         // Update is called once per frame
         void Update()
         {
-
         }
     }
-
 }

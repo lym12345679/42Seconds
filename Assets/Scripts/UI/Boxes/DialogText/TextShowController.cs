@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.TextShow
+namespace Game.UI
 {
     public class TextShowController : MonoBehaviour
     {
@@ -55,7 +55,7 @@ namespace Game.TextShow
             if (wordStack.Count > 0)
             {
                 TextLineWord word = wordStack.Pop();
-                Recycle.RecyclePool.Request(RecycleItemEnum.DialogItem, r =>
+                Recycle.RecyclePool.Request(RecycleItemEnum.TextItem, r =>
                 {
                     r.GetMainComponent<TextMeshProUGUI>().text = word.GetWords();
                     word.ShowWord(r.GetMainComponent<TextMeshProUGUI>());

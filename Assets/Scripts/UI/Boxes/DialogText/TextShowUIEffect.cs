@@ -2,12 +2,14 @@ using System;
 using MizukiTool.UIEffect;
 using UnityEngine;
 using UnityEngine.UI;
-namespace Game.TextShow
+
+namespace Game.UI
 {
     public class TextShowUIEffect : UIEffectController<Image>
     {
         private FadeEffect<Image> fadeInEffect;
         private FadeEffect<Image> fadeOutEffect;
+
         void Awake()
         {
             fadeInEffect = new FadeEffect<Image>()
@@ -23,24 +25,25 @@ namespace Game.TextShow
             FadeEffect<Image> fadeEffect = fadeInEffect.SetEndHander(endHander);
             StartFade(targetImage, fadeEffect);
         }
+
         private void StartFadeOut(Image targetImage, Action<FadeEffect<Image>> endHander = null)
         {
             FadeEffect<Image> fadeEffect = fadeOutEffect.SetEndHander(endHander);
             StartFade(targetImage, fadeEffect);
         }
+
         public void QuicklyFadeIn(Image targetImage, Action<FadeEffect<Image>> endHander = null)
         {
             targetImage.color = new Color(1, 1, 1, 1f);
             FadeEffect<Image> fadeEffect = fadeInEffect.SetFadeTime(0.1f).SetEndHander(endHander);
             StartFade(targetImage, fadeEffect);
         }
+
         #region 隐藏或显示图片或文本
+
         public void HideImg(Image image)
         {
-            StartFadeOut(image, (hander) =>
-            {
-                image.gameObject.SetActive(false);
-            });
+            StartFadeOut(image, (hander) => { image.gameObject.SetActive(false); });
         }
 
         public void ShowImg(Image image, Action<FadeEffect<Image>> endHander = null)
@@ -49,9 +52,10 @@ namespace Game.TextShow
             image.gameObject.SetActive(true);
             StartFadeIn(image, endHander);
         }
-        #endregion
 
+        #endregion
     }
+
     public enum FadeActionEnum
     {
         None,
@@ -60,7 +64,5 @@ namespace Game.TextShow
         NormalIn,
         NormalOut,
         CoverIn
-
     }
-
 }

@@ -1,0 +1,12 @@
+<#background=(test1,fadein)>这是测试文本<#color=(178,34,34)> this is a test <#default>text
+<#background=(,fadeout)>这是测试文本第二行<#color=(178,34,34)> this is a test <#default>text
+<#leftimg=(test1,normalin) #rightimg=(test1,normalout)>这是测试文本第二行<#color=(178,34,34)> this is a test <#default>text
+
+以上是可以运行的文本
+接下来是可执行的指令:指令应用<# >包裹并且用#号分离
+
+可以选中的图片:leftimg,rightimg,centerimg,background
+图片出现或者消失:none,fadein,fadeout,normalin,normalout 例: leftimg=(test1,normalin)
+改变文字颜色:使用rgb值表示 例:color=(178,34,34)
+改变文字大小: 例: fontsize=20
+改变文字风格: 例: fontstyle=...

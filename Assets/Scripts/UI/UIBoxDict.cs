@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.UI;
 using UnityEngine;
 
 namespace Game.UI
@@ -23,7 +24,7 @@ namespace Game.UI
         {
             { typeof(MessageBox), BoxEnum.MessageBox.ToString() },
             { typeof(MenuUI), BoxEnum.MenuUI.ToString() },
-            { typeof(CGUI), BoxEnum.TextShowUI.ToString() },
+            { typeof(TextShowUI), BoxEnum.TextShowUI.ToString() },
             { typeof(LevelSelectorUI), BoxEnum.LevelSelectorUI.ToString() },
             { typeof(LevelUI), BoxEnum.LevelUI.ToString() },
             { typeof(PauseUI), BoxEnum.PauseUI.ToString() },

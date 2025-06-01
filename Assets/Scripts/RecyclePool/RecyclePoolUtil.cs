@@ -43,7 +43,7 @@ namespace Game.Recycle
         {
             Action<MizukiTool.RecyclePool.RecyclePool> action = (recyclePool) =>
             {
-                recyclePool.RigisterOnePrefab(RecycleItemEnum.DialogItem,
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.TextItem,
                     Resources.Load<GameObject>("Prefabs/Recycle/TextItem"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.Warn,
                     Resources.Load<GameObject>("Prefabs/Recycle/Warn"));
@@ -54,7 +54,7 @@ namespace Game.Recycle
 
     public enum RecycleItemEnum
     {
-        DialogItem,
+        TextItem,
         Warn
     }
 }

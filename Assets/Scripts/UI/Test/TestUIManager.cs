@@ -1,6 +1,6 @@
 using Game.Plot;
 using Game.Recycle;
-using Game.TextShow;
+using Game.UI;
 using UnityEngine;
 
 namespace Game.UI
@@ -11,7 +11,9 @@ namespace Game.UI
         void Start()
         {
             //MessageBox.Open(new Message("测试标题", "测试内容"));
-            //TextShowUI.Open(new TextShowUIMessage(PlotDict.Instance.GetPlot("TestPlot1")));
+            TextAsset text;
+            PlotDict.Instance.TryGetPlot(MainPlotEnum.Test1, out text);
+            TextShowUI.Open(new TextShowUIMessage(text));
         }
 
         // Update is called once per frame

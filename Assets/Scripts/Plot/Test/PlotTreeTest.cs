@@ -8,7 +8,7 @@ namespace Game.Plot
         {
             return Selector(
                 () => Condition(true, () => GetTextAsset(MainPlotEnum.Test3)),
-                () => Condition(true, () => GetTextAsset(MainPlotEnum.Main2))
+                () => Condition(true, () => GetTextAsset(MainPlotEnum.Test1))
             );
         }
     }

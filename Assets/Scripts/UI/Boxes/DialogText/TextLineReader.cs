@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace Game.TextShow
+namespace Game.UI
 {
     public class TextLineReader
     {
@@ -392,7 +392,7 @@ namespace Game.TextShow
         private Action<TextMeshProUGUI> defaultWordHander = (t) =>
         {
             t.color = Color.white;
-            t.fontSize = 36;
+            t.fontSize = 60;
             t.fontStyle = FontStyles.Normal;
         };
 

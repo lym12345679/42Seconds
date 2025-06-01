@@ -2,7 +2,7 @@ using System;
 using Game.UI;
 using UnityEngine;
 
-namespace Game.TextShow
+namespace Game.UI
 {
     public class TextShowUI : UIGeneralBox<TextShowUI, TextShowUIMessage, string>
     {
