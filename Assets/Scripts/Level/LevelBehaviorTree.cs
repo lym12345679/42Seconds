@@ -6,7 +6,6 @@ using MizukiTool.UIEffect;
 
 namespace Game.Level
 {
-
     public class LevelBehaviorTree : MonoBehaviour
     {
         protected float currentTime
@@ -19,16 +18,18 @@ namespace Game.Level
                     return 0f;
             }
         } // 当前时间
+
         public List<Spike> spikeList = new List<Spike>(); // 关卡中的对象列表
+
         // 关卡行为树的实现
         // 这里可以添加关卡行为树的逻辑和方法
-
+        protected Dictionary<float, bool> targetTime = new Dictionary<float, bool>();
 
         protected void Start()
         {
-            // 初始化关卡行为树
-            InitializeBehaviorTree();
+            Init();
         }
+
         protected void Update()
         {
             Action action = GetAction(); // 获取当前动作
@@ -37,6 +38,23 @@ namespace Game.Level
                 action.Invoke(); // 执行当前动作
             }
         }
+
+
+        private void Init()
+        {
+            InitializeGameTime();
+            InitializeBehaviorTree();
+        }
+
+        private void InitializeGameTime()
+        {
+            for (float time = 0; time <= 42; time += 0.25f)
+            {
+                targetTime.Add(time, false);
+                //Debug.Log(targetTime[time]);
+            }
+        }
+
         protected virtual void InitializeBehaviorTree()
         {
             // 在这里设置关卡行为树的初始状态和节点
@@ -47,6 +65,7 @@ namespace Game.Level
         {
             return null; // 获取当前动作
         }
+
         protected Action Condition(bool b, Func<Action> action)
         {
             // 条件逻辑
@@ -54,8 +73,10 @@ namespace Game.Level
             {
                 return action.Invoke(); // 如果条件为true，执行动作
             }
+
             return null; // 如果条件不满足，返回null
         }
+
         protected Action Selector(params Func<Action>[] conditions)
         {
             // 选择器逻辑
@@ -66,10 +87,11 @@ namespace Game.Level
                 {
                     return action; // 如果有满足条件的动作，返回该动作
                 }
-
             }
+
             return null; // 如果没有满足条件的动作，返回null
         }
+
         protected Action SelectorInverse(params Func<Action>[] conditions)
         {
             // 反向选择器逻辑
@@ -81,6 +103,7 @@ namespace Game.Level
                     return action; // 如果有满足条件的动作，返回该动作
                 }
             }
+
             return null; // 如果没有满足条件的动作，返回null
         }
 

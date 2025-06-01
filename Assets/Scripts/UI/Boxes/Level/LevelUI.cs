@@ -12,9 +12,14 @@ namespace Game.UI
     {
         public TextMeshProUGUI timeText;
 
+        private float timeLeft
+        {
+            get { return 42 - LevelManager.Instance.CurrentTime; }
+        }
+
         private void FixedUpdate()
         {
-            timeText.text = Mathf.FloorToInt(42 - LevelManager.Instance.CurrentTime).ToString();
+            timeText.text = Mathf.FloorToInt(timeLeft > 0 ? timeLeft : 0).ToString();
         }
 
         public override void GetParams(string param)

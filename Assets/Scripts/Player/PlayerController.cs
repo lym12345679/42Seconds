@@ -1,3 +1,4 @@
+using System;
 using Game.Level;
 using Game.Traps;
 using UnityEngine;
@@ -255,6 +256,7 @@ public class PlayerController : MonoBehaviour
 
     #region 玩家碰撞
 
+    // 检测玩家与其他物体的碰撞
     private void OnCollisionEnter2D(Collision2D other)
     {
         // 检测玩家与其他物体的碰撞
@@ -293,22 +295,37 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     private void OnGroundEnter(Collision2D other, Vector2 collisionPoint)
     {
         //Debug.Log("Player collided with ground at: " + collisionPoint);
         if (isSprinting && collisionPoint.y > transform.position.y - playerHight &&
             collisionPoint.y < transform.position.y + playerHight)
         {
-            Debug.Log("Player collided with ground while sprinting.");
+            //Debug.Log("Player collided with ground while sprinting.");
             if (transform.position.x > collisionPoint.x)
             {
-                Debug.Log("Player sprinted from right to left.");
+                //Debug.Log("Player sprinted from right to left.");
                 SetSpritDirection(1);
             }
             else
             {
-                Debug.Log("Player sprinted from left to right.");
+                //Debug.Log("Player sprinted from left to right.");
                 SetSpritDirection(-1);
+            }
+        }
+    }
+
+    // 检测玩家与陷阱的触发器碰撞
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Trap"))
+        {
+            Trap trap = other.gameObject.GetComponent<Trap>();
+            if (trap != null)
+            {
+                Vector2 collisionPoint = other.ClosestPoint(transform.position);
+                trap.OnPlayerTriggerEnter(this, collisionPoint);
             }
         }
     }

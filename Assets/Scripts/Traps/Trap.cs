@@ -17,5 +17,9 @@ namespace Game.Traps
         {
             Debug.Log("Player entered trap: " + gameObject.name);
         }
+
+        public virtual void OnPlayerTriggerEnter(PlayerController playerController, Vector2 enterPos)
+        {
+        }
     }
 }
