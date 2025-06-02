@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MizukiTool.GeneralSO;
 using UnityEngine;
+
 namespace Game.Traps
 {
     [CreateAssetMenu(fileName = "SpikeMessageListSO", menuName = "ScriptableObjects/SpikeMessageListSO")]
@@ -10,6 +11,7 @@ namespace Game.Traps
     {
         public string Description; // 描述信息
         public List<SpikeMessageSOWithTime> SpikeMessages = new List<SpikeMessageSOWithTime>(); // 存储尖刺的位移、旋转和缩放信息
+
         private void OnValidate()
         {
             for (int i = 0; i < SpikeMessages.Count; i++)
@@ -23,7 +25,6 @@ namespace Game.Traps
                 {
                     SpikeMessages[i].Name = $"在第{SpikeMessages[i].StartTime}秒时，{SpikeMessages[i].SpikeMessage.Name}";
                 }
-
             }
         }
         /*if (SpikeMessage != null)
@@ -39,11 +40,11 @@ namespace Game.Traps
     [Serializable]
     public class SpikeMessageSOWithTime
     {
-
         public string Name;
         public float StartTime; // 时间
         public SpikeMessageSO SpikeMessage; // 尖刺的位移、旋转和缩放信息
     }
+
     [Serializable]
     [CreateAssetMenu(fileName = "SpikeMessageSO", menuName = "ScriptableObjects/SpikeMessageSO")]
     public class SpikeMessageSO : ScriptableObject
@@ -58,55 +59,61 @@ namespace Game.Traps
         public bool IsFlash; // 是否需要闪现
         public FlashMassage Flash; // 闪现信息
     }
+
     [Serializable]
     public class VectorMassage
     {
-
         public Vector2 Vector; // 位置
         public float Duration; // 时间
-        public SpikePersentageHanderEnum PercentageHandler = SpikePersentageHanderEnum.X; // 百分比处理方式
+        public PersentageHanderEnum PercentageHandler = PersentageHanderEnum.X; // 百分比处理方式
     }
+
     [Serializable]
     public class RotationMassage
     {
-
         public float Rotation; // 旋转角度
         public float Duration; // 时间
-        public SpikePersentageHanderEnum PercentageHandler = SpikePersentageHanderEnum.X; // 百分比处理方式
+        public PersentageHanderEnum PercentageHandler = PersentageHanderEnum.X; // 百分比处理方式
     }
+
     [Serializable]
     public class ScaleMassage
     {
         public Vector2 Scale; // 缩放比例
         public float Duration; // 时间
-        public SpikePersentageHanderEnum PercentageHandler = SpikePersentageHanderEnum.X; // 百分比处理方式
+        public PersentageHanderEnum PercentageHandler = PersentageHanderEnum.X; // 百分比处理方式
     }
+
     [Serializable]
     public class FlashMassage
     {
         public Vector2 Position; // 闪现位置
     }
+
     public class SpikePersentageHander
     {
-        private static Dictionary<SpikePersentageHanderEnum, Func<float, float>> Handlers = new Dictionary<SpikePersentageHanderEnum, Func<float, float>>()
-        {
-            { SpikePersentageHanderEnum.X, t => t },
-            { SpikePersentageHanderEnum.X2, t => t*t },
-            { SpikePersentageHanderEnum.X3, t => t*t*t },
-            { SpikePersentageHanderEnum.X_2, t => 1/t/t },
-            { SpikePersentageHanderEnum.X_3, t => 1/t/t/t },
-        };
-        public static Func<float, float> GetHandler(SpikePersentageHanderEnum handlerEnum)
+        private static Dictionary<PersentageHanderEnum, Func<float, float>> Handlers =
+            new Dictionary<PersentageHanderEnum, Func<float, float>>()
+            {
+                { PersentageHanderEnum.X, t => t },
+                { PersentageHanderEnum.X2, t => t * t },
+                { PersentageHanderEnum.X3, t => t * t * t },
+                { PersentageHanderEnum.X_2, t => 1 / t / t },
+                { PersentageHanderEnum.X_3, t => 1 / t / t / t },
+            };
+
+        public static Func<float, float> GetHandler(PersentageHanderEnum handlerEnum)
         {
             if (Handlers.TryGetValue(handlerEnum, out var handler))
             {
                 return handler;
             }
+
             throw new ArgumentException($"No handler found for {handlerEnum}");
         }
     }
 
-    public enum SpikePersentageHanderEnum
+    public enum PersentageHanderEnum
     {
         X,
         X2,

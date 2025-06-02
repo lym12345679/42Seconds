@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Game.Traps
 {
-    public class SpikeEffectController : GOEffectController<SpriteRenderer>
+    public class GroundEffectController : GOEffectController<SpriteRenderer>
     {
         private PositionEffect positionEffect;
         private RotationEffect rotationEffect;
@@ -87,6 +87,15 @@ namespace Game.Traps
                 StartRotationEffect(transform, rotationEffect);
             }
         }
+
+        public void StartRotationEffect(Transform t)
+        {
+            if (rotationEffect != null)
+            {
+                StartRotationEffect(t, rotationEffect);
+            }
+        }
+
 
         public void StartScaleEffect()
         {

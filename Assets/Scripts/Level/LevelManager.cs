@@ -17,6 +17,7 @@ namespace Game.Level
         private bool isGamePlaying = true; // 游戏是否正在进行
         private bool isGameLose = false;
         public SceneType CurrentSceneType = SceneType.Level1; // 当前场景类型
+        public SceneType NextLevel = SceneType.Level2; // 下一个关卡场景类型
         public MainPlotEnum FailedCG;
         public MainPlotEnum WinCG;
 
@@ -84,7 +85,7 @@ namespace Game.Level
             isGamePlaying = true; // 设置游戏为进行中状态
         }
 
-        public void OnlevelWin()
+        public virtual void OnlevelWin()
         {
             if (isGameLose)
             {
@@ -92,10 +93,10 @@ namespace Game.Level
             }
 
             PlotDict.Instance.TryGetPlot(WinCG, out TextAsset textAsset);
-            TextShowUI.Open(new TextShowUIMessage(textAsset));
+            TextShowUI.Open(new TextShowUIMessage(textAsset, () => { GamePlayManager.LoadScene(NextLevel); }));
         }
 
-        public void OnlevelFailed()
+        public virtual void OnlevelFailed()
         {
             PlotDict.Instance.TryGetPlot(FailedCG, out TextAsset textAsset);
             TextShowUI.Open(new TextShowUIMessage(textAsset, () => { StartCoroutine(PauseDelay()); }));

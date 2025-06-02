@@ -1137,6 +1137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentTime: 0
   CurrentSceneType: 2
+  NextLevel: 3
   FailedCG: 0
   WinCG: 0
 --- !u!4 &1697637126

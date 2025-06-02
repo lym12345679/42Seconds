@@ -353,7 +353,7 @@ namespace Game.Level
 
         private void Stage1Move(int n)
         {
-            spikeList[n].Move(new Vector2(0, 1), 0.5f, PositionEffectMode.PingPong, SpikePersentageHanderEnum.X2,
+            spikeList[n].Move(new Vector2(0, 1), 0.5f, PositionEffectMode.PingPong, PersentageHanderEnum.X2,
                 (e) => { e.Stop(); });
         }
 
@@ -668,7 +668,7 @@ namespace Game.Level
 
         private void Stage6Move1(int n)
         {
-            spikeList[n].Move(new Vector2(0, 1), 0.5f, PositionEffectMode.PingPong, SpikePersentageHanderEnum.X,
+            spikeList[n].Move(new Vector2(0, 1), 0.5f, PositionEffectMode.PingPong, PersentageHanderEnum.X,
                 (e) => { e.Stop(); });
         }
 

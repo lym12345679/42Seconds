@@ -27,6 +27,7 @@ namespace Game.Recycle
             MizukiTool.RecyclePool.RecyclePoolUtil.Request(id, hander, parent);
         }
 
+
         /// <summary>
         /// 将从对象池请求的物体返回对象池
         /// </summary>
@@ -47,6 +48,16 @@ namespace Game.Recycle
                     Resources.Load<GameObject>("Prefabs/Recycle/TextItem"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.Warn,
                     Resources.Load<GameObject>("Prefabs/Recycle/Warn"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.Spike1,
+                    Resources.Load<GameObject>("Prefabs/Recycle/Spike1"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.Spike2,
+                    Resources.Load<GameObject>("Prefabs/Recycle/Spike2"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.EmptyObj,
+                    Resources.Load<GameObject>("Prefabs/Recycle/EmptyObj"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.Spike0,
+                    Resources.Load<GameObject>("Prefabs/Recycle/Spike0"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.WeakWall,
+                    Resources.Load<GameObject>("Prefabs/Recycle/WeakWall"));
             };
             RecyclePoolUtil.SetRigisterAction(action);
         }
@@ -55,6 +66,11 @@ namespace Game.Recycle
     public enum RecycleItemEnum
     {
         TextItem,
-        Warn
+        Warn,
+        Spike1,
+        Spike2,
+        EmptyObj,
+        Spike0,
+        WeakWall
     }
 }

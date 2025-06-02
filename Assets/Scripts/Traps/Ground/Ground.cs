@@ -2,14 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Level;
+using Game.Recycle;
 using MizukiTool.UIEffect;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.Traps
 {
-    public class Spike : Trap
+    public class Ground : Trap
     {
-        public SpikeEffectController spikeEffectController; // 控制尖刺效果的脚本
+        public GroundEffectController groundEffectController; // 控制尖刺效果的脚本
         private Vector3 currentPosition;
 
         private float currentTime
@@ -19,12 +21,10 @@ namespace Game.Traps
 
         public override void OnPlayerEnter(PlayerController playerController, Vector2 position)
         {
-            playerController.OnPlayerDeath();
         }
 
         public override void OnPlayerSprintInToTrap(PlayerController playerController, Vector2 position)
         {
-            playerController.OnPlayerDeath();
         }
 
         #region 行动脚本
@@ -34,11 +34,11 @@ namespace Game.Traps
             PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
             Action<PositionEffect> endHandler = null)
         {
-            if (spikeEffectController != null)
+            if (groundEffectController != null)
             {
-                spikeEffectController.SetGeneralPositionEffect(vector, timeToMove, positionEffectMode,
+                groundEffectController.SetGeneralPositionEffect(vector, timeToMove, positionEffectMode,
                     persentageHanderEnum, endHandler);
-                spikeEffectController.StartPositionEffect();
+                groundEffectController.StartPositionEffect();
             }
         }
 
@@ -47,23 +47,47 @@ namespace Game.Traps
             PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
             Action<RotationEffect> endHandler = null)
         {
-            if (spikeEffectController != null)
+            if (groundEffectController != null)
             {
-                spikeEffectController.SetGeneralRotationEffect(rotation, timeToRotate, rotationEffectMode,
+                groundEffectController.SetGeneralRotationEffect(rotation, timeToRotate, rotationEffectMode,
                     persentageHanderEnum, endHandler);
-                spikeEffectController.StartRotationEffect();
+                groundEffectController.StartRotationEffect();
             }
         }
+
+        public void SpicalRotate(float rotation, Vector2 point, float timeToRotate,
+            RotationEffectMode rotationEffectMode = RotationEffectMode.Once,
+            PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
+            Action<RotationEffect> endHandler = null)
+        {
+            Transform parent = transform.parent;
+            Transform emptyObj = null;
+            RecyclePool.Request(RecycleItemEnum.EmptyObj, (r) =>
+            {
+                emptyObj = r.GetMainComponent<Transform>();
+                emptyObj.position = point;
+                transform.SetParent(emptyObj);
+            });
+            groundEffectController.SetGeneralRotationEffect(rotation, timeToRotate, rotationEffectMode,
+                persentageHanderEnum, (e) =>
+                {
+                    endHandler?.Invoke(null);
+                    transform.parent = parent;
+                    RecyclePool.ReturnToPool(emptyObj.gameObject);
+                });
+            groundEffectController.StartRotationEffect(emptyObj);
+        }
+
 
         public void Scale(Vector2 scale, float timeToScale, ScaleEffectMode scaleEffectMode = ScaleEffectMode.Once,
             PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
             Action<ScaleEffect> endHandler = null)
         {
-            if (spikeEffectController != null)
+            if (groundEffectController != null)
             {
-                spikeEffectController.SetGeneralScaleEffect(scale, timeToScale, scaleEffectMode,
+                groundEffectController.SetGeneralScaleEffect(scale, timeToScale, scaleEffectMode,
                     persentageHanderEnum, endHandler);
-                spikeEffectController.StartScaleEffect();
+                groundEffectController.StartScaleEffect();
             }
         }
 
