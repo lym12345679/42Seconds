@@ -38,5 +38,10 @@ namespace Game.UI
         {
             GamePlayManager.LoadScene(scene);
         }
+
+        public void GoToMenu()
+        {
+            GamePlayManager.LoadScene(SceneType.Menu);
+        }
     }
 }

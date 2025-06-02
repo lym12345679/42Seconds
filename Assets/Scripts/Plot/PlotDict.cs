@@ -52,7 +52,7 @@ namespace Game.Plot
                 return true;
             }
 
-            Debug.LogWarning("剧情字典中没有找到对应的剧情，尝试查找的剧情:" + id);
+            //Debug.LogWarning("剧情字典中没有找到对应的剧情，尝试查找的剧情:" + id);
             textAsset = null;
             return false;
         }

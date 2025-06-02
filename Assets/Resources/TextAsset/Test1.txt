@@ -1,7 +1,2 @@
-<#background=(BlackBackground,fadein)>   ;
-这是测试文本<#color=(178,34,34)> this is a test <#default>text;
-这是测试文本第二行<#color=(178,34,34)> this is a test <#default>text;
-这是测试文本第三行<#color=(178,34,34)> this is a test <#default>text;
-这是测试文本第四行<#color=(178,34,34)> this is a test <#default>text;
-这是测试文本第五行;
-这是测试文本第六行;
+<#background=(BlackBackground,fadein)>你输在了<#color=(178,34,34)>第一关;
+你输在了<#color=(178,34,34)>第一关(这是第二行文本);

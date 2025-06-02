@@ -1137,6 +1137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentTime: 0
   CurrentSceneType: 2
+  FailedCG: 0
+  WinCG: 0
 --- !u!4 &1697637126
 Transform:
   m_ObjectHideFlags: 0

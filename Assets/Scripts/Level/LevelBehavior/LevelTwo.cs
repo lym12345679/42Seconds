@@ -251,83 +251,83 @@ namespace Game.Level
         {
             SpikeWarn(1, 0, 1);
             SpikeWarn(13, 0, 1);
-            SpikeMove(0, 1f, 0, 1);
-            SpikeMove(14, 1f, 0, 1);
+            SpikeMove(0, 0.5f, 0, 1);
+            SpikeMove(14, 0.5f, 0, 1);
         }
 
         private void Second4p5Action()
         {
             SpikeWarn(2, 0, 1);
             SpikeWarn(12, 0, 1);
-            SpikeMove(1, 1f, 0, 1);
-            SpikeMove(13, 1f, 0, 1);
+            SpikeMove(1, 0.5f, 0, 1);
+            SpikeMove(13, 0.5f, 0, 1);
         }
 
         private void Second5Action()
         {
             SpikeWarn(3, 0, 1);
             SpikeWarn(11, 0, 1);
-            SpikeMove(2, 1f, 0, 1);
-            SpikeMove(12, 1f, 0, 1);
-            SpikeMove(0, 1f, 0, -1);
-            SpikeMove(14, 1f, 0, -1);
+            SpikeMove(2, 0.5f, 0, 1);
+            SpikeMove(12, 0.5f, 0, 1);
+            SpikeMove(0, 0.5f, 0, -1);
+            SpikeMove(14, 0.5f, 0, -1);
         }
 
         private void Second5p5Action()
         {
             SpikeWarn(4, 0, 1);
             SpikeWarn(10, 0, 1);
-            SpikeMove(3, 1f, 0, 1);
-            SpikeMove(11, 1f, 0, 1);
-            SpikeMove(1, 1f, 0, -1);
-            SpikeMove(13, 1f, 0, -1);
+            SpikeMove(3, 0.5f, 0, 1);
+            SpikeMove(11, 0.5f, 0, 1);
+            SpikeMove(1, 0.5f, 0, -1);
+            SpikeMove(13, 0.5f, 0, -1);
         }
 
         private void Second6Action()
         {
             SpikeWarn(5, 0, 1);
             SpikeWarn(9, 0, 1);
-            SpikeMove(2, 1f, 0, -1);
-            SpikeMove(12, 1f, 0, -1);
-            SpikeMove(4, 1f, 0, 1);
-            SpikeMove(10, 1f, 0, 1);
+            SpikeMove(2, 0.5f, 0, -1);
+            SpikeMove(12, 0.5f, 0, -1);
+            SpikeMove(4, 0.5f, 0, 1);
+            SpikeMove(10, 0.5f, 0, 1);
         }
 
         private void Second6p5Action()
         {
             SpikeWarn(6, 0, 1);
             SpikeWarn(8, 0, 1);
-            SpikeMove(5, 1f, 0, 1);
-            SpikeMove(9, 1f, 0, 1);
-            SpikeMove(3, 1f, 0, -1);
-            SpikeMove(11, 1f, 0, -1);
+            SpikeMove(5, 0.5f, 0, 1);
+            SpikeMove(9, 0.5f, 0, 1);
+            SpikeMove(3, 0.5f, 0, -1);
+            SpikeMove(11, 0.5f, 0, -1);
         }
 
         private void Second7Action()
         {
             SpikeWarn(7, 0, 1);
-            SpikeMove(6, 1f, 0, 1);
-            SpikeMove(8, 1f, 0, 1);
-            SpikeMove(4, 1f, 0, -1);
-            SpikeMove(10, 1f, 0, -1);
+            SpikeMove(6, 0.5f, 0, 1);
+            SpikeMove(8, 0.5f, 0, 1);
+            SpikeMove(4, 0.5f, 0, -1);
+            SpikeMove(10, 0.5f, 0, -1);
         }
 
         private void Second7p5Action()
         {
-            SpikeMove(7, 1f, 0, 1);
-            SpikeMove(5, 1f, 0, -1);
-            SpikeMove(9, 1f, 0, -1);
+            SpikeMove(7, 0.5f, 0, 1);
+            SpikeMove(5, 0.5f, 0, -1);
+            SpikeMove(9, 0.5f, 0, -1);
         }
 
         private void Second8Action()
         {
-            SpikeMove(6, 1f, 0, -1);
-            SpikeMove(8, 1f, 0, -1);
+            SpikeMove(6, 0.5f, 0, -1);
+            SpikeMove(8, 0.5f, 0, -1);
         }
 
         private void Second8p5Action()
         {
-            SpikeMove(7, 1f, 0, -1);
+            SpikeMove(7, 0.5f, 0, -1);
         }
 
         #endregion
@@ -347,9 +347,9 @@ namespace Game.Level
             SpikeWarn(4, 0, 1);
             SpikeWarn(10, 0, 1);
             SpikeWarn(11, 0, 1);
-            SpikeMove(6, 1f, 0, 1);
-            SpikeMove(7, 1f, 0, 1);
-            SpikeMove(8, 1f, 0, 1);
+            SpikeMove(6, 0.5f, 0, 1);
+            SpikeMove(7, 0.5f, 0, 1);
+            SpikeMove(8, 0.5f, 0, 1);
         }
 
         private void Second11p5Action()
@@ -358,31 +358,31 @@ namespace Game.Level
             SpikeWarn(1, 0, 1);
             SpikeWarn(13, 0, 1);
             SpikeWarn(14, 0, 1);
-            SpikeMove(10, 1f, 0, 1);
-            SpikeMove(11, 1f, 0, 1);
-            SpikeMove(3, 1f, 0, 1);
-            SpikeMove(4, 1f, 0, 1);
+            SpikeMove(10, 0.5f, 0, 1);
+            SpikeMove(11, 0.5f, 0, 1);
+            SpikeMove(3, 0.5f, 0, 1);
+            SpikeMove(4, 0.5f, 0, 1);
         }
 
         private void Second12Action()
         {
-            SpikeMove(0, 1f, 0, 1);
-            SpikeMove(1, 1f, 0, 1);
-            SpikeMove(13, 1f, 0, 1);
-            SpikeMove(14, 1f, 0, 1);
+            SpikeMove(0, 0.5f, 0, 1);
+            SpikeMove(1, 0.5f, 0, 1);
+            SpikeMove(13, 0.5f, 0, 1);
+            SpikeMove(14, 0.5f, 0, 1);
         }
 
         private void Second13Action()
         {
             SpikeMove(0, 1f, 6, 0);
             SpikeMove(1, 1f, 6, 0);
-            SpikeMove(3, 1f, 0, -1);
-            SpikeMove(4, 1f, 0, -1);
-            SpikeMove(6, 1f, 0, -1);
-            SpikeMove(7, 1f, 0, -1);
-            SpikeMove(8, 1f, 0, -1);
-            SpikeMove(10, 1f, 0, -1);
-            SpikeMove(11, 1f, 0, -1);
+            SpikeMove(3, 0.5f, 0, -1);
+            SpikeMove(4, 0.5f, 0, -1);
+            SpikeMove(6, 0.5f, 0, -1);
+            SpikeMove(7, 0.5f, 0, -1);
+            SpikeMove(8, 0.5f, 0, -1);
+            SpikeMove(10, 0.5f, 0, -1);
+            SpikeMove(11, 0.5f, 0, -1);
             SpikeMove(13, 1f, -6, 0);
             SpikeMove(14, 1f, 0 - 6, 0);
         }
@@ -405,14 +405,14 @@ namespace Game.Level
 
         private void Second14p5Action()
         {
-            SpikeMove(2, 1f, 0, 1);
-            SpikeMove(3, 1f, 0, 1);
-            SpikeMove(4, 1f, 0, 1);
-            SpikeMove(5, 1f, 0, 1);
-            SpikeMove(9, 1f, 0, 1);
-            SpikeMove(10, 1f, 0, 1);
-            SpikeMove(11, 1f, 0, 1);
-            SpikeMove(12, 1f, 0, 1);
+            SpikeMove(2, 0.5f, 0, 1);
+            SpikeMove(3, 0.5f, 0, 1);
+            SpikeMove(4, 0.5f, 0, 1);
+            SpikeMove(5, 0.5f, 0, 1);
+            SpikeMove(9, 0.5f, 0, 1);
+            SpikeMove(10, 0.5f, 0, 1);
+            SpikeMove(11, 0.5f, 0, 1);
+            SpikeMove(12, 0.5f, 0, 1);
         }
 
         private void Second16Action()
@@ -429,10 +429,10 @@ namespace Game.Level
             SpikeMove(10, 1f, 2, 0);
             SpikeMove(11, 1f, 2, 0);
             SpikeMove(12, 1f, 2, 0);
-            SpikeMove(0, 1f, 0, -1);
-            SpikeMove(1, 1f, 0, -1);
-            SpikeMove(13, 1f, 0, -1);
-            SpikeMove(14, 1f, 0, -1);
+            SpikeMove(0, 0.5f, 0, -1);
+            SpikeMove(1, 0.5f, 0, -1);
+            SpikeMove(13, 0.5f, 0, -1);
+            SpikeMove(14, 0.5f, 0, -1);
         }
 
         private void Second17Action()
@@ -445,14 +445,14 @@ namespace Game.Level
 
         private void Second18p5Action()
         {
-            SpikeMove(2, 1f, 0, -1);
-            SpikeMove(3, 1f, 0, -1);
-            SpikeMove(4, 1f, 0, -1);
-            SpikeMove(5, 1f, 0, -1);
-            SpikeMove(9, 1f, 0, -1);
-            SpikeMove(10, 1f, 0, -1);
-            SpikeMove(11, 1f, 0, -1);
-            SpikeMove(12, 1f, 0, -1);
+            SpikeMove(2, 0.5f, 0, -1);
+            SpikeMove(3, 0.5f, 0, -1);
+            SpikeMove(4, 0.5f, 0, -1);
+            SpikeMove(5, 0.5f, 0, -1);
+            SpikeMove(9, 0.5f, 0, -1);
+            SpikeMove(10, 0.5f, 0, -1);
+            SpikeMove(11, 0.5f, 0, -1);
+            SpikeMove(12, 0.5f, 0, -1);
         }
 
         #endregion
@@ -485,72 +485,72 @@ namespace Game.Level
         {
             SpikeWarn(1, 0, 1);
             SpikeWarn(13, 0, 1);
-            SpikeMove(0, 1f, 0, 1);
-            SpikeMove(14, 1f, 0, 1);
+            SpikeMove(0, 0.5f, 0, 1);
+            SpikeMove(14, 0.5f, 0, 1);
         }
 
         private void Second21Action()
         {
             SpikeWarn(2, 0, 1);
             SpikeWarn(12, 0, 1);
-            SpikeMove(1, 1f, 0, 1);
-            SpikeMove(13, 1f, 0, 1);
+            SpikeMove(1, 0.5f, 0, 1);
+            SpikeMove(13, 0.5f, 0, 1);
         }
 
         private void Second21p5Action()
         {
             SpikeWarn(3, 0, 1);
             SpikeWarn(11, 0, 1);
-            SpikeMove(2, 1f, 0, 1);
-            SpikeMove(12, 1f, 0, 1);
+            SpikeMove(2, 0.5f, 0, 1);
+            SpikeMove(12, 0.5f, 0, 1);
         }
 
         private void Second22Action()
         {
             SpikeWarn(4, 0, 1);
             SpikeWarn(10, 0, 1);
-            SpikeMove(3, 1f, 0, 1);
-            SpikeMove(11, 1f, 0, 1);
-            SpikeMove(14, 1f, 0, -1);
-            SpikeMove(0, 1f, 0, -1);
+            SpikeMove(3, 0.5f, 0, 1);
+            SpikeMove(11, 0.5f, 0, 1);
+            SpikeMove(14, 0.5f, 0, -1);
+            SpikeMove(0, 0.5f, 0, -1);
         }
 
         private void Second22p5Action()
         {
             SpikeWarn(5, 0, 1);
             SpikeWarn(9, 0, 1);
-            SpikeMove(4, 1f, 0, 1);
-            SpikeMove(10, 1f, 0, 1);
-            SpikeMove(13, 1f, 0, -1);
-            SpikeMove(1, 1f, 0, -1);
+            SpikeMove(4, 0.5f, 0, 1);
+            SpikeMove(10, 0.5f, 0, 1);
+            SpikeMove(13, 0.5f, 0, -1);
+            SpikeMove(1, 0.5f, 0, -1);
         }
 
         private void Second23Action()
         {
             SpikeWarn(6, 0, 1);
             SpikeWarn(8, 0, 1);
-            SpikeMove(5, 1f, 0, 1);
-            SpikeMove(9, 1f, 0, 1);
-            SpikeMove(12, 1f, 0, -1);
-            SpikeMove(2, 1f, 0, -1);
+            SpikeMove(5, 0.5f, 0, 1);
+            SpikeMove(9, 0.5f, 0, 1);
+            SpikeMove(12, 0.5f, 0, -1);
+            SpikeMove(2, 0.5f, 0, -1);
         }
 
         private void Second23p5Action()
         {
             SpikeWarn(7, 0, 1);
-            SpikeMove(6, 1f, 0, 1);
-            SpikeMove(8, 1f, 0, 1);
-            SpikeMove(11, 1f, 0, -1);
-            SpikeMove(3, 1f, 0, -1);
+            SpikeMove(6, 0.5f, 0, 1);
+            SpikeMove(8, 0.5f, 0, 1);
+            SpikeMove(11, 0.5f, 0, -1);
+            SpikeMove(3, 0.5f, 0, -1);
         }
 
         private void Second24Action()
         {
             SpikeWarn(0, 0, 1);
             SpikeWarn(14, 0, 1);
-            SpikeMove(7, 1f, 0, 1);
-            SpikeMove(10, 1f, 0, -1);
-            SpikeMove(4, 1f, 0, -1);
+            SpikeMove(7, 0.5f, 0, 1);
+            SpikeMove(10, 0.5f, 0, -1);
+            SpikeMove(4, 0.5f, 0, -1);
         }
 
         private void Second24p25Action()
@@ -565,8 +565,8 @@ namespace Game.Level
             SpikeWarn(12, 0, 1);
             SpikeMove(0, .5f, 0, 1);
             SpikeMove(14, .5f, 0, 1);
-            SpikeMove(9, 1f, 0, -1);
-            SpikeMove(5, 1f, 0, -1);
+            SpikeMove(9, 0.5f, 0, -1);
+            SpikeMove(5, 0.5f, 0, -1);
         }
 
         private void Second24p75Action()
@@ -583,8 +583,9 @@ namespace Game.Level
             SpikeWarn(10, 0, 1);
             SpikeMove(2, .5f, 0, 1);
             SpikeMove(12, .5f, 0, 1);
-            SpikeMove(8, 1f, 0, -1);
-            SpikeMove(6, 1f, 0, -1);
+            SpikeMove(8, 0.5f, 0, -1);
+            SpikeMove(6, 0.5f, 0, -1);
+            SpikeMove(0, 0.5f, 0, -1);
         }
 
         private void Second25p25Action()
@@ -613,12 +614,11 @@ namespace Game.Level
         private void Second26Action()
         {
             SpikeMove(6, .5f, 0, 1);
-            SpikeMove(0, 1f, 0, -1);
         }
 
         private void Second26p25Action()
         {
-            SpikeMove(7, 1f, 0, 1);
+            SpikeMove(7, 0.5f, 0, 1);
         }
 
 
@@ -629,25 +629,25 @@ namespace Game.Level
 
         private void Second29p5Action()
         {
-            SpikeMove(8, 1f, 0, 1);
+            SpikeMove(8, 0.5f, 0, 1);
         }
 
         private void Second30p5Action()
         {
-            SpikeMove(8, 1f, 0, -1);
-            SpikeMove(1, 1f, 0, -1);
-            SpikeMove(2, 1f, 0, -1);
-            SpikeMove(3, 1f, 0, -1);
-            SpikeMove(4, 1f, 0, -1);
-            SpikeMove(5, 1f, 0, -1);
-            SpikeMove(6, 1f, 0, -1);
-            SpikeMove(7, 1f, 0, -1);
-            SpikeMove(9, 1f, 0, -1);
-            SpikeMove(10, 1f, 0, -1);
-            SpikeMove(11, 1f, 0, -1);
-            SpikeMove(12, 1f, 0, -1);
-            SpikeMove(13, 1f, 0, -1);
-            SpikeMove(14, 1f, 0, -1);
+            SpikeMove(8, 0.5f, 0, -1);
+            SpikeMove(1, 0.5f, 0, -1);
+            SpikeMove(2, 0.5f, 0, -1);
+            SpikeMove(3, 0.5f, 0, -1);
+            SpikeMove(4, 0.5f, 0, -1);
+            SpikeMove(5, 0.5f, 0, -1);
+            SpikeMove(6, 0.5f, 0, -1);
+            SpikeMove(7, 0.5f, 0, -1);
+            SpikeMove(9, 0.5f, 0, -1);
+            SpikeMove(10, 0.5f, 0, -1);
+            SpikeMove(11, 0.5f, 0, -1);
+            SpikeMove(12, 0.5f, 0, -1);
+            SpikeMove(13, 0.5f, 0, -1);
+            SpikeMove(14, 0.5f, 0, -1);
         }
 
         #endregion
@@ -665,11 +665,11 @@ namespace Game.Level
 
         private void Second31p5Action()
         {
-            SpikeMove(5, 1f, 0, 1);
-            SpikeMove(6, 1f, 0, 1);
-            SpikeMove(7, 1f, 0, 1);
-            SpikeMove(8, 1f, 0, 1);
-            SpikeMove(9, 1f, 0, 1);
+            SpikeMove(5, 0.5f, 0, 1);
+            SpikeMove(6, 0.5f, 0, 1);
+            SpikeMove(7, 0.5f, 0, 1);
+            SpikeMove(8, 0.5f, 0, 1);
+            SpikeMove(9, 0.5f, 0, 1);
         }
 
         private void Second32Action()
@@ -683,16 +683,16 @@ namespace Game.Level
 
         private void Second32p5Action()
         {
-            SpikeMove(0, 1f, 0, 1);
-            SpikeMove(1, 1f, 0, 1);
-            SpikeMove(2, 1f, 0, 1);
-            SpikeMove(3, 1f, 0, 1);
-            SpikeMove(4, 1f, 0, 1);
-            SpikeMove(5, 1f, 0, -1);
-            SpikeMove(6, 1f, 0, -1);
-            SpikeMove(7, 1f, 0, -1);
-            SpikeMove(8, 1f, 0, -1);
-            SpikeMove(9, 1f, 0, -1);
+            SpikeMove(0, 0.5f, 0, 1);
+            SpikeMove(1, 0.5f, 0, 1);
+            SpikeMove(2, 0.5f, 0, 1);
+            SpikeMove(3, 0.5f, 0, 1);
+            SpikeMove(4, 0.5f, 0, 1);
+            SpikeMove(5, 0.5f, 0, -1);
+            SpikeMove(6, 0.5f, 0, -1);
+            SpikeMove(7, 0.5f, 0, -1);
+            SpikeMove(8, 0.5f, 0, -1);
+            SpikeMove(9, 0.5f, 0, -1);
         }
 
         private void Second33Action()
@@ -706,16 +706,16 @@ namespace Game.Level
 
         private void Second33p5Action()
         {
-            SpikeMove(10, 1, 0, 1);
-            SpikeMove(11, 1, 0, 1);
-            SpikeMove(12, 1, 0, 1);
-            SpikeMove(13, 1, 0, 1);
-            SpikeMove(14, 1, 0, 1);
-            SpikeMove(0, 1, 0, -1);
-            SpikeMove(1, 1, 0, -1);
-            SpikeMove(2, 1, 0, -1);
-            SpikeMove(3, 1, 0, -1);
-            SpikeMove(4, 1, 0, -1);
+            SpikeMove(10, 0.5f, 0, 1);
+            SpikeMove(11, 0.5f, 0, 1);
+            SpikeMove(12, 0.5f, 0, 1);
+            SpikeMove(13, 0.5f, 0, 1);
+            SpikeMove(14, 0.5f, 0, 1);
+            SpikeMove(0, 0.5f, 0, -1);
+            SpikeMove(1, 0.5f, 0, -1);
+            SpikeMove(2, 0.5f, 0, -1);
+            SpikeMove(3, 0.5f, 0, -1);
+            SpikeMove(4, 0.5f, 0, -1);
         }
 
         private void Second34Action()
@@ -729,16 +729,16 @@ namespace Game.Level
 
         private void Second34p5Action()
         {
-            SpikeMove(5, 1f, 0, 1);
-            SpikeMove(6, 1f, 0, 1);
-            SpikeMove(7, 1f, 0, 1);
-            SpikeMove(8, 1f, 0, 1);
-            SpikeMove(9, 1f, 0, 1);
-            SpikeMove(10, 1f, 0, -1);
-            SpikeMove(11, 1f, 0, -1);
-            SpikeMove(12, 1f, 0, -1);
-            SpikeMove(13, 1f, 0, -1);
-            SpikeMove(14, 1f, 0, -1);
+            SpikeMove(5, 0.5f, 0, 1);
+            SpikeMove(6, 0.5f, 0, 1);
+            SpikeMove(7, 0.5f, 0, 1);
+            SpikeMove(8, 0.5f, 0, 1);
+            SpikeMove(9, 0.5f, 0, 1);
+            SpikeMove(10, 0.5f, 0, -1);
+            SpikeMove(11, 0.5f, 0, -1);
+            SpikeMove(12, 0.5f, 0, -1);
+            SpikeMove(13, 0.5f, 0, -1);
+            SpikeMove(14, 0.5f, 0, -1);
         }
 
         private void Second35Action()
@@ -752,16 +752,16 @@ namespace Game.Level
 
         private void Second35p5Action()
         {
-            SpikeMove(0, 1f, 0, 1);
-            SpikeMove(1, 1f, 0, 1);
-            SpikeMove(2, 1f, 0, 1);
-            SpikeMove(3, 1f, 0, 1);
-            SpikeMove(4, 1f, 0, 1);
-            SpikeMove(5, 1f, 0, -1);
-            SpikeMove(6, 1f, 0, -1);
-            SpikeMove(7, 1f, 0, -1);
-            SpikeMove(8, 1f, 0, -1);
-            SpikeMove(9, 1f, 0, -1);
+            SpikeMove(0, 0.5f, 0, 1);
+            SpikeMove(1, 0.5f, 0, 1);
+            SpikeMove(2, 0.5f, 0, 1);
+            SpikeMove(3, 0.5f, 0, 1);
+            SpikeMove(4, 0.5f, 0, 1);
+            SpikeMove(5, 0.5f, 0, -1);
+            SpikeMove(6, 0.5f, 0, -1);
+            SpikeMove(7, 0.5f, 0, -1);
+            SpikeMove(8, 0.5f, 0, -1);
+            SpikeMove(9, 0.5f, 0, -1);
         }
 
         private void Second36Action()
@@ -775,25 +775,25 @@ namespace Game.Level
 
         private void Second36p5Action()
         {
-            SpikeMove(10, 1f, 0, 1);
-            SpikeMove(11, 1f, 0, 1);
-            SpikeMove(12, 1f, 0, 1);
-            SpikeMove(13, 1f, 0, 1);
-            SpikeMove(14, 1f, 0, 1);
-            SpikeMove(0, 1f, 0, -1);
-            SpikeMove(1, 1f, 0, -1);
-            SpikeMove(2, 1f, 0, -1);
-            SpikeMove(3, 1f, 0, -1);
-            SpikeMove(4, 1f, 0, -1);
+            SpikeMove(10, 0.5f, 0, 1);
+            SpikeMove(11, 0.5f, 0, 1);
+            SpikeMove(12, 0.5f, 0, 1);
+            SpikeMove(13, 0.5f, 0, 1);
+            SpikeMove(14, 0.5f, 0, 1);
+            SpikeMove(0, 0.5f, 0, -1);
+            SpikeMove(1, 0.5f, 0, -1);
+            SpikeMove(2, 0.5f, 0, -1);
+            SpikeMove(3, 0.5f, 0, -1);
+            SpikeMove(4, 0.5f, 0, -1);
         }
 
         private void Second37p5Action()
         {
-            SpikeMove(10, 1f, 0, -1);
-            SpikeMove(11, 1f, 0, -1);
-            SpikeMove(12, 1f, 0, -1);
-            SpikeMove(13, 1f, 0, -1);
-            SpikeMove(14, 1f, 0, -1);
+            SpikeMove(10, 0.5f, 0, -1);
+            SpikeMove(11, 0.5f, 0, -1);
+            SpikeMove(12, 0.5f, 0, -1);
+            SpikeMove(13, 0.5f, 0, -1);
+            SpikeMove(14, 0.5f, 0, -1);
         }
 
         #endregion

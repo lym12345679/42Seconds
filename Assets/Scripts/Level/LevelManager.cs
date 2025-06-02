@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Game.Instance;
 using Game.KeyBoard;
+using Game.Plot;
 using Game.Scene;
 using Game.UI;
 using Unity.VisualScripting;
@@ -16,6 +17,8 @@ namespace Game.Level
         private bool isGamePlaying = true; // 游戏是否正在进行
         private bool isGameLose = false;
         public SceneType CurrentSceneType = SceneType.Level1; // 当前场景类型
+        public MainPlotEnum FailedCG;
+        public MainPlotEnum WinCG;
 
         private void Start()
         {
@@ -88,14 +91,21 @@ namespace Game.Level
                 return;
             }
 
-            Debug.Log("关卡胜利！"); // 这里可以添加关卡胜利的逻辑
+            PlotDict.Instance.TryGetPlot(WinCG, out TextAsset textAsset);
+            TextShowUI.Open(new TextShowUIMessage(textAsset));
+        }
+
+        public void OnlevelFailed()
+        {
+            PlotDict.Instance.TryGetPlot(FailedCG, out TextAsset textAsset);
+            TextShowUI.Open(new TextShowUIMessage(textAsset, () => { StartCoroutine(PauseDelay()); }));
         }
 
         #region 玩家相关
 
         public void OnPlayerDead()
         {
-            StartCoroutine(PauseDelay());
+            OnlevelFailed();
             isGameLose = true; // 设置游戏为失败状态
             Debug.Log("玩家死亡，游戏暂停！"); // 这里可以添加玩家死亡的逻辑
         }

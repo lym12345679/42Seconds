@@ -14,7 +14,7 @@ namespace Game.UI
 
         public void GoToLevelSelector()
         {
-            GamePlayManager.LoadScene(SceneType.Menu);
+            GamePlayManager.LoadScene(SceneType.LevelSelector);
         }
     }
 }

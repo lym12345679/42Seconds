@@ -11,7 +11,7 @@ namespace Game.UI
 
         public void OnClick()
         {
-            LevelSelectorUI.Instance.GoToLevel(SceneType.Level1);
+            LevelSelectorUI.Instance.GoToLevel(level);
         }
     }
 }
