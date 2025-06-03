@@ -7,6 +7,7 @@ namespace Game.Recycle
     public static class RecyclePool
     {
         private static bool isRigister = false;
+        private static string path = "Prefabs/Recycle/";
 
         /// <summary>
         /// 在对象池中请求物体
@@ -45,19 +46,23 @@ namespace Game.Recycle
             Action<MizukiTool.RecyclePool.RecyclePool> action = (recyclePool) =>
             {
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.TextItem,
-                    Resources.Load<GameObject>("Prefabs/Recycle/TextItem"));
+                    Resources.Load<GameObject>(path + "TextItem"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.Warn,
-                    Resources.Load<GameObject>("Prefabs/Recycle/Warn"));
+                    Resources.Load<GameObject>(path + "Warn"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.Spike1,
-                    Resources.Load<GameObject>("Prefabs/Recycle/Spike1"));
+                    Resources.Load<GameObject>(path + "Spike1"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.Spike2,
-                    Resources.Load<GameObject>("Prefabs/Recycle/Spike2"));
+                    Resources.Load<GameObject>(path + "Spike2"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.EmptyObj,
-                    Resources.Load<GameObject>("Prefabs/Recycle/EmptyObj"));
+                    Resources.Load<GameObject>(path + "EmptyObj"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.Spike0,
-                    Resources.Load<GameObject>("Prefabs/Recycle/Spike0"));
+                    Resources.Load<GameObject>(path + "Spike0"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.WeakWall,
-                    Resources.Load<GameObject>("Prefabs/Recycle/WeakWall"));
+                    Resources.Load<GameObject>(path + "WeakWall"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.GeneratingLaser,
+                    Resources.Load<GameObject>(path + "GeneratingLaser"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.Laser1,
+                    Resources.Load<GameObject>(path + "Laser1"));
             };
             RecyclePoolUtil.SetRigisterAction(action);
         }
@@ -71,6 +76,8 @@ namespace Game.Recycle
         Spike2,
         EmptyObj,
         Spike0,
-        WeakWall
+        WeakWall,
+        GeneratingLaser,
+        Laser1
     }
 }

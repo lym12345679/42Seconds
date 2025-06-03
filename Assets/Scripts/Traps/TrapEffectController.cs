@@ -7,13 +7,14 @@ using UnityEngine;
 
 namespace Game.Traps
 {
-    public class SpikeEffectController : TrapEffectController
+    public class TrapEffectController : GOEffectController<SpriteRenderer>
     {
-        /*
         private PositionEffect positionEffect;
         private RotationEffect rotationEffect;
-
         private ScaleEffect scaleEffect;
+        private PositionEffect currentPositionEffect;
+        private RotationEffect currentRotationEffect;
+        private ScaleEffect currentScaleEffect;
 
         public void Init()
         {
@@ -22,8 +23,16 @@ namespace Game.Traps
             scaleEffect = null;
         }
 
-        #region 设置尖刺的通常位移、旋转和缩放效果
+        #region 设置机关的通常位移、旋转和缩放效果
 
+        /// <summary>
+        /// 设置机关的通常位移效果
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <param name="timeToMove"></param>
+        /// <param name="positionEffectMode"></param>
+        /// <param name="persentageHanderEnum"></param>
+        /// <param name="endHander"></param>
         public void SetGeneralPositionEffect(Vector2 vector, float timeToMove,
             PositionEffectMode positionEffectMode = PositionEffectMode.Once,
             PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
@@ -36,8 +45,21 @@ namespace Game.Traps
                 .SetPercentageHandler(SpikePersentageHander.GetHandler(persentageHanderEnum))
                 .SetEffectMode(positionEffectMode)
                 .SetEndHandler(endHander);
+            /*.SetPercentageHandler((t) =>
+            {
+                Debug.Log(t * 100 + "%" + " " + LevelManager.Instance.currentTime);
+                return t; // 返回线性插值
+            }); // 默认使用线性插值*/
         }
 
+        /// <summary>
+        /// 设置机关的通常旋转效果
+        /// </summary>
+        /// <param name="rotation"></param>
+        /// <param name="timeToRotate"></param>
+        /// <param name="rotationEffectMode"></param>
+        /// <param name="persentageHanderEnum"></param>
+        /// <param name="endHandler"></param>
         public void SetGeneralRotationEffect(float rotation, float timeToRotate,
             RotationEffectMode rotationEffectMode = RotationEffectMode.Once,
             PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
@@ -53,6 +75,14 @@ namespace Game.Traps
                 .SetEndHandler(endHandler);
         }
 
+        /// <summary>
+        /// 设置机关的通常缩放效果
+        /// </summary>
+        /// <param name="scale"></param>
+        /// <param name="timeToScale"></param>
+        /// <param name="scaleEffectMode"></param>
+        /// <param name="persentageHanderEnum"></param>
+        /// <param name="endHandler"></param>
         public void SetGeneralScaleEffect(Vector2 scale, float timeToScale,
             ScaleEffectMode scaleEffectMode = ScaleEffectMode.Once,
             PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
@@ -73,7 +103,7 @@ namespace Game.Traps
         {
             if (positionEffect != null)
             {
-                StartPositionEffect(transform, positionEffect);
+                currentPositionEffect = StartPositionEffect(transform, positionEffect);
             }
         }
 
@@ -81,16 +111,52 @@ namespace Game.Traps
         {
             if (rotationEffect != null)
             {
-                StartRotationEffect(transform, rotationEffect);
+                currentRotationEffect = StartRotationEffect(transform, rotationEffect);
             }
         }
+
+        public void StartRotationEffect(Transform t)
+        {
+            if (rotationEffect != null)
+            {
+                currentRotationEffect = StartRotationEffect(t, rotationEffect);
+            }
+        }
+
 
         public void StartScaleEffect()
         {
             if (scaleEffect != null)
             {
-                StartScaleEffect(transform, scaleEffect);
+                currentScaleEffect = StartScaleEffect(transform, scaleEffect);
             }
-        }*/
+        }
+
+        public void StopPositionEffect()
+        {
+            if (currentPositionEffect != null)
+            {
+                currentPositionEffect.FinishImmediately();
+                currentPositionEffect = null;
+            }
+        }
+
+        public void StopRotationEffect()
+        {
+            if (currentRotationEffect != null)
+            {
+                currentRotationEffect.FinishImmediately();
+                currentRotationEffect = null;
+            }
+        }
+
+        public void StopScaleEffect()
+        {
+            if (currentScaleEffect != null)
+            {
+                currentScaleEffect.FinishImmediately();
+                currentScaleEffect = null;
+            }
+        }
     }
 }

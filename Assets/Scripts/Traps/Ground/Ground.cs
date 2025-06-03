@@ -11,7 +11,7 @@ namespace Game.Traps
 {
     public class Ground : Trap
     {
-        public GroundEffectController groundEffectController; // 控制尖刺效果的脚本
+        public GroundEffectController controller; // 控制尖刺效果的脚本
         private Vector3 currentPosition;
 
         private float currentTime
@@ -34,11 +34,11 @@ namespace Game.Traps
             PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
             Action<PositionEffect> endHandler = null)
         {
-            if (groundEffectController != null)
+            if (controller != null)
             {
-                groundEffectController.SetGeneralPositionEffect(vector, timeToMove, positionEffectMode,
+                controller.SetGeneralPositionEffect(vector, timeToMove, positionEffectMode,
                     persentageHanderEnum, endHandler);
-                groundEffectController.StartPositionEffect();
+                controller.StartPositionEffect();
             }
         }
 
@@ -47,11 +47,11 @@ namespace Game.Traps
             PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
             Action<RotationEffect> endHandler = null)
         {
-            if (groundEffectController != null)
+            if (controller != null)
             {
-                groundEffectController.SetGeneralRotationEffect(rotation, timeToRotate, rotationEffectMode,
+                controller.SetGeneralRotationEffect(rotation, timeToRotate, rotationEffectMode,
                     persentageHanderEnum, endHandler);
-                groundEffectController.StartRotationEffect();
+                controller.StartRotationEffect();
             }
         }
 
@@ -68,14 +68,14 @@ namespace Game.Traps
                 emptyObj.position = point;
                 transform.SetParent(emptyObj);
             });
-            groundEffectController.SetGeneralRotationEffect(rotation, timeToRotate, rotationEffectMode,
+            controller.SetGeneralRotationEffect(rotation, timeToRotate, rotationEffectMode,
                 persentageHanderEnum, (e) =>
                 {
                     endHandler?.Invoke(null);
                     transform.parent = parent;
                     RecyclePool.ReturnToPool(emptyObj.gameObject);
                 });
-            groundEffectController.StartRotationEffect(emptyObj);
+            controller.StartRotationEffect(emptyObj);
         }
 
 
@@ -83,11 +83,11 @@ namespace Game.Traps
             PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
             Action<ScaleEffect> endHandler = null)
         {
-            if (groundEffectController != null)
+            if (controller != null)
             {
-                groundEffectController.SetGeneralScaleEffect(scale, timeToScale, scaleEffectMode,
+                controller.SetGeneralScaleEffect(scale, timeToScale, scaleEffectMode,
                     persentageHanderEnum, endHandler);
-                groundEffectController.StartScaleEffect();
+                controller.StartScaleEffect();
             }
         }
 
