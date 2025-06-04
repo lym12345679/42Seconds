@@ -1,6 +1,7 @@
 using System;
 using Game.Level;
 using Game.Traps;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -114,8 +115,27 @@ public class PlayerController : MonoBehaviour
     private void CheckJumpCondition()
     {
         RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, Vector2.down, .53f);
+        RaycastHit2D[] hit1 = Physics2D.RaycastAll(transform.position + new Vector3(0.28f, 0, 0), Vector2.down, .53f);
+        RaycastHit2D[] hit2 = Physics2D.RaycastAll(transform.position + new Vector3(-0.28f, 0, 0), Vector2.down, .53f);
         bool isGrounded = false;
+
+        foreach (var h in hit1)
+        {
+            if (h.collider != null && h.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                isGrounded = true; // 检测到地面（落地）
+            }
+        }
+
         foreach (var h in hit)
+        {
+            if (h.collider != null && h.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                isGrounded = true; // 检测到地面（落地）
+            }
+        }
+
+        foreach (var h in hit2)
         {
             if (h.collider != null && h.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {

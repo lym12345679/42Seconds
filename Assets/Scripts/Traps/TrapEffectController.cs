@@ -32,11 +32,11 @@ namespace Game.Traps
         /// <param name="timeToMove"></param>
         /// <param name="positionEffectMode"></param>
         /// <param name="persentageHanderEnum"></param>
-        /// <param name="endHander"></param>
+        /// <param name="endHandler"></param>
         public void SetGeneralPositionEffect(Vector2 vector, float timeToMove,
             PositionEffectMode positionEffectMode = PositionEffectMode.Once,
             PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
-            Action<PositionEffect> endHander = null)
+            Action<PositionEffect> endHandler = null)
         {
             Vector3 endPosition = transform.position + (Vector3)vector;
             positionEffect = new PositionEffect()
@@ -44,12 +44,7 @@ namespace Game.Traps
                 .SetDuration(timeToMove * 2)
                 .SetPercentageHandler(SpikePersentageHander.GetHandler(persentageHanderEnum))
                 .SetEffectMode(positionEffectMode)
-                .SetEndHandler(endHander);
-            /*.SetPercentageHandler((t) =>
-            {
-                Debug.Log(t * 100 + "%" + " " + LevelManager.Instance.currentTime);
-                return t; // 返回线性插值
-            }); // 默认使用线性插值*/
+                .SetEndHandler(endHandler);
         }
 
         /// <summary>

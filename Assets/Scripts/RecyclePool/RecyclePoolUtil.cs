@@ -63,6 +63,10 @@ namespace Game.Recycle
                     Resources.Load<GameObject>(path + "GeneratingLaser"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.Laser1,
                     Resources.Load<GameObject>(path + "Laser1"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.GeneratingLaser1,
+                    Resources.Load<GameObject>(path + "GeneratingLaser1"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.Laser2,
+                    Resources.Load<GameObject>(path + "Laser2"));
             };
             RecyclePoolUtil.SetRigisterAction(action);
         }
@@ -78,6 +82,8 @@ namespace Game.Recycle
         Spike0,
         WeakWall,
         GeneratingLaser,
-        Laser1
+        GeneratingLaser1,
+        Laser1,
+        Laser2
     }
 }

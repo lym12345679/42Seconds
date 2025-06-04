@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Traps
 {
-    public class GeneratingLaserController : MonoBehaviour
+    public class GeneratingLaserController : TrapEffectController
     {
     }
 }

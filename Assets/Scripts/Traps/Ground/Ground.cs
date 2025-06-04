@@ -55,27 +55,21 @@ namespace Game.Traps
             }
         }
 
-        public void SpicalRotate(float rotation, Vector2 point, float timeToRotate,
+        public void Rotate(float rotation, float timeToRotate, Vector2 point,
             RotationEffectMode rotationEffectMode = RotationEffectMode.Once,
-            PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
-            Action<RotationEffect> endHandler = null)
+            PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X)
         {
-            Transform parent = transform.parent;
-            Transform emptyObj = null;
-            RecyclePool.Request(RecycleItemEnum.EmptyObj, (r) =>
+            if (controller != null)
             {
-                emptyObj = r.GetMainComponent<Transform>();
-                emptyObj.position = point;
-                transform.SetParent(emptyObj);
-            });
-            controller.SetGeneralRotationEffect(rotation, timeToRotate, rotationEffectMode,
-                persentageHanderEnum, (e) =>
-                {
-                    endHandler?.Invoke(null);
-                    transform.parent = parent;
-                    RecyclePool.ReturnToPool(emptyObj.gameObject);
-                });
-            controller.StartRotationEffect(emptyObj);
+                controller.SetGeneralRotationEffect(rotation, timeToRotate, rotationEffectMode,
+                    persentageHanderEnum, (r) =>
+                    {
+                        Vector3 endChildPos = controller.child.position;
+                        transform.position = endChildPos;
+                        controller.child.position = endChildPos;
+                    });
+                controller.StartRotationEffect(point);
+            }
         }
 
 

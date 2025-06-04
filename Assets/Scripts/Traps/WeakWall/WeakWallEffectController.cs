@@ -1,5 +1,7 @@
+using System;
 using MizukiTool.UIEffect;
 using UnityEngine;
+
 namespace Game.Traps
 {
     /// <summary>
@@ -13,6 +15,7 @@ namespace Game.Traps
         private SpriteRenderer spriteRenderer;
         private Color originalColor; // 初始颜色
         private Color targetColor; // 目标颜色
+
         void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
@@ -24,6 +27,7 @@ namespace Game.Traps
             {
                 originalColor = spriteRenderer.color; // 保存初始颜色
             }
+
             blinkEffectGO = new FadeEffectGO<SpriteRenderer>(spriteRenderer)
                 .SetFadeColor(Color.white)
                 .SetOriginalColor(originalColor)
@@ -45,25 +49,31 @@ namespace Game.Traps
                     spriteRenderer.color = originalColor; // 恢复到初始颜色
                 });
         }
+
+        public void Init()
+        {
+            if (spriteRenderer == null)
+            {
+                spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.color = originalColor; // 确保初始颜色被设置
+            }
+        }
+
         void Start()
         {
-
         }
 
         // Update is called once per frame
         void Update()
         {
-
         }
 
         //颜色闪烁效果
-        public void StartBlink(Color targetColor)
+        public void StartBlink(Color targetColor, Action<FadeEffectGO<SpriteRenderer>> endHander = null)
         {
             //Debug.Log("StartBlink called with targetColor: " + targetColor);
             FadeEffectGO<SpriteRenderer> target = blinkEffectGO.Copy(blinkEffectGO);
-            currentEffectGO = StartFade(spriteRenderer, target);
+            currentEffectGO = StartFade(spriteRenderer, target).SetEndHander(endHander);
         }
-
-
     }
 }

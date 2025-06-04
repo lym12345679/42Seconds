@@ -9,12 +9,19 @@ namespace Game.Traps
     public class Laser : Trap
     {
         public LaserEffectController controller; // 控制激光效果的脚本
-        private float maxLength = 100f; // 激光的最大长度
-        private float maxDuration = 5f; // 激光的最大持续时间
+        private readonly float maxLength = 100f; // 激光的最大长度
+        private readonly float maxDuration = 0.25f; // 激光的最大持续时间
+        private Vector3 originalScale;
+
+        private void Awake()
+        {
+            originalScale = transform.localScale;
+        }
 
         public void Init()
         {
-            transform.localScale = new Vector3(1, 1, 1); // 初始化激光的缩放
+            transform.localScale = originalScale; // 初始化激光的缩放
+            controller.child.transform.localPosition = Vector3.zero; // 初始化子物体的位置
         }
 
         public void OnTriggerEnter(Collider other)
@@ -35,11 +42,13 @@ namespace Game.Traps
             controller.StopScaleEffect();
         }
 
+        //
         public void Shot(Vector2 direction)
         {
-            Vector2 targetVec = direction.normalized * maxLength; // 计算激光的目标位移
-            controller.SetGeneralScaleEffect(targetVec, maxDuration);
-            controller.StartScaleEffect(transform.position - (Vector3)direction.normalized / 2); // 启动位置和缩放效果
+            Vector2 targetScale = new Vector2(Mathf.Abs(direction.x), Mathf.Abs(direction.y)) * maxLength; // 计算激光的目标放大值
+            Debug.Log(targetScale);
+            controller.SetGeneralScaleEffect(targetScale, maxDuration);
+            controller.StartScaleEffect(transform.position + (Vector3)direction / 2); // 启动位置和缩放效果
         }
     }
 }

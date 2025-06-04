@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4601815904159845124}
   - component: {fileID: 950367672801722905}
   - component: {fileID: 3432207201362391128}
+  - component: {fileID: -7757385518333940046}
   m_Layer: 8
   m_Name: WeakWall
   m_TagString: Trap
@@ -144,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1905fb2217f7de4f85fa8b808da1021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectController: {fileID: 3432207201362391128}
+  controller: {fileID: 3432207201362391128}
 --- !u!114 &3432207201362391128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,3 +158,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7898e474317374408cc4b2afc96078b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7757385518333940046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453943530798614083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cdebff0a1279ce40a9fe425e1e5d355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutoRecycleTime: -1
+  OnReset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 950367672801722905}
+        m_TargetAssemblyTypeName: Game.Traps.WeakWall, Assembly-CSharp
+        m_MethodName: Init
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  MainComponent: {fileID: 950367672801722905}
+  id: 

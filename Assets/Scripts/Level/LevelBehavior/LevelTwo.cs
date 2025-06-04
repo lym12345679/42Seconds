@@ -14,15 +14,21 @@ namespace Game.Level
 
         private void Awake()
         {
-            Initialize();
+            Init();
         }
 
         private void FixedUpdate()
         {
+            FixedUpdateAction();
+        }
+
+
+        protected virtual void FixedUpdateAction()
+        {
             levelBehavior.OnFixedUpdate(); // 更新关卡行为树
         }
 
-        public void Initialize()
+        protected virtual void Init()
         {
             //8s
             levelBehavior = new LevelBehavior();
@@ -189,7 +195,7 @@ namespace Game.Level
 
         #region Operation
 
-        private void SpikeMove(int n, float t = 0f, float x = 0f, float y = 0f)
+        protected void SpikeMove(int n, float t = 0f, float x = 0f, float y = 0f)
         {
             Spikes[n].Move(
                 new Vector3(x, y, 0),
@@ -202,7 +208,7 @@ namespace Game.Level
         /// <param name="n"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        private void SpikeFlash1(int n, float x = 0f, float y = 0f)
+        protected void SpikeFlash1(int n, float x = 0f, float y = 0f)
         {
             Spikes[n].Flash(
                 new Vector3(x + 10, y + 11, 0));
@@ -214,13 +220,13 @@ namespace Game.Level
         /// <param name="n"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        private void SpikeFlash2(int n, float x = 0f, float y = 0f)
+        protected void SpikeFlash2(int n, float x = 0f, float y = 0f)
         {
             Spikes[n].Flash(
                 new Vector3(Spikes[n].transform.position.x + x, Spikes[n].transform.position.y + y, 0));
         }
 
-        private void SpikeWarn(int n, float x = 0f, float y = 0f)
+        protected void SpikeWarn(int n, float x = 0f, float y = 0f)
         {
             RecyclePool.Request(RecycleItemEnum.Warn, r =>
             {
@@ -229,7 +235,7 @@ namespace Game.Level
             });
         }
 
-        private void SpikeScale(int n, float t, float x = 1f, float y = 1f)
+        protected void SpikeScale(int n, float t, float x = 1f, float y = 1f)
         {
             Spikes[n].Scale(
                 new Vector3(x, y, 1),
@@ -585,7 +591,7 @@ namespace Game.Level
             SpikeMove(12, .5f, 0, 1);
             SpikeMove(8, 0.5f, 0, -1);
             SpikeMove(6, 0.5f, 0, -1);
-            SpikeMove(0, 0.5f, 0, -1);
+            SpikeMove(14, 0.5f, 0, -1);
         }
 
         private void Second25p25Action()
@@ -598,7 +604,7 @@ namespace Game.Level
 
         private void Second25p5Action()
         {
-            SpikeWarn(6, 0, 1);
+            SpikeWarn(8, 0, 1);
             SpikeMove(4, .5f, 0, 1);
             SpikeMove(10, .5f, 0, 1);
             SpikeMove(7, 0.5f, 0, -1);
@@ -613,7 +619,7 @@ namespace Game.Level
 
         private void Second26Action()
         {
-            SpikeMove(6, .5f, 0, 1);
+            SpikeMove(8, .5f, 0, 1);
         }
 
         private void Second26p25Action()
@@ -624,12 +630,12 @@ namespace Game.Level
 
         private void Second29Action()
         {
-            SpikeWarn(8, 0, 1);
+            SpikeWarn(6, 0, 1);
         }
 
         private void Second29p5Action()
         {
-            SpikeMove(8, 0.5f, 0, 1);
+            SpikeMove(6, 0.5f, 0, 1);
         }
 
         private void Second30p5Action()
@@ -647,7 +653,7 @@ namespace Game.Level
             SpikeMove(11, 0.5f, 0, -1);
             SpikeMove(12, 0.5f, 0, -1);
             SpikeMove(13, 0.5f, 0, -1);
-            SpikeMove(14, 0.5f, 0, -1);
+            SpikeMove(0, 0.5f, 0, -1);
         }
 
         #endregion

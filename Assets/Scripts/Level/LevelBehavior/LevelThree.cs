@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Game.Recycle;
 using Game.Traps;
 using MizukiTool.UIEffect;
@@ -6,885 +7,566 @@ using UnityEngine;
 
 namespace Game.Level
 {
-    public class LevelThree : MonoBehaviour
+    public class LevelThree : LevelTwo
     {
-        private LevelBehavior levelBehavior;
-        public List<Spike> Spikes = new List<Spike>();
-        public Transform Location;
+        private LevelBehavior level3Behavior = new LevelBehavior();
+        public List<Ground> groundList = new List<Ground>();
+        public List<GeneratingLaser> generatingLaserList = new List<GeneratingLaser>();
+        private List<Spike> level3SpikeList = new List<Spike>();
+        private readonly float spikeMaxMoveLength = 40f; // 尖刺最大移动距离
+
+        #region 行动
 
         private void Awake()
         {
-            Initialize();
+            Init();
         }
 
         private void FixedUpdate()
         {
-            levelBehavior.OnFixedUpdate(); // 更新关卡行为树
+            FixedUpdateAction();
         }
 
-        public void Initialize()
+        protected override void FixedUpdateAction()
         {
-            //8s
-            levelBehavior = new LevelBehavior();
-            LevelBehavior c1 = Stage1(levelBehavior);
-            LevelBehavior c2 = Stage2(c1);
-            LevelBehavior c3 = Stage3(c2);
-            LevelBehavior c4 = Stage4(c3);
-            LevelBehavior c5 = Stage5(c4);
-            LevelBehavior c6 = Stage6(c5);
+            base.FixedUpdateAction();
+            level3Behavior.OnFixedUpdate();
         }
 
-        private LevelBehavior Stage1(LevelBehavior l)
+        #endregion
+
+        #region Stages
+
+        protected override void Init()
         {
-            LevelBehavior d0 = l.AddChild().SetDelay(3.5f);
-            LevelBehavior a0 = d0.AddChild().SetAction(Second3p5Action);
+            LevelBehavior c0 = Level3Stage0(level3Behavior);
+            LevelBehavior c1 = Level3Stage1(c0);
+            LevelBehavior c2 = Level3Stage3(c1);
+            LevelBehavior c3 = Level3Stage4(c2);
+            LevelBehavior c4 = Level3Stage5(c3);
+            base.Init();
+        }
+
+        private LevelBehavior Level3Stage0(LevelBehavior l)
+        {
+            LevelBehavior d0 = l.AddChild().SetDelay(3f);
+            LevelBehavior a0 = d0.AddChild().SetAction(Level3_Stage1_0);
             LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
-            LevelBehavior a1 = d1.AddChild().SetAction(Second4Action);
-            LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
-            LevelBehavior a2 = d2.AddChild().SetAction(Second4p5Action);
+            LevelBehavior a1 = d1.AddChild().SetAction(Level3_Stage1_1);
+            LevelBehavior d2 = a1.AddChild().SetDelay(2.5f);
+            LevelBehavior a2 = d2.AddChild().SetAction(Level3_Stage1_2);
             LevelBehavior d3 = a2.AddChild().SetDelay(0.5f);
-            LevelBehavior a3 = d3.AddChild().SetAction(Second5Action);
-            LevelBehavior d4 = a3.AddChild().SetDelay(0.5f);
-            LevelBehavior a4 = d4.AddChild().SetAction(Second5p5Action);
-            LevelBehavior d5 = a4.AddChild().SetDelay(0.5f);
-            LevelBehavior a5 = d5.AddChild().SetAction(Second6Action);
-            LevelBehavior d6 = a5.AddChild().SetDelay(0.5f);
-            LevelBehavior a6 = d6.AddChild().SetAction(Second6p5Action);
-            LevelBehavior d7 = a6.AddChild().SetDelay(0.5f);
-            LevelBehavior a7 = d7.AddChild().SetAction(Second7Action);
-            LevelBehavior d8 = a7.AddChild().SetDelay(0.5f);
-            LevelBehavior a8 = d8.AddChild().SetAction(Second7p5Action);
-            LevelBehavior d9 = a8.AddChild().SetDelay(0.5f);
-            LevelBehavior a9 = d9.AddChild().SetAction(Second8Action);
-            LevelBehavior d10 = a9.AddChild().SetDelay(0.5f);
-            LevelBehavior a10 = d10.AddChild().SetAction(Second8p5Action);
-            LevelBehavior d11 = a10.AddChild().SetDelay(0.5f);
-            return d11;
+            LevelBehavior a3 = d3.AddChild().SetAction(Level3_Stage1_3);
+            //6s
+            LevelBehavior d4 = a3.AddChild().SetDelay(3f);
+            //9s
+            return d4;
         }
 
-        private LevelBehavior Stage2(LevelBehavior l)
+        private LevelBehavior Level3Stage1(LevelBehavior l)
         {
-            LevelBehavior d0 = l.AddChild().SetDelay(0.5f);
-            LevelBehavior a0 = d0.AddChild().SetAction(Second10p5Action);
-            LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
-            LevelBehavior a1 = d1.AddChild().SetAction(Second11Action);
+            //9s
+            LevelBehavior d0 = l.AddChild().SetDelay(0f);
+            LevelBehavior a0 = d0.AddChild().SetAction(Level3_Stage2_0);
+            LevelBehavior d1 = a0.AddChild().SetDelay(2f);
+            LevelBehavior a1 = d1.AddChild().SetAction(Level3_Stage2_1);
             LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
-            LevelBehavior a2 = d2.AddChild().SetAction(Second11p5Action);
+            LevelBehavior a2 = d2.AddChild().SetAction(Level3_Stage2_2);
+            LevelBehavior d3 = a2.AddChild().SetDelay(2.5f);
+            //14s
+            return d3;
+        }
+
+        private LevelBehavior Level3Stage3(LevelBehavior l)
+        {
+            //14s
+            LevelBehavior d0 = l.AddChild().SetDelay(0f);
+            //平台旋转
+            LevelBehavior a0 = d0.AddChild().SetAction(Level3_Stage3_0);
+            LevelBehavior d00 = a0.AddChild().SetDelay(0.5f);
+            LevelBehavior a00 = d00.AddChild().SetAction(LevelLevel3_Stage3_0_0);
+            LevelBehavior d01 = a00.AddChild().SetDelay(0.5f);
+            LevelBehavior a01 = d01.AddChild().SetAction(LevelLevel3_Stage3_0_1);
+            LevelBehavior d02 = a01.AddChild().SetDelay(0.5f);
+            LevelBehavior a02 = d02.AddChild().SetAction(LevelLevel3_Stage3_0_2);
+            //15s
+            LevelBehavior d1 = a02.AddChild().SetDelay(2.5f);
+            LevelBehavior a1 = d1.AddChild().SetAction(Level3_Stage3_1);
+            LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
+            LevelBehavior a2 = d2.AddChild().SetAction(Level3_Stage3_2);
             LevelBehavior d3 = a2.AddChild().SetDelay(0.5f);
-            LevelBehavior a3 = d3.AddChild().SetAction(Second12Action);
+            LevelBehavior a3 = d3.AddChild().SetAction(Level3_Stage3_3);
             LevelBehavior d4 = a3.AddChild().SetDelay(1f);
-            LevelBehavior a4 = d4.AddChild().SetAction(Second13Action);
-            LevelBehavior d5 = a4.AddChild().SetDelay(0.5f);
+            LevelBehavior a4 = d4.AddChild().SetAction(Level3_Stage3_4);
+            LevelBehavior d5 = a4.AddChild().SetDelay(0f);
+            //20s
             return d5;
         }
 
-        private LevelBehavior Stage3(LevelBehavior l)
+        private LevelBehavior Level3Stage4(LevelBehavior l)
         {
-            LevelBehavior d0 = l.AddChild().SetDelay(0.5f);
-            LevelBehavior a0 = d0.AddChild().SetAction(Second14Action);
+            //20s
+            LevelBehavior d0 = l.AddChild().SetDelay(1f);
+            LevelBehavior a0 = d0.AddChild().SetAction(Level3_Stage4_0);
             LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
-            LevelBehavior a1 = d1.AddChild().SetAction(Second14p5Action);
-            LevelBehavior d2 = a1.AddChild().SetDelay(1.5f);
-            LevelBehavior a2 = d2.AddChild().SetAction(Second16Action);
-            LevelBehavior d3 = a2.AddChild().SetDelay(0.5f);
-            LevelBehavior a3 = d3.AddChild().SetAction(Second16p5Action);
-            LevelBehavior d4 = a3.AddChild().SetDelay(0.5f);
-            LevelBehavior a4 = d4.AddChild().SetAction(Second17Action);
-            LevelBehavior d5 = a4.AddChild().SetDelay(0.5f);
-            LevelBehavior a5 = d5.AddChild().SetAction(Second17p5Action);
-            LevelBehavior d6 = a5.AddChild().SetDelay(1f);
-            LevelBehavior a6 = d6.AddChild().SetAction(Second18p5Action);
-            LevelBehavior d7 = a6.AddChild().SetDelay(1f);
-            return d7;
-        }
-
-        private LevelBehavior Stage4(LevelBehavior l)
-        {
-            LevelBehavior d0 = l.AddChild().SetDelay(0.5f);
-            LevelBehavior a0 = d0.AddChild().SetAction(Second20Action);
-            LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
-            LevelBehavior a1 = d1.AddChild().SetAction(Second20p5Action);
+            LevelBehavior a1 = d1.AddChild().SetAction(Level3_Stage4_1);
             LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
-            LevelBehavior a2 = d2.AddChild().SetAction(Second21Action);
+            LevelBehavior a2 = d2.AddChild().SetAction(Level3_Stage4_2);
             LevelBehavior d3 = a2.AddChild().SetDelay(0.5f);
-            LevelBehavior a3 = d3.AddChild().SetAction(Second21p5Action);
-            LevelBehavior d4 = a3.AddChild().SetDelay(0.5f);
-            LevelBehavior a4 = d4.AddChild().SetAction(Second22Action);
+            LevelBehavior a3 = d3.AddChild().SetAction(Level3_Stage4_3);
+            LevelBehavior d4 = a3.AddChild().SetDelay(1f);
+            LevelBehavior a4 = d4.AddChild().SetAction(Level3_Stage4_4);
             LevelBehavior d5 = a4.AddChild().SetDelay(0.5f);
-            LevelBehavior a5 = d5.AddChild().SetAction(Second22p5Action);
+            LevelBehavior a5 = d5.AddChild().SetAction(Level3_Stage4_5);
             LevelBehavior d6 = a5.AddChild().SetDelay(0.5f);
-            LevelBehavior a6 = d6.AddChild().SetAction(Second23Action);
+            LevelBehavior a6 = d6.AddChild().SetAction(Level3_Stage4_6);
             LevelBehavior d7 = a6.AddChild().SetDelay(0.5f);
-            LevelBehavior a7 = d7.AddChild().SetAction(Second23p5Action);
-            LevelBehavior d8 = a7.AddChild().SetDelay(0.5f);
-            LevelBehavior a8 = d8.AddChild().SetAction(Second24Action);
-            LevelBehavior d9 = a8.AddChild().SetDelay(0.25f);
-            LevelBehavior a9 = d9.AddChild().SetAction(Second24p25Action);
-            LevelBehavior d10 = a9.AddChild().SetDelay(0.25f);
-            LevelBehavior a10 = d10.AddChild().SetAction(Second24p5Action);
-            LevelBehavior d11 = a10.AddChild().SetDelay(0.25f);
-            LevelBehavior a11 = d11.AddChild().SetAction(Second24p75Action);
-            LevelBehavior d12 = a11.AddChild().SetDelay(0.25f);
-            LevelBehavior a12 = d12.AddChild().SetAction(Second25Action);
-            LevelBehavior d13 = a12.AddChild().SetDelay(0.25f);
-            LevelBehavior a13 = d13.AddChild().SetAction(Second25p25Action);
-            LevelBehavior d14 = a13.AddChild().SetDelay(0.25f);
-            LevelBehavior a14 = d14.AddChild().SetAction(Second25p5Action);
-            LevelBehavior d15 = a14.AddChild().SetDelay(0.25f);
-            LevelBehavior a15 = d15.AddChild().SetAction(Second25p75Action);
-            LevelBehavior d20 = a15.AddChild().SetDelay(0.25f);
-            LevelBehavior a20 = d20.AddChild().SetAction(Second26Action);
-            LevelBehavior d21 = a20.AddChild().SetDelay(0.25f);
-            LevelBehavior a21 = d21.AddChild().SetAction(Second26p25Action);
-            LevelBehavior d22 = a21.AddChild().SetDelay(1f);
-            LevelBehavior a22 = d22.AddChild().SetAction(Second29Action);
-            LevelBehavior d23 = a22.AddChild().SetDelay(0.5f);
-            LevelBehavior a23 = d23.AddChild().SetAction(Second29p5Action);
-            LevelBehavior d24 = a23.AddChild().SetDelay(1f);
-            LevelBehavior a24 = d24.AddChild().SetAction(Second30p5Action);
-            LevelBehavior d25 = a24.AddChild().SetDelay(0.5f);
-            return d25;
+            LevelBehavior a7 = d7.AddChild().SetAction(Level3_Stage4_7);
+            LevelBehavior d8 = a7.AddChild().SetDelay(3.5f);
+            LevelBehavior a8 = d8.AddChild().SetAction(Level3_Stage4_8);
+            //29s
+            return d8;
         }
 
-        private LevelBehavior Stage5(LevelBehavior l)
+        private LevelBehavior Level3Stage5(LevelBehavior l)
         {
-            LevelBehavior d0 = l.AddChild().SetDelay(0.5f);
-            LevelBehavior a0 = d0.AddChild().SetAction(Second31Action);
+            //29s
+            LevelBehavior d0 = l.AddChild().SetDelay(1f);
+            LevelBehavior a0 = d0.AddChild().SetAction(Level3_Stage5_0);
             LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
-            LevelBehavior a1 = d1.AddChild().SetAction(Second31p5Action);
-            LevelBehavior d2 = a1.AddChild().SetDelay(0.5f);
-            LevelBehavior a2 = d2.AddChild().SetAction(Second32Action);
-            LevelBehavior d3 = a2.AddChild().SetDelay(0.5f);
-            LevelBehavior a3 = d3.AddChild().SetAction(Second32p5Action);
-            LevelBehavior d4 = a3.AddChild().SetDelay(0.5f);
-            LevelBehavior a4 = d4.AddChild().SetAction(Second33Action);
-            LevelBehavior d5 = a4.AddChild().SetDelay(0.5f);
-            LevelBehavior a5 = d5.AddChild().SetAction(Second33p5Action);
-            LevelBehavior d6 = a5.AddChild().SetDelay(0.5f);
-            LevelBehavior a6 = d6.AddChild().SetAction(Second34Action);
-            LevelBehavior d7 = a6.AddChild().SetDelay(0.5f);
-            LevelBehavior a7 = d7.AddChild().SetAction(Second34p5Action);
-            LevelBehavior d8 = a7.AddChild().SetDelay(0.5f);
-            LevelBehavior a8 = d8.AddChild().SetAction(Second35Action);
-            LevelBehavior d9 = a8.AddChild().SetDelay(0.5f);
-            LevelBehavior a9 = d9.AddChild().SetAction(Second35p5Action);
-            LevelBehavior d10 = a9.AddChild().SetDelay(0.5f);
-            LevelBehavior a10 = d10.AddChild().SetAction(Second36Action);
-            LevelBehavior d11 = a10.AddChild().SetDelay(0.5f);
-            LevelBehavior a11 = d11.AddChild().SetAction(Second36p5Action);
-            LevelBehavior d12 = a11.AddChild().SetDelay(1f);
-            LevelBehavior a12 = d12.AddChild().SetAction(Second37p5Action);
-            LevelBehavior d13 = a12.AddChild().SetDelay(0.5f);
-            return d13;
+            LevelBehavior a1 = d1.AddChild().SetAction(Level3_Stage5_1);
+            //30.5s
+            LevelBehavior d2 = a1.AddChild().SetDelay(7.5f);
+            LevelBehavior a2 = d2.AddChild().SetAction(Level3_Stage5_2);
+            LevelBehavior d3 = a2.AddChild().SetDelay(.5f);
+            LevelBehavior a3 = d3.AddChild().SetAction(Level3_Stage5_3);
+            return a3;
         }
 
-        private LevelBehavior Stage6(LevelBehavior l)
-        {
-            LevelBehavior d0 = l.AddChild().SetDelay(0.5f);
-            LevelBehavior a3 = d0.AddChild().SetAction(Second39p5Action);
-            LevelBehavior d4 = a3.AddChild().SetDelay(0.5f);
-            LevelBehavior a4 = d4.AddChild().SetAction(Second40Action);
-            return a4;
-        }
+        #endregion
 
-        #region Operation
+        #region operation
 
         /// <summary>
-        /// 指定场上的尖刺移动
+        /// 平台移动
         /// </summary>
         /// <param name="n"></param>
-        /// <param name="t"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private void SpikeMove(int n, float t = 0f, float x = 0f, float y = 0f)
+        /// <param name="vector"></param>
+        /// <param name="timeToMove"></param>
+        /// <param name="positionEffectMode"></param>
+        /// <param name="persentageHanderEnum"></param>
+        /// <param name="endHandler"></param>
+        protected void GoundMove(int n, Vector2 vector, float timeToMove,
+            PositionEffectMode positionEffectMode = PositionEffectMode.Once,
+            PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
+            Action<PositionEffect> endHandler = null)
         {
-            Spikes[n].Move(
-                new Vector3(x, y, 0),
-                t);
+            if (n < groundList.Count)
+            {
+                groundList[n].Move(vector, timeToMove, positionEffectMode, persentageHanderEnum, endHandler);
+            }
         }
 
         /// <summary>
-        /// 闪现到指定坐标
+        /// 平台以某一点为圆心进行旋转
         /// </summary>
         /// <param name="n"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private void SpikeFlash1(int n, float x = 0f, float y = 0f)
+        /// <param name="rotation"></param>
+        /// <param name="timeToRotate"></param>
+        /// <param name="point"></param>
+        /// <param name="rotationEffectMode"></param>
+        /// <param name="persentageHanderEnum"></param>
+        /// <param name="endHandler"></param>
+        protected void GroundRotate(int n, float rotation, float timeToRotate, Vector2 point,
+            RotationEffectMode rotationEffectMode = RotationEffectMode.Once,
+            PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X)
         {
-            Spikes[n].Flash(
-                new Vector3(x + 10, y + 11, 0));
+            if (n < groundList.Count)
+            {
+                groundList[n].Rotate(rotation, timeToRotate, point + (Vector2)Location.position, rotationEffectMode,
+                    persentageHanderEnum);
+            }
         }
 
         /// <summary>
-        /// 根据向量进行闪现
+        /// 从对象池中获取尖刺，并使其移动到指定位置
         /// </summary>
-        /// <param name="n"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private void SpikeFlash2(int n, float x = 0f, float y = 0f)
+        /// <param name="originPos"></param>
+        /// <param name="v">方向</param>
+        /// <param name="timeToMove"></param>
+        /// <param name="positionEffectMode"></param>
+        /// <param name="persentageHanderEnum"></param>
+        /// <param name="endHandler"></param>
+        protected void RecycleSpikeMove(Vector2 originPos, Vector2 v, float timeToMove = 5f,
+            PositionEffectMode positionEffectMode = PositionEffectMode.Once,
+            PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
+            Action<PositionEffect> endHandler = null)
         {
-            Spikes[n].Flash(
-                new Vector3(Spikes[n].transform.position.x + x, Spikes[n].transform.position.y + y, 0));
+            Spike spike = null;
+            if (v.x < 0)
+            {
+                RecyclePool.Request(RecycleItemEnum.Spike2, (r) => { spike = r.GetMainComponent<Spike>(); });
+            }
+            else
+            {
+                RecyclePool.Request(RecycleItemEnum.Spike1, (r) => { spike = r.GetMainComponent<Spike>(); });
+            }
+
+            spike.transform.position = (Vector3)originPos + Location.position;
+            spike.Move(v * spikeMaxMoveLength, timeToMove, positionEffectMode, persentageHanderEnum,
+                endHandler);
+        }
+
+        protected void Level3SpikeMove(int n, Vector2 v, float timeToMove = 0.5f,
+            PositionEffectMode positionEffectMode = PositionEffectMode.Once,
+            PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
+            Action<PositionEffect> endHandler = null)
+        {
+            if (level3SpikeList.Count > n)
+            {
+                level3SpikeList[n].Move(v, timeToMove, positionEffectMode, persentageHanderEnum,
+                    endHandler);
+            }
+        }
+
+        protected void CreateSpike(Vector2 pos)
+        {
+            Spike spike = null;
+            RecyclePool.Request(RecycleItemEnum.Spike0, (r) => { spike = r.GetMainComponent<Spike>(); });
+            spike.transform.position = (Vector3)pos + Location.position;
+            level3SpikeList.Add(spike);
+        }
+
+        protected void RemoveSpike(int n)
+        {
+            GameObject g = level3SpikeList[n].gameObject;
+            level3SpikeList.RemoveAt(n);
+            RecyclePool.ReturnToPool(g);
         }
 
         /// <summary>
-        /// 警告尖刺出现
+        /// 在指定位置创建一个弱墙
+        /// </summary>
+        /// <param name="pos"></param>
+        protected void CreateWeakWall(Vector2 pos)
+        {
+            RecyclePool.Request(RecycleItemEnum.WeakWall, (r) =>
+            {
+                WeakWall weakWall = r.GetMainComponent<WeakWall>();
+                weakWall.transform.position = pos;
+            });
+        }
+
+        /// <summary>
+        /// 在指定位置创建一个生成激光器
+        /// </summary>
+        /// <param name="pos"></param>
+        protected GeneratingLaser CreateGeneratingLaser(Vector2 pos)
+        {
+            GeneratingLaser l = null;
+            RecyclePool.Request(RecycleItemEnum.GeneratingLaser, (r) =>
+            {
+                GeneratingLaser generatingLaser = r.GetMainComponent<GeneratingLaser>();
+                l = generatingLaser;
+                generatingLaser.transform.position = pos;
+            });
+            generatingLaserList.Add(l);
+            return l;
+        }
+
+        /// <summary>
+        /// 在指定位置创建一个生成激光器（类型1横版）
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        protected GeneratingLaser CreateGeneratingLaser1(Vector2 pos)
+        {
+            GeneratingLaser l = null;
+            RecyclePool.Request(RecycleItemEnum.GeneratingLaser1, (r) =>
+            {
+                GeneratingLaser generatingLaser = r.GetMainComponent<GeneratingLaser>();
+                l = generatingLaser;
+                generatingLaser.transform.position = pos;
+            });
+            generatingLaserList.Add(l);
+            return l;
+        }
+
+        /// <summary>
+        /// 指定生成激光器列表中的第n个激光器移动到指定位移
         /// </summary>
         /// <param name="n"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private void SpikeWarn(int n, float x = 0f, float y = 0f)
+        /// <param name="v"></param>
+        /// <param name="timeToMove"></param>
+        /// <param name="positionEffectMode"></param>
+        /// <param name="persentageHanderEnum"></param>
+        /// <param name="endHandler"></param>
+        protected void GeneratingLaserMove(int n, Vector2 v, float timeToMove = 0.5f,
+            PositionEffectMode positionEffectMode = PositionEffectMode.Once,
+            PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
+            Action<PositionEffect> endHandler = null)
+        {
+            if (n < groundList.Count)
+            {
+                generatingLaserList[n].Move(v, timeToMove, positionEffectMode, persentageHanderEnum, endHandler);
+            }
+        }
+
+        /// <summary>
+        /// 在指定位置生成一个警告提示
+        /// </summary>
+        /// <param name="pos"></param>
+        protected void GeneralWarn(Vector2 pos)
         {
             RecyclePool.Request(RecycleItemEnum.Warn, r =>
             {
                 r.GameObject.transform.position =
-                    new Vector3(x + n + 10f, y + 11f, 0);
+                    new Vector3(Location.position.x + pos.x, Location.position.y + pos.y, 0);
             });
         }
 
-        /// <summary>
-        /// 指定场上的尖刺缩放
-        /// </summary>
-        /// <param name="n"></param>
-        /// <param name="t"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private void SpikeScale(int n, float t, float x = 1f, float y = 1f)
+        #endregion
+
+        #region Stage1
+
+        private void Level3_Stage1_0()
         {
-            Spikes[n].Scale(
-                new Vector3(x, y, 1),
-                t);
+            GeneralWarn(new Vector2(10, 12));
+            GeneralWarn(new Vector2(10, 13));
+            GeneralWarn(new Vector2(10, 14));
         }
 
-        /// <summary>
-        /// 在指定位置突然出现尖刺位移，位移完成后选择是否立刻回收
-        /// </summary>
-        /// <param name="recycleItemEnum">类型</param>
-        /// <param name="originalPos">初始位置</param>
-        /// <param name="v">位移</param>
-        /// <param name="t">时间</param>
-        /// <param name="b">结束后是否消失</param>
-        private Spike RecycleSpikeMove(RecycleItemEnum recycleItemEnum, Vector2 originalPos, Vector2 v, float t,
-            bool b = true)
+        private void Level3_Stage1_1()
         {
-            Spike target = null;
-            RecyclePool.Request(recycleItemEnum, r =>
-            {
-                Spike spike = r.GetMainComponent<Spike>();
-                spike.transform.position = originalPos;
-                spike.Move(v, t, PositionEffectMode.Once, PersentageHanderEnum.X,
-                    (e) =>
-                    {
-                        if (b)
-                        {
-                            RecyclePool.ReturnToPool(spike.gameObject);
-                        }
-                        else
-                        {
-                            target = spike;
-                        }
-                    });
-            });
-            return target;
+            RecycleSpikeMove(new Vector2(10, 12), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 13), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 14), new Vector2(1, 0));
         }
 
-        private void GroundMove()
+        private void Level3_Stage1_2()
         {
+            GeneralWarn(new Vector2(28, 15));
+            GeneralWarn(new Vector2(28, 16));
+            GeneralWarn(new Vector2(28, 17));
+        }
+
+        private void Level3_Stage1_3()
+        {
+            RecycleSpikeMove(new Vector2(28, 15), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 16), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 17), new Vector2(-1, 0));
         }
 
         #endregion
 
+        #region Stage2
 
-        #region 3.5~9s
-
-        private void Second3p5Action()
+        private void Level3_Stage2_0()
         {
-            SpikeWarn(0, 0, 1);
-            SpikeWarn(14, 0, 1);
+            GoundMove(0, new Vector2(6, 6), 2f);
+            GoundMove(1, new Vector2(6, 6), 2f);
+            GoundMove(2, new Vector2(6, 6), 2f);
         }
 
-        private void Second4Action()
+        private void Level3_Stage2_1()
         {
-            SpikeWarn(1, 0, 1);
-            SpikeWarn(13, 0, 1);
-            SpikeMove(0, 0.5f, 0, 1);
-            SpikeMove(14, 0.5f, 0, 1);
+            GeneralWarn(new Vector2(10, 12));
+            GeneralWarn(new Vector2(10, 13));
+            GeneralWarn(new Vector2(10, 14));
+            GeneralWarn(new Vector2(28, 15));
+            GeneralWarn(new Vector2(28, 16));
+            GeneralWarn(new Vector2(28, 17));
+            GeneralWarn(new Vector2(28, 19));
+            GeneralWarn(new Vector2(28, 20));
+            GeneralWarn(new Vector2(28, 21));
         }
 
-        private void Second4p5Action()
+        private void Level3_Stage2_2()
         {
-            SpikeWarn(2, 0, 1);
-            SpikeWarn(12, 0, 1);
-            SpikeMove(1, 0.5f, 0, 1);
-            SpikeMove(13, 0.5f, 0, 1);
-        }
-
-        private void Second5Action()
-        {
-            SpikeWarn(3, 0, 1);
-            SpikeWarn(11, 0, 1);
-            SpikeMove(2, 0.5f, 0, 1);
-            SpikeMove(12, 0.5f, 0, 1);
-            SpikeMove(0, 0.5f, 0, -1);
-            SpikeMove(14, 0.5f, 0, -1);
-        }
-
-        private void Second5p5Action()
-        {
-            SpikeWarn(4, 0, 1);
-            SpikeWarn(10, 0, 1);
-            SpikeMove(3, 0.5f, 0, 1);
-            SpikeMove(11, 0.5f, 0, 1);
-            SpikeMove(1, 0.5f, 0, -1);
-            SpikeMove(13, 0.5f, 0, -1);
-        }
-
-        private void Second6Action()
-        {
-            SpikeWarn(5, 0, 1);
-            SpikeWarn(9, 0, 1);
-            SpikeMove(2, 0.5f, 0, -1);
-            SpikeMove(12, 0.5f, 0, -1);
-            SpikeMove(4, 0.5f, 0, 1);
-            SpikeMove(10, 0.5f, 0, 1);
-        }
-
-        private void Second6p5Action()
-        {
-            SpikeWarn(6, 0, 1);
-            SpikeWarn(8, 0, 1);
-            SpikeMove(5, 0.5f, 0, 1);
-            SpikeMove(9, 0.5f, 0, 1);
-            SpikeMove(3, 0.5f, 0, -1);
-            SpikeMove(11, 0.5f, 0, -1);
-        }
-
-        private void Second7Action()
-        {
-            SpikeWarn(7, 0, 1);
-            SpikeMove(6, 0.5f, 0, 1);
-            SpikeMove(8, 0.5f, 0, 1);
-            SpikeMove(4, 0.5f, 0, -1);
-            SpikeMove(10, 0.5f, 0, -1);
-        }
-
-        private void Second7p5Action()
-        {
-            SpikeMove(7, 0.5f, 0, 1);
-            SpikeMove(5, 0.5f, 0, -1);
-            SpikeMove(9, 0.5f, 0, -1);
-        }
-
-        private void Second8Action()
-        {
-            SpikeMove(6, 0.5f, 0, -1);
-            SpikeMove(8, 0.5f, 0, -1);
-        }
-
-        private void Second8p5Action()
-        {
-            SpikeMove(7, 0.5f, 0, -1);
+            RecycleSpikeMove(new Vector2(10, 12), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 13), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 14), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(28, 15), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 16), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 17), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 19), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 20), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 21), new Vector2(-1, 0));
         }
 
         #endregion
 
-        #region 10~13.5s
+        #region Stage3
 
-        private void Second10p5Action()
+        private void Level3_Stage3_0()
         {
-            SpikeWarn(6, 0, 1);
-            SpikeWarn(7, 0, 1);
-            SpikeWarn(8, 0, 1);
+            GroundRotate(0, 90f, 0.5f, new Vector2(17, 17));
+            GroundRotate(1, 90f, 0.5f, new Vector2(17, 17));
+            GroundRotate(2, 90f, 0.5f, new Vector2(17, 17));
+
+            CreateGeneratingLaser(new Vector2(26, 24));
+            CreateGeneratingLaser1(new Vector2(-1, 13));
+            CreateWeakWall(new Vector2(25, 16));
         }
 
-        private void Second11Action()
+        private void LevelLevel3_Stage3_0_0()
         {
-            SpikeWarn(3, 0, 1);
-            SpikeWarn(4, 0, 1);
-            SpikeWarn(10, 0, 1);
-            SpikeWarn(11, 0, 1);
-            SpikeMove(6, 0.5f, 0, 1);
-            SpikeMove(7, 0.5f, 0, 1);
-            SpikeMove(8, 0.5f, 0, 1);
+            CreateSpike(new Vector2(17, 18));
         }
 
-        private void Second11p5Action()
+        private void LevelLevel3_Stage3_0_1()
         {
-            SpikeWarn(0, 0, 1);
-            SpikeWarn(1, 0, 1);
-            SpikeWarn(13, 0, 1);
-            SpikeWarn(14, 0, 1);
-            SpikeMove(10, 0.5f, 0, 1);
-            SpikeMove(11, 0.5f, 0, 1);
-            SpikeMove(3, 0.5f, 0, 1);
-            SpikeMove(4, 0.5f, 0, 1);
+            GeneralWarn(new Vector2(17, 19));
         }
 
-        private void Second12Action()
+        private void LevelLevel3_Stage3_0_2()
         {
-            SpikeMove(0, 0.5f, 0, 1);
-            SpikeMove(1, 0.5f, 0, 1);
-            SpikeMove(13, 0.5f, 0, 1);
-            SpikeMove(14, 0.5f, 0, 1);
+            Level3SpikeMove(0, new Vector2(0, 1), 0.5f);
         }
 
-        private void Second13Action()
+        private void Level3_Stage3_1()
         {
-            SpikeMove(0, 1f, 6, 0);
-            SpikeMove(1, 1f, 6, 0);
-            SpikeMove(3, 0.5f, 0, -1);
-            SpikeMove(4, 0.5f, 0, -1);
-            SpikeMove(6, 0.5f, 0, -1);
-            SpikeMove(7, 0.5f, 0, -1);
-            SpikeMove(8, 0.5f, 0, -1);
-            SpikeMove(10, 0.5f, 0, -1);
-            SpikeMove(11, 0.5f, 0, -1);
-            SpikeMove(13, 1f, -6, 0);
-            SpikeMove(14, 1f, 0 - 6, 0);
+            GeneratingLaserMove(0, new Vector2(0, -1), 0.5f);
+            GeneratingLaserMove(1, new Vector2(1, 0));
         }
 
-        #endregion
-
-        #region 14~19s
-
-        private void Second14Action()
+        private void Level3_Stage3_2()
         {
-            SpikeWarn(2, 0, 1);
-            SpikeWarn(3, 0, 1);
-            SpikeWarn(4, 0, 1);
-            SpikeWarn(5, 0, 1);
-            SpikeWarn(9, 0, 1);
-            SpikeWarn(10, 0, 1);
-            SpikeWarn(11, 0, 1);
-            SpikeWarn(12, 0, 1);
+            GeneralWarn(new Vector2(26, 22));
+            GeneralWarn(new Vector2(25, 22));
+            GeneralWarn(new Vector2(27, 22));
+            GeneralWarn(new Vector2(1, 12));
+            GeneralWarn(new Vector2(1, 13));
+            GeneralWarn(new Vector2(1, 14));
         }
 
-        private void Second14p5Action()
+        private void Level3_Stage3_3()
         {
-            SpikeMove(2, 0.5f, 0, 1);
-            SpikeMove(3, 0.5f, 0, 1);
-            SpikeMove(4, 0.5f, 0, 1);
-            SpikeMove(5, 0.5f, 0, 1);
-            SpikeMove(9, 0.5f, 0, 1);
-            SpikeMove(10, 0.5f, 0, 1);
-            SpikeMove(11, 0.5f, 0, 1);
-            SpikeMove(12, 0.5f, 0, 1);
+            Level3SpikeMove(0, new Vector2(0, -1));
+            generatingLaserList[0].Shot(ShotDirectionEnum.down);
+            generatingLaserList[1].Shot(ShotDirectionEnum.right);
         }
 
-        private void Second16Action()
+        private void Level3_Stage3_4()
         {
-        }
-
-        private void Second16p5Action()
-        {
-            SpikeMove(2, 1f, -2, 0);
-            SpikeMove(3, 1f, -2, 0);
-            SpikeMove(4, 1f, -2, 0);
-            SpikeMove(5, 1f, -2, 0);
-            SpikeMove(9, 1f, 2, 0);
-            SpikeMove(10, 1f, 2, 0);
-            SpikeMove(11, 1f, 2, 0);
-            SpikeMove(12, 1f, 2, 0);
-            SpikeMove(0, 0.5f, 0, -1);
-            SpikeMove(1, 0.5f, 0, -1);
-            SpikeMove(13, 0.5f, 0, -1);
-            SpikeMove(14, 0.5f, 0, -1);
-        }
-
-        private void Second17Action()
-        {
-        }
-
-        private void Second17p5Action()
-        {
-        }
-
-        private void Second18p5Action()
-        {
-            SpikeMove(2, 0.5f, 0, -1);
-            SpikeMove(3, 0.5f, 0, -1);
-            SpikeMove(4, 0.5f, 0, -1);
-            SpikeMove(5, 0.5f, 0, -1);
-            SpikeMove(9, 0.5f, 0, -1);
-            SpikeMove(10, 0.5f, 0, -1);
-            SpikeMove(11, 0.5f, 0, -1);
-            SpikeMove(12, 0.5f, 0, -1);
+            RemoveSpike(0);
+            GeneratingLaserMove(0, new Vector2(0, 1), 0.5f);
+            GroundRotate(0, -90f, 0.5f, new Vector2(17, 17));
+            GroundRotate(1, -90f, 0.5f, new Vector2(17, 17));
+            GroundRotate(2, -90f, 0.5f, new Vector2(17, 17));
         }
 
         #endregion
 
+        #region Stage4
 
-        #region 20~31s
-
-        private void Second20Action()
+        private void Level3_Stage4_0()
         {
-            SpikeFlash1(0, 0);
-            SpikeFlash1(1, 1);
-            SpikeFlash1(2, 2);
-            SpikeFlash1(3, 3);
-            SpikeFlash1(4, 4);
-            SpikeFlash1(5, 5);
-            SpikeFlash1(6, 6);
-            SpikeFlash1(7, 7);
-            SpikeFlash1(8, 8);
-            SpikeFlash1(9, 9);
-            SpikeFlash1(10, 10);
-            SpikeFlash1(11, 11);
-            SpikeFlash1(12, 12);
-            SpikeFlash1(13, 13);
-            SpikeFlash1(14, 14);
-            SpikeWarn(0, 0, 1);
-            SpikeWarn(14, 0, 1);
+            Debug.Log("Level3_Stage4_0");
+            CreateSpike(new Vector2(16, 17));
+            CreateSpike(new Vector2(17, 17));
+            CreateSpike(new Vector2(18, 17));
+            CreateSpike(new Vector2(25, 14));
+            CreateSpike(new Vector2(26, 14));
+            CreateSpike(new Vector2(27, 14));
+            GeneralWarn(new Vector2(16, 18));
         }
 
-        private void Second20p5Action()
+        private void Level3_Stage4_1()
         {
-            SpikeWarn(1, 0, 1);
-            SpikeWarn(13, 0, 1);
-            SpikeMove(0, 0.5f, 0, 1);
-            SpikeMove(14, 0.5f, 0, 1);
+            GeneralWarn(new Vector2(17, 18));
+            Level3SpikeMove(0, new Vector2(0, 1), 0.5f);
         }
 
-        private void Second21Action()
+        private void Level3_Stage4_2()
         {
-            SpikeWarn(2, 0, 1);
-            SpikeWarn(12, 0, 1);
-            SpikeMove(1, 0.5f, 0, 1);
-            SpikeMove(13, 0.5f, 0, 1);
+            GeneralWarn(new Vector2(18, 18));
+            Level3SpikeMove(1, new Vector2(0, 1), 0.5f);
         }
 
-        private void Second21p5Action()
+        private void Level3_Stage4_3()
         {
-            SpikeWarn(3, 0, 1);
-            SpikeWarn(11, 0, 1);
-            SpikeMove(2, 0.5f, 0, 1);
-            SpikeMove(12, 0.5f, 0, 1);
+            Level3SpikeMove(2, new Vector2(0, 1), 0.5f);
         }
 
-        private void Second22Action()
+        private void Level3_Stage4_4()
         {
-            SpikeWarn(4, 0, 1);
-            SpikeWarn(10, 0, 1);
-            SpikeMove(3, 0.5f, 0, 1);
-            SpikeMove(11, 0.5f, 0, 1);
-            SpikeMove(14, 0.5f, 0, -1);
-            SpikeMove(0, 0.5f, 0, -1);
+            GeneralWarn(new Vector2(25, 15));
         }
 
-        private void Second22p5Action()
+        private void Level3_Stage4_5()
         {
-            SpikeWarn(5, 0, 1);
-            SpikeWarn(9, 0, 1);
-            SpikeMove(4, 0.5f, 0, 1);
-            SpikeMove(10, 0.5f, 0, 1);
-            SpikeMove(13, 0.5f, 0, -1);
-            SpikeMove(1, 0.5f, 0, -1);
+            GeneralWarn(new Vector2(26, 15));
+
+            Level3SpikeMove(3, new Vector2(0, 1), 0.5f);
         }
 
-        private void Second23Action()
+        private void Level3_Stage4_6()
         {
-            SpikeWarn(6, 0, 1);
-            SpikeWarn(8, 0, 1);
-            SpikeMove(5, 0.5f, 0, 1);
-            SpikeMove(9, 0.5f, 0, 1);
-            SpikeMove(12, 0.5f, 0, -1);
-            SpikeMove(2, 0.5f, 0, -1);
+            GeneralWarn(new Vector2(27, 15));
+
+            Level3SpikeMove(4, new Vector2(0, 1), 0.5f);
         }
 
-        private void Second23p5Action()
+        private void Level3_Stage4_7()
         {
-            SpikeWarn(7, 0, 1);
-            SpikeMove(6, 0.5f, 0, 1);
-            SpikeMove(8, 0.5f, 0, 1);
-            SpikeMove(11, 0.5f, 0, -1);
-            SpikeMove(3, 0.5f, 0, -1);
+            Level3SpikeMove(5, new Vector2(0, 1), 0.5f);
         }
 
-        private void Second24Action()
+        private void Level3_Stage4_8()
         {
-            SpikeWarn(0, 0, 1);
-            SpikeWarn(14, 0, 1);
-            SpikeMove(7, 0.5f, 0, 1);
-            SpikeMove(10, 0.5f, 0, -1);
-            SpikeMove(4, 0.5f, 0, -1);
-        }
-
-        private void Second24p25Action()
-        {
-            SpikeWarn(1, 0, 1);
-            SpikeWarn(13, 0, 1);
-        }
-
-        private void Second24p5Action()
-        {
-            SpikeWarn(2, 0, 1);
-            SpikeWarn(12, 0, 1);
-            SpikeMove(0, .5f, 0, 1);
-            SpikeMove(14, .5f, 0, 1);
-            SpikeMove(9, 0.5f, 0, -1);
-            SpikeMove(5, 0.5f, 0, -1);
-        }
-
-        private void Second24p75Action()
-        {
-            SpikeWarn(3, 0, 1);
-            SpikeWarn(11, 0, 1);
-            SpikeMove(1, .5f, 0, 1);
-            SpikeMove(13, .5f, 0, 1);
-        }
-
-        private void Second25Action()
-        {
-            SpikeWarn(4, 0, 1);
-            SpikeWarn(10, 0, 1);
-            SpikeMove(2, .5f, 0, 1);
-            SpikeMove(12, .5f, 0, 1);
-            SpikeMove(8, 0.5f, 0, -1);
-            SpikeMove(6, 0.5f, 0, -1);
-            SpikeMove(0, 0.5f, 0, -1);
-        }
-
-        private void Second25p25Action()
-        {
-            SpikeWarn(5, 0, 1);
-            SpikeWarn(9, 0, 1);
-            SpikeMove(3, .5f, 0, 1);
-            SpikeMove(11, .5f, 0, 1);
-        }
-
-        private void Second25p5Action()
-        {
-            SpikeWarn(6, 0, 1);
-            SpikeMove(4, .5f, 0, 1);
-            SpikeMove(10, .5f, 0, 1);
-            SpikeMove(7, 0.5f, 0, -1);
-        }
-
-        private void Second25p75Action()
-        {
-            SpikeWarn(7, 0, 1);
-            SpikeMove(5, .5f, 0, 1);
-            SpikeMove(9, .5f, 0, 1);
-        }
-
-        private void Second26Action()
-        {
-            SpikeMove(6, .5f, 0, 1);
-        }
-
-        private void Second26p25Action()
-        {
-            SpikeMove(7, 0.5f, 0, 1);
-        }
-
-
-        private void Second29Action()
-        {
-            SpikeWarn(8, 0, 1);
-        }
-
-        private void Second29p5Action()
-        {
-            SpikeMove(8, 0.5f, 0, 1);
-        }
-
-        private void Second30p5Action()
-        {
-            SpikeMove(8, 0.5f, 0, -1);
-            SpikeMove(1, 0.5f, 0, -1);
-            SpikeMove(2, 0.5f, 0, -1);
-            SpikeMove(3, 0.5f, 0, -1);
-            SpikeMove(4, 0.5f, 0, -1);
-            SpikeMove(5, 0.5f, 0, -1);
-            SpikeMove(6, 0.5f, 0, -1);
-            SpikeMove(7, 0.5f, 0, -1);
-            SpikeMove(9, 0.5f, 0, -1);
-            SpikeMove(10, 0.5f, 0, -1);
-            SpikeMove(11, 0.5f, 0, -1);
-            SpikeMove(12, 0.5f, 0, -1);
-            SpikeMove(13, 0.5f, 0, -1);
-            SpikeMove(14, 0.5f, 0, -1);
+            Level3SpikeMove(0, new Vector2(0, -1), 0.5f);
+            Level3SpikeMove(1, new Vector2(0, -1), 0.5f);
+            Level3SpikeMove(2, new Vector2(0, -1), 0.5f);
+            Level3SpikeMove(3, new Vector2(0, -1), 0.5f);
+            Level3SpikeMove(4, new Vector2(0, -1), 0.5f);
+            Level3SpikeMove(5, new Vector2(0, -1), 0.5f);
         }
 
         #endregion
 
-        #region 31~38s
+        #region Stage5
 
-        private void Second31Action()
+        private void Level3_Stage5_0()
         {
-            SpikeWarn(5, 0, 1);
-            SpikeWarn(6, 0, 1);
-            SpikeWarn(7, 0, 1);
-            SpikeWarn(8, 0, 1);
-            SpikeWarn(9, 0, 1);
+            GeneralWarn(new Vector2(10, 12));
+            GeneralWarn(new Vector2(10, 13));
+            GeneralWarn(new Vector2(10, 14));
+            GeneralWarn(new Vector2(10, 17));
+            GeneralWarn(new Vector2(10, 19));
+            GeneralWarn(new Vector2(10, 20));
+            GeneralWarn(new Vector2(10, 21));
         }
 
-        private void Second31p5Action()
+        private void Level3_Stage5_1()
         {
-            SpikeMove(5, 0.5f, 0, 1);
-            SpikeMove(6, 0.5f, 0, 1);
-            SpikeMove(7, 0.5f, 0, 1);
-            SpikeMove(8, 0.5f, 0, 1);
-            SpikeMove(9, 0.5f, 0, 1);
+            RecycleSpikeMove(new Vector2(10, 12), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 13), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 14), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 17), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 19), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 20), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 21), new Vector2(1, 0));
         }
 
-        private void Second32Action()
+        private void Level3_Stage5_2()
         {
-            SpikeWarn(0, 0, 1);
-            SpikeWarn(1, 0, 1);
-            SpikeWarn(2, 0, 1);
-            SpikeWarn(3, 0, 1);
-            SpikeWarn(4, 0, 1);
+            GeneralWarn(new Vector2(28, 12));
+            GeneralWarn(new Vector2(28, 13));
+            GeneralWarn(new Vector2(28, 14));
+            GeneralWarn(new Vector2(28, 15));
+            GeneralWarn(new Vector2(28, 16));
+            GeneralWarn(new Vector2(28, 17));
         }
 
-        private void Second32p5Action()
+        private void Level3_Stage5_3()
         {
-            SpikeMove(0, 0.5f, 0, 1);
-            SpikeMove(1, 0.5f, 0, 1);
-            SpikeMove(2, 0.5f, 0, 1);
-            SpikeMove(3, 0.5f, 0, 1);
-            SpikeMove(4, 0.5f, 0, 1);
-            SpikeMove(5, 0.5f, 0, -1);
-            SpikeMove(6, 0.5f, 0, -1);
-            SpikeMove(7, 0.5f, 0, -1);
-            SpikeMove(8, 0.5f, 0, -1);
-            SpikeMove(9, 0.5f, 0, -1);
-        }
-
-        private void Second33Action()
-        {
-            SpikeWarn(10, 0, 1);
-            SpikeWarn(11, 0, 1);
-            SpikeWarn(12, 0, 1);
-            SpikeWarn(13, 0, 1);
-            SpikeWarn(14, 0, 1);
-        }
-
-        private void Second33p5Action()
-        {
-            SpikeMove(10, 0.5f, 0, 1);
-            SpikeMove(11, 0.5f, 0, 1);
-            SpikeMove(12, 0.5f, 0, 1);
-            SpikeMove(13, 0.5f, 0, 1);
-            SpikeMove(14, 0.5f, 0, 1);
-            SpikeMove(0, 0.5f, 0, -1);
-            SpikeMove(1, 0.5f, 0, -1);
-            SpikeMove(2, 0.5f, 0, -1);
-            SpikeMove(3, 0.5f, 0, -1);
-            SpikeMove(4, 0.5f, 0, -1);
-        }
-
-        private void Second34Action()
-        {
-            SpikeWarn(5, 0, 1);
-            SpikeWarn(6, 0, 1);
-            SpikeWarn(7, 0, 1);
-            SpikeWarn(8, 0, 1);
-            SpikeWarn(9, 0, 1);
-        }
-
-        private void Second34p5Action()
-        {
-            SpikeMove(5, 0.5f, 0, 1);
-            SpikeMove(6, 0.5f, 0, 1);
-            SpikeMove(7, 0.5f, 0, 1);
-            SpikeMove(8, 0.5f, 0, 1);
-            SpikeMove(9, 0.5f, 0, 1);
-            SpikeMove(10, 0.5f, 0, -1);
-            SpikeMove(11, 0.5f, 0, -1);
-            SpikeMove(12, 0.5f, 0, -1);
-            SpikeMove(13, 0.5f, 0, -1);
-            SpikeMove(14, 0.5f, 0, -1);
-        }
-
-        private void Second35Action()
-        {
-            SpikeWarn(0, 0, 1);
-            SpikeWarn(1, 0, 1);
-            SpikeWarn(2, 0, 1);
-            SpikeWarn(3, 0, 1);
-            SpikeWarn(4, 0, 1);
-        }
-
-        private void Second35p5Action()
-        {
-            SpikeMove(0, 0.5f, 0, 1);
-            SpikeMove(1, 0.5f, 0, 1);
-            SpikeMove(2, 0.5f, 0, 1);
-            SpikeMove(3, 0.5f, 0, 1);
-            SpikeMove(4, 0.5f, 0, 1);
-            SpikeMove(5, 0.5f, 0, -1);
-            SpikeMove(6, 0.5f, 0, -1);
-            SpikeMove(7, 0.5f, 0, -1);
-            SpikeMove(8, 0.5f, 0, -1);
-            SpikeMove(9, 0.5f, 0, -1);
-        }
-
-        private void Second36Action()
-        {
-            SpikeWarn(10, 0, 1);
-            SpikeWarn(11, 0, 1);
-            SpikeWarn(12, 0, 1);
-            SpikeWarn(13, 0, 1);
-            SpikeWarn(14, 0, 1);
-        }
-
-        private void Second36p5Action()
-        {
-            SpikeMove(10, 0.5f, 0, 1);
-            SpikeMove(11, 0.5f, 0, 1);
-            SpikeMove(12, 0.5f, 0, 1);
-            SpikeMove(13, 0.5f, 0, 1);
-            SpikeMove(14, 0.5f, 0, 1);
-            SpikeMove(0, 0.5f, 0, -1);
-            SpikeMove(1, 0.5f, 0, -1);
-            SpikeMove(2, 0.5f, 0, -1);
-            SpikeMove(3, 0.5f, 0, -1);
-            SpikeMove(4, 0.5f, 0, -1);
-        }
-
-        private void Second37p5Action()
-        {
-            SpikeMove(10, 0.5f, 0, -1);
-            SpikeMove(11, 0.5f, 0, -1);
-            SpikeMove(12, 0.5f, 0, -1);
-            SpikeMove(13, 0.5f, 0, -1);
-            SpikeMove(14, 0.5f, 0, -1);
-        }
-
-        #endregion
-
-        #region 38~42s
-
-        private void Second39p5Action()
-        {
-            SpikeWarn(0, 0, 1);
-            SpikeWarn(1, 0, 1);
-            SpikeWarn(2, 0, 1);
-            SpikeWarn(3, 0, 1);
-            SpikeWarn(4, 0, 1);
-            SpikeWarn(10, 0, 1);
-            SpikeWarn(11, 0, 1);
-            SpikeWarn(12, 0, 1);
-            SpikeWarn(13, 0, 1);
-            SpikeWarn(14, 0, 1);
-            SpikeFlash2(7, 0, -4);
-            SpikeScale(7, 0.5f, 2, 2);
-        }
-
-        private void Second40Action()
-        {
-            SpikeMove(0, 2f, 0, 6);
-            SpikeMove(1, 2f, 0, 6);
-            SpikeMove(2, 2f, 0, 6);
-            SpikeMove(3, 2f, 0, 6);
-            SpikeMove(4, 2f, 0, 6);
-            SpikeMove(7, 2f, 0, 10);
-            SpikeMove(10, 2f, 0, 6);
-            SpikeMove(11, 2f, 0, 6);
-            SpikeMove(12, 2f, 0, 6);
-            SpikeMove(13, 2f, 0, 6);
-            SpikeMove(14, 2f, 0, 6);
+            RecycleSpikeMove(new Vector2(28, 12), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 13), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 14), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 15), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 16), new Vector2(-1, 0));
+            RecycleSpikeMove(new Vector2(28, 17), new Vector2(-1, 0));
         }
 
         #endregion

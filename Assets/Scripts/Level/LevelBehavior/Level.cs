@@ -13,7 +13,7 @@ namespace Game.Level
         private Action action;
         private bool condition = true;
         private bool isFinish = false;
-        public float Delay;
+        private float Delay;
 
         public LevelBehavior OnFixedUpdate()
         {
