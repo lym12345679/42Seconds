@@ -49,8 +49,10 @@ namespace Game.Level
 
         private LevelBehavior Level3Stage0(LevelBehavior l)
         {
-            LevelBehavior d0 = l.AddChild().SetDelay(3f);
-            LevelBehavior a0 = d0.AddChild().SetAction(Level3_Stage1_0);
+            LevelBehavior d0 = l.AddChild().SetDelay(2f);
+            LevelBehavior a00 = d0.AddChild().SetAction(Level3_Stage1_0_0);
+            LevelBehavior d00 = a00.AddChild().SetDelay(1f);
+            LevelBehavior a0 = d00.AddChild().SetAction(Level3_Stage1_0);
             LevelBehavior d1 = a0.AddChild().SetDelay(0.5f);
             LevelBehavior a1 = d1.AddChild().SetAction(Level3_Stage1_1);
             LevelBehavior d2 = a1.AddChild().SetDelay(2.5f);
@@ -156,7 +158,7 @@ namespace Game.Level
         /// <param name="positionEffectMode"></param>
         /// <param name="persentageHanderEnum"></param>
         /// <param name="endHandler"></param>
-        protected void GoundMove(int n, Vector2 vector, float timeToMove,
+        protected void GroundMove(int n, Vector2 vector, float timeToMove,
             PositionEffectMode positionEffectMode = PositionEffectMode.Once,
             PersentageHanderEnum persentageHanderEnum = PersentageHanderEnum.X,
             Action<PositionEffect> endHandler = null)
@@ -329,6 +331,13 @@ namespace Game.Level
 
         #region Stage1
 
+        private void Level3_Stage1_0_0()
+        {
+            GroundMove(3, new Vector2(9, 3), 1f);
+            GroundMove(4, new Vector2(9, 3), 1f);
+            GroundMove(5, new Vector2(9, 3), 1f);
+        }
+
         private void Level3_Stage1_0()
         {
             GeneralWarn(new Vector2(10, 12));
@@ -363,9 +372,9 @@ namespace Game.Level
 
         private void Level3_Stage2_0()
         {
-            GoundMove(0, new Vector2(6, 6), 2f);
-            GoundMove(1, new Vector2(6, 6), 2f);
-            GoundMove(2, new Vector2(6, 6), 2f);
+            GroundMove(0, new Vector2(6, 6), 2f);
+            GroundMove(1, new Vector2(6, 6), 2f);
+            GroundMove(2, new Vector2(6, 6), 2f);
         }
 
         private void Level3_Stage2_1()
@@ -400,18 +409,18 @@ namespace Game.Level
 
         private void Level3_Stage3_0()
         {
-            GroundRotate(0, 90f, 0.5f, new Vector2(17, 17));
-            GroundRotate(1, 90f, 0.5f, new Vector2(17, 17));
-            GroundRotate(2, 90f, 0.5f, new Vector2(17, 17));
+            GroundRotate(0, -90f, 0.5f, new Vector2(17, 17));
+            GroundRotate(1, -90f, 0.5f, new Vector2(17, 17));
+            GroundRotate(2, -90f, 0.5f, new Vector2(17, 17));
 
             CreateGeneratingLaser(new Vector2(26, 24));
             CreateGeneratingLaser1(new Vector2(-1, 13));
-            CreateWeakWall(new Vector2(25, 16));
+            CreateWeakWall(new Vector2(25, 19));
         }
 
         private void LevelLevel3_Stage3_0_0()
         {
-            CreateSpike(new Vector2(17, 18));
+            CreateSpike(new Vector2(16.8f, 18));
         }
 
         private void LevelLevel3_Stage3_0_1()
@@ -451,9 +460,10 @@ namespace Game.Level
         {
             RemoveSpike(0);
             GeneratingLaserMove(0, new Vector2(0, 1), 0.5f);
-            GroundRotate(0, -90f, 0.5f, new Vector2(17, 17));
-            GroundRotate(1, -90f, 0.5f, new Vector2(17, 17));
-            GroundRotate(2, -90f, 0.5f, new Vector2(17, 17));
+            GeneratingLaserMove(1, new Vector2(-1, 0));
+            GroundRotate(0, 90f, 0.5f, new Vector2(17, 17));
+            GroundRotate(1, 90f, 0.5f, new Vector2(17, 17));
+            GroundRotate(2, 90f, 0.5f, new Vector2(17, 17));
         }
 
         #endregion
@@ -497,14 +507,12 @@ namespace Game.Level
         private void Level3_Stage4_5()
         {
             GeneralWarn(new Vector2(26, 15));
-
             Level3SpikeMove(3, new Vector2(0, 1), 0.5f);
         }
 
         private void Level3_Stage4_6()
         {
             GeneralWarn(new Vector2(27, 15));
-
             Level3SpikeMove(4, new Vector2(0, 1), 0.5f);
         }
 
@@ -536,6 +544,12 @@ namespace Game.Level
             GeneralWarn(new Vector2(10, 19));
             GeneralWarn(new Vector2(10, 20));
             GeneralWarn(new Vector2(10, 21));
+            RemoveSpike(5);
+            RemoveSpike(4);
+            RemoveSpike(3);
+            RemoveSpike(2);
+            RemoveSpike(1);
+            RemoveSpike(0);
         }
 
         private void Level3_Stage5_1()

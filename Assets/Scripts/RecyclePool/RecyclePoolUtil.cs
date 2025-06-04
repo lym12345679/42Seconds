@@ -24,7 +24,6 @@ namespace Game.Recycle
                 isRigister = true;
                 SetRigisterAction();
             }
-
             MizukiTool.RecyclePool.RecyclePoolUtil.Request(id, hander, parent);
         }
 

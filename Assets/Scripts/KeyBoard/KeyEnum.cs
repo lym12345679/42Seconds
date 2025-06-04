@@ -13,6 +13,7 @@ namespace Game.KeyBoard
         Jump,
         Reset,
         LeftShift,
-        ESC
+        ESC,
+        MouseRight
     }
 }

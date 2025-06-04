@@ -1,4 +1,5 @@
 using System;
+using Game.KeyBoard;
 using Game.Level;
 using Game.Traps;
 using Unity.VisualScripting;
@@ -66,7 +67,8 @@ public class PlayerController : MonoBehaviour
             OnPlayerJumpInputed();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isSprinting == false)
+        if ((KeyboardSet.IsKeyDown(KeyEnum.LeftShift) || KeyboardSet.IsKeyDown(KeyEnum.MouseRight)) && isSprinting ==
+            false)
         {
             OnPlayerSprintInputed();
         }

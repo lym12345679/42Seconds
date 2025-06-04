@@ -16,6 +16,7 @@ namespace Game.Level
         private float levelMaxTime = 42f; // 关卡最大时间，单位为秒
         private bool isGamePlaying = true; // 游戏是否正在进行
         private bool isGameLose = false;
+        private bool isGameWin = false;
         public SceneType CurrentSceneType = SceneType.Level1; // 当前场景类型
         public SceneType NextLevel = SceneType.Level2; // 下一个关卡场景类型
         public MainPlotEnum FailedCG;
@@ -92,12 +93,19 @@ namespace Game.Level
                 return;
             }
 
+            isGameWin = true; // 设置游戏为胜利状态
             PlotDict.Instance.TryGetPlot(WinCG, out TextAsset textAsset);
             TextShowUI.Open(new TextShowUIMessage(textAsset, () => { GamePlayManager.LoadScene(NextLevel); }));
         }
 
         public virtual void OnlevelFailed()
         {
+            if (isGameWin)
+            {
+                return;
+            }
+
+            isGameLose = true; // 设置游戏为失败状态
             PlotDict.Instance.TryGetPlot(FailedCG, out TextAsset textAsset);
             TextShowUI.Open(new TextShowUIMessage(textAsset, () => { StartCoroutine(PauseDelay()); }));
         }
@@ -107,7 +115,7 @@ namespace Game.Level
         public void OnPlayerDead()
         {
             OnlevelFailed();
-            isGameLose = true; // 设置游戏为失败状态
+
             Debug.Log("玩家死亡，游戏暂停！"); // 这里可以添加玩家死亡的逻辑
         }
 

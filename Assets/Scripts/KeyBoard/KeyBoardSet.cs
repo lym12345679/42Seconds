@@ -17,6 +17,7 @@ namespace Game.KeyBoard
             { KeyEnum.ESC, KeyCode.Escape },
             { KeyEnum.LeftShift, KeyCode.LeftShift },
             { KeyEnum.Reset, KeyCode.R },
+            { KeyEnum.MouseRight, KeyCode.Mouse1 }
         };
 
         public static void ChangeKey(KeyEnum key, KeyCode keyCode)
