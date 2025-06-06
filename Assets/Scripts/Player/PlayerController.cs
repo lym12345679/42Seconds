@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    public delegate void TrapDelegate(PlayerController p);
+
     private int direction = 1; // 1表示向右，-1表示向左
 
     //冲刺相关数据
@@ -20,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private readonly float sprintTick = 0.1f; // 冲刺持续时间
     private float currentSprintTick = 0f; // 当前冲刺计时
     private readonly float sprintCooldownTick = 0.5f; // 冲刺冷却时间
-
+    public TrapDelegate TrapDe = (p) => { }; // 冲刺事件
     private float currentSprintCooldownTick = 0f; // 当前冲刺冷却计时
 
     //跳跃相关数据
@@ -37,6 +39,11 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        Rigister();
+    }
+
     void Update()
     {
         CheckKeyInputs();
@@ -51,6 +58,11 @@ public class PlayerController : MonoBehaviour
 
         CheckJumpCondition();
         SprintAction();
+    }
+
+    private void Rigister()
+    {
+        LevelManager.Instance.RigisterPlayer(this.transform);
     }
 
     #region 按键检测
@@ -201,7 +213,9 @@ public class PlayerController : MonoBehaviour
             return; // 如果没有剩余冲刺次数，则不执行冲刺
         }
 
+
         sprintDirection = direction; // 设置冲刺方向
+        TrapDe?.Invoke(this);
         SetSprintState(true);
     }
 
@@ -301,6 +315,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Trap"))
+        {
+            OnTrapExit(other);
+        }
+    }
+
     private void OnTrapEnter(Collision2D other, Vector2 collisionPoint)
     {
         Trap trap = other.gameObject.GetComponent<Trap>();
@@ -317,6 +339,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTrapExit(Collision2D other)
+    {
+        Trap trap = other.gameObject.GetComponent<Trap>();
+        trap.OnPlayerExit(this);
+    }
 
     private void OnGroundEnter(Collision2D other, Vector2 collisionPoint)
     {

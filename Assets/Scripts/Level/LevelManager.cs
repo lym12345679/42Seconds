@@ -3,6 +3,7 @@ using System.Collections;
 using Game.Instance;
 using Game.KeyBoard;
 using Game.Plot;
+using Game.Recycle;
 using Game.Scene;
 using Game.UI;
 using Unity.VisualScripting;
@@ -21,6 +22,7 @@ namespace Game.Level
         public SceneType NextLevel = SceneType.Level2; // 下一个关卡场景类型
         public MainPlotEnum FailedCG;
         public MainPlotEnum WinCG;
+        private Transform playerTransform;
 
         private void Start()
         {
@@ -123,6 +125,27 @@ namespace Game.Level
         {
             yield return new WaitForSeconds(1f); // 等待1秒
             FailedUI.Open("");
+        }
+
+        public void RigisterPlayer(Transform player)
+        {
+            if (player == null)
+            {
+                Debug.LogError("Player transform is null!");
+                return;
+            }
+
+            playerTransform = player; // 注册玩家的Transform
+        }
+
+        public Transform GetPlayerTransform()
+        {
+            if (ReferenceEquals(playerTransform, null))
+            {
+                return null;
+            }
+
+            return playerTransform; // 返回玩家的Transform
         }
 
         #endregion

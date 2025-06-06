@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Game.Level
 {
-    public class LevelThree : LevelTwo
+    public class LevelFour : LevelTwo
     {
         private LevelBehavior level3Behavior = new LevelBehavior();
         public List<Ground> groundList = new List<Ground>();
@@ -352,7 +352,9 @@ namespace Game.Level
             GeneralWarn(new Vector2(10, 12));
             GeneralWarn(new Vector2(10, 13));
             GeneralWarn(new Vector2(10, 14));
-            //GeneralWarn(new Vector2(10, 15));
+            GeneralWarn(new Vector2(10, 15));
+            GeneralWarn(new Vector2(10, 16));
+            GeneralWarn(new Vector2(10, 17));
             CreateWeakWall(new Vector2(25, 19));
         }
 
@@ -361,7 +363,9 @@ namespace Game.Level
             RecycleSpikeMove(new Vector2(10, 12), new Vector2(1, 0));
             RecycleSpikeMove(new Vector2(10, 13), new Vector2(1, 0));
             RecycleSpikeMove(new Vector2(10, 14), new Vector2(1, 0));
-            //RecycleSpikeMove(new Vector2(10, 15), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 15), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 16), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 17), new Vector2(1, 0));
         }
 
         private void Level3_Stage1_2()
@@ -391,7 +395,7 @@ namespace Game.Level
 
         private void Level3_Stage2_1()
         {
-            /*GeneralWarn(new Vector2(10, 12));
+            GeneralWarn(new Vector2(10, 12));
             GeneralWarn(new Vector2(10, 13));
             GeneralWarn(new Vector2(10, 14));
             GeneralWarn(new Vector2(28, 15));
@@ -399,12 +403,12 @@ namespace Game.Level
             GeneralWarn(new Vector2(28, 17));
             GeneralWarn(new Vector2(28, 19));
             GeneralWarn(new Vector2(28, 20));
-            GeneralWarn(new Vector2(28, 21));*/
+            GeneralWarn(new Vector2(28, 21));
         }
 
         private void Level3_Stage2_2()
         {
-            /*RecycleSpikeMove(new Vector2(10, 12), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 12), new Vector2(1, 0));
             RecycleSpikeMove(new Vector2(10, 13), new Vector2(1, 0));
             RecycleSpikeMove(new Vector2(10, 14), new Vector2(1, 0));
             RecycleSpikeMove(new Vector2(28, 15), new Vector2(-1, 0));
@@ -412,7 +416,7 @@ namespace Game.Level
             RecycleSpikeMove(new Vector2(28, 17), new Vector2(-1, 0));
             RecycleSpikeMove(new Vector2(28, 19), new Vector2(-1, 0));
             RecycleSpikeMove(new Vector2(28, 20), new Vector2(-1, 0));
-            RecycleSpikeMove(new Vector2(28, 21), new Vector2(-1, 0));*/
+            RecycleSpikeMove(new Vector2(28, 21), new Vector2(-1, 0));
         }
 
         #endregion
@@ -421,61 +425,62 @@ namespace Game.Level
 
         private void Level3_Stage3_0()
         {
-            /*GroundRotate(0, -90f, 0.5f, new Vector2(17, 17));
+            GroundRotate(0, -90f, 0.5f, new Vector2(17, 17));
             GroundRotate(1, -90f, 0.5f, new Vector2(17, 17));
-            GroundRotate(2, -90f, 0.5f, new Vector2(17, 17));*/
+            GroundRotate(2, -90f, 0.5f, new Vector2(17, 17));
 
-            //CreateGeneratingLaser(new Vector2(26, 24));
-            //CreateGeneratingLaser1(new Vector2(-1, 13));
+
+            CreateGeneratingLaser(new Vector2(26, 24));
+            CreateGeneratingLaser1(new Vector2(-1, 13));
             CreateWeakWall(new Vector2(25, 19));
         }
 
         private void LevelLevel3_Stage3_0_0()
         {
-            //CreateSpike(new Vector2(16.8f, 18));
+            CreateSpike(new Vector2(16.8f, 18));
         }
 
         private void LevelLevel3_Stage3_0_1()
         {
-            //GeneralWarn(new Vector2(17, 19));
+            GeneralWarn(new Vector2(17, 19));
         }
 
         private void LevelLevel3_Stage3_0_2()
         {
-            //Level3SpikeMove(0, new Vector2(0, 1), 0.5f);
+            Level3SpikeMove(0, new Vector2(0, 1), 0.5f);
         }
 
         private void Level3_Stage3_1()
         {
-            //GeneratingLaserMove(0, new Vector2(0, -1), 0.5f);
-            //GeneratingLaserMove(1, new Vector2(1, 0));
+            GeneratingLaserMove(0, new Vector2(0, -1), 0.5f);
+            GeneratingLaserMove(1, new Vector2(1, 0));
         }
 
         private void Level3_Stage3_2()
         {
-            /*GeneralWarn(new Vector2(26, 22));
+            GeneralWarn(new Vector2(26, 22));
             GeneralWarn(new Vector2(25, 22));
             GeneralWarn(new Vector2(27, 22));
             GeneralWarn(new Vector2(1, 12));
             GeneralWarn(new Vector2(1, 13));
-            GeneralWarn(new Vector2(1, 14));*/
+            GeneralWarn(new Vector2(1, 14));
         }
 
         private void Level3_Stage3_3()
         {
-            //Level3SpikeMove(0, new Vector2(0, -1));
-            //generatingLaserList[0].Shot(ShotDirectionEnum.down);
-            //generatingLaserList[1].Shot(ShotDirectionEnum.right);
+            Level3SpikeMove(0, new Vector2(0, -1));
+            generatingLaserList[0].Shot(ShotDirectionEnum.down);
+            generatingLaserList[1].Shot(ShotDirectionEnum.right);
         }
 
         private void Level3_Stage3_4()
         {
-            //RemoveSpike(0);
-            //GeneratingLaserMove(0, new Vector2(0, 1), 0.5f);
-            //GeneratingLaserMove(1, new Vector2(-1, 0));
-            /*GroundRotate(0, 90f, 0.5f, new Vector2(17, 17));
+            RemoveSpike(0);
+            GeneratingLaserMove(0, new Vector2(0, 1), 0.5f);
+            GeneratingLaserMove(1, new Vector2(-1, 0));
+            GroundRotate(0, 90f, 0.5f, new Vector2(17, 17));
             GroundRotate(1, 90f, 0.5f, new Vector2(17, 17));
-            GroundRotate(2, 90f, 0.5f, new Vector2(17, 17));*/
+            GroundRotate(2, 90f, 0.5f, new Vector2(17, 17));
         }
 
         #endregion
@@ -513,32 +518,36 @@ namespace Game.Level
 
         private void Level3_Stage4_4()
         {
-            //GeneralWarn(new Vector2(25, 15));
+            GeneralWarn(new Vector2(25, 15));
             GeneralWarn(new Vector2(10, 12));
             GeneralWarn(new Vector2(10, 13));
             GeneralWarn(new Vector2(10, 14));
-            //GeneralWarn(new Vector2(10, 15));
+            GeneralWarn(new Vector2(10, 15));
+            GeneralWarn(new Vector2(10, 16));
+            GeneralWarn(new Vector2(10, 17));
         }
 
         private void Level3_Stage4_5()
         {
-            //GeneralWarn(new Vector2(26, 15));
-            //Level3SpikeMove(3, new Vector2(0, 1), 0.5f);
+            GeneralWarn(new Vector2(26, 15));
+            Level3SpikeMove(3, new Vector2(0, 1), 0.5f);
             RecycleSpikeMove(new Vector2(10, 12), new Vector2(1, 0));
             RecycleSpikeMove(new Vector2(10, 13), new Vector2(1, 0));
             RecycleSpikeMove(new Vector2(10, 14), new Vector2(1, 0));
-            //RecycleSpikeMove(new Vector2(10, 15), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 15), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 16), new Vector2(1, 0));
+            RecycleSpikeMove(new Vector2(10, 17), new Vector2(1, 0));
         }
 
         private void Level3_Stage4_6()
         {
-            //GeneralWarn(new Vector2(27, 15));
-            //Level3SpikeMove(4, new Vector2(0, 1), 0.5f);
+            GeneralWarn(new Vector2(27, 15));
+            Level3SpikeMove(4, new Vector2(0, 1), 0.5f);
         }
 
         private void Level3_Stage4_7()
         {
-            //Level3SpikeMove(5, new Vector2(0, 1), 0.5f);
+            Level3SpikeMove(5, new Vector2(0, 1), 0.5f);
         }
 
         private void Level3_Stage4_8()
@@ -546,9 +555,9 @@ namespace Game.Level
             Level3SpikeMove(0, new Vector2(0, -1), 0.5f);
             Level3SpikeMove(1, new Vector2(0, -1), 0.5f);
             Level3SpikeMove(2, new Vector2(0, -1), 0.5f);
-            //Level3SpikeMove(3, new Vector2(0, -1), 0.5f);
-            //Level3SpikeMove(4, new Vector2(0, -1), 0.5f);
-            //Level3SpikeMove(5, new Vector2(0, -1), 0.5f);
+            Level3SpikeMove(3, new Vector2(0, -1), 0.5f);
+            Level3SpikeMove(4, new Vector2(0, -1), 0.5f);
+            Level3SpikeMove(5, new Vector2(0, -1), 0.5f);
         }
 
         #endregion

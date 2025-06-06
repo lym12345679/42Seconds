@@ -24,6 +24,7 @@ namespace Game.Recycle
                 isRigister = true;
                 SetRigisterAction();
             }
+
             MizukiTool.RecyclePool.RecyclePoolUtil.Request(id, hander, parent);
         }
 
@@ -66,6 +67,8 @@ namespace Game.Recycle
                     Resources.Load<GameObject>(path + "GeneratingLaser1"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.Laser2,
                     Resources.Load<GameObject>(path + "Laser2"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.Bread,
+                    Resources.Load<GameObject>(path + "Bread"));
             };
             RecyclePoolUtil.SetRigisterAction(action);
         }
@@ -83,6 +86,7 @@ namespace Game.Recycle
         GeneratingLaser,
         GeneratingLaser1,
         Laser1,
-        Laser2
+        Laser2,
+        Bread
     }
 }

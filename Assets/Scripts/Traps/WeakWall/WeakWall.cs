@@ -12,9 +12,25 @@ namespace Game.Traps
         public void Init()
         {
             controller.Init();
+            isDistroying = false; // 初始化时设置为未销毁状态
         }
 
         public override void OnPlayerSprintInToTrap(PlayerController playerController, Vector2 position)
+        {
+            DistroyingAct(playerController);
+        }
+
+        public override void OnPlayerEnter(PlayerController playerController, Vector2 position)
+        {
+            playerController.TrapDe += DistroyingAct;
+        }
+
+        public override void OnPlayerExit(PlayerController p)
+        {
+            p.TrapDe -= DistroyingAct;
+        }
+
+        private void DistroyingAct(PlayerController playerController)
         {
             if (isDistroying)
             {

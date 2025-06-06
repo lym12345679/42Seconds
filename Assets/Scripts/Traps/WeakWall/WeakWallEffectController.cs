@@ -1,6 +1,7 @@
 using System;
 using MizukiTool.UIEffect;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.Traps
 {
@@ -12,23 +13,20 @@ namespace Game.Traps
     {
         private FadeEffectGO<SpriteRenderer> blinkEffectGO;
         private FadeEffectGO<SpriteRenderer> currentEffectGO;
-        private SpriteRenderer spriteRenderer;
+        public SpriteRenderer SelfSprite;
         private Color originalColor; // 初始颜色
         private Color targetColor; // 目标颜色
 
         void Awake()
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            if (spriteRenderer == null)
+            if (SelfSprite == null)
             {
-                Debug.LogError("SpriteRenderer component not found on the GameObject.");
-            }
-            else
-            {
-                originalColor = spriteRenderer.color; // 保存初始颜色
+                SelfSprite = GetComponent<SpriteRenderer>();
             }
 
-            blinkEffectGO = new FadeEffectGO<SpriteRenderer>(spriteRenderer)
+            originalColor = SelfSprite.color; // 保存初始颜色
+            //Debug.Log(originalColor);
+            blinkEffectGO = new FadeEffectGO<SpriteRenderer>(SelfSprite)
                 .SetFadeColor(Color.white)
                 .SetOriginalColor(originalColor)
                 .SetFadeMode(FadeMode.Once)
@@ -46,17 +44,14 @@ namespace Game.Traps
                 })
                 .SetEndHander((f) =>
                 {
-                    spriteRenderer.color = originalColor; // 恢复到初始颜色
+                    SelfSprite.color = originalColor; // 恢复到初始颜色
                 });
         }
 
         public void Init()
         {
-            if (spriteRenderer == null)
-            {
-                spriteRenderer = GetComponent<SpriteRenderer>();
-                spriteRenderer.color = originalColor; // 确保初始颜色被设置
-            }
+            SelfSprite.color = originalColor; // 确保初始颜色被设置
+            //Debug.Log(originalColor);
         }
 
         void Start()
@@ -73,7 +68,7 @@ namespace Game.Traps
         {
             //Debug.Log("StartBlink called with targetColor: " + targetColor);
             FadeEffectGO<SpriteRenderer> target = blinkEffectGO.Copy(blinkEffectGO);
-            currentEffectGO = StartFade(spriteRenderer, target).SetEndHander(endHander);
+            currentEffectGO = StartFade(SelfSprite, target).SetEndHander(endHander);
         }
     }
 }

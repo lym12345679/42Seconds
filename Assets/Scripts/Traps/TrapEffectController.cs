@@ -102,6 +102,14 @@ namespace Game.Traps
             }
         }
 
+        public void StartPositionEffect(Transform t)
+        {
+            if (positionEffect != null)
+            {
+                currentPositionEffect = StartPositionEffect(t, positionEffect);
+            }
+        }
+
         public void StartRotationEffect()
         {
             if (rotationEffect != null)

@@ -21,5 +21,11 @@ namespace Game.Traps
         public virtual void OnPlayerTriggerEnter(PlayerController playerController, Vector2 enterPos)
         {
         }
+
+        public virtual void OnPlayerExit(PlayerController playerController)
+        {
+            // 处理玩家离开陷阱的逻辑
+            Debug.Log("Player exited trap: " + playerController.name + " from trap: " + gameObject.name);
+        }
     }
 }

@@ -1711,6 +1711,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1346733168323247503, guid: 5bacc5f40aa17e44cba2dda07f5f7358, type: 3}
+      propertyPath: level
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412192153880865551, guid: 5bacc5f40aa17e44cba2dda07f5f7358, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7389389816130753204, guid: 5bacc5f40aa17e44cba2dda07f5f7358, type: 3}
       propertyPath: m_Name
       value: LevelSelectorUIBtn (3)
