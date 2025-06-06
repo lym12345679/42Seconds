@@ -3,8 +3,15 @@ using UnityEngine;
 
 namespace Game.Audio
 {
-    [CreateAssetMenu(fileName = "TestAudioMixerGroupSO", menuName = "MizukiTool/Audio/TestAudioMixerGroupSO")]
-    public class AudioMixerGroupSO : AudioMixerGroupSO<AudioMixerGroupEnum>
+    [CreateAssetMenu(fileName = "AudioMixerGroupSO", menuName = "SO/Audio/AudioMixerGroupSO")]
+    public class AudioMixerGroupSO : AudioMixerGroupSO<AMGEnum>
     {
+    }
+
+    public enum AMGEnum
+    {
+        Master,
+        BGM,
+        SE
     }
 }

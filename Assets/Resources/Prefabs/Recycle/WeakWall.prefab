@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1905fb2217f7de4f85fa8b808da1021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TrapType: 2
   controller: {fileID: 3432207201362391128}
 --- !u!114 &3432207201362391128
 MonoBehaviour:

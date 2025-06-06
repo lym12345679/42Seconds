@@ -69,6 +69,10 @@ namespace Game.Recycle
                     Resources.Load<GameObject>(path + "Laser2"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.Bread,
                     Resources.Load<GameObject>(path + "Bread"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.GuidedMissile,
+                    Resources.Load<GameObject>(path + "GuidedMissile"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.Boom,
+                    Resources.Load<GameObject>(path + "Boom"));
             };
             RecyclePoolUtil.SetRigisterAction(action);
         }
@@ -87,6 +91,8 @@ namespace Game.Recycle
         GeneratingLaser1,
         Laser1,
         Laser2,
-        Bread
+        Bread,
+        GuidedMissile,
+        Boom
     }
 }

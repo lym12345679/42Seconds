@@ -12,11 +12,23 @@ namespace Game.Audio
         /// <summary>
         /// 音响
         /// </summary>
-        public static AudioMixerGroupSO<AudioMixerGroupEnum> audioMixerGroupSO =
-            Resources.Load<AudioMixerGroupSO<AudioMixerGroupEnum>>("TestAudioClip/TestAudioMixerGroupSO");
+        private static AudioMixerGroupSO audioMixerGroupSO =
+            Resources.Load<AudioMixerGroupSO>("SO/Audio/AudioMixerGroupSO");
 
         /// 音效存储参考方式
-        public static MizukiTestAudioSO audioSO = Resources.Load<MizukiTestAudioSO>("TestAudioClip/MizukiTestAudioSO");
+        private static BGMAudioSO BGMAudioClipSO = Resources.Load<BGMAudioSO>("SO/Audio/BGMAudioSO");
+
+        private static SEAudioSO SEAudioClipSo = Resources.Load<SEAudioSO>("SO/Audio/SEAudioSO");
+
+//音量范围
+        public static float DBMin = -40;
+        public static float DBMax = 0;
+
+        public static float DBRange
+        {
+            get { return DBMax - DBMin; }
+        }
+
 
         private static void SetRigisterAction()
         {
@@ -26,7 +38,12 @@ namespace Game.Audio
 
         private static void RigisterAllAudioClip()
         {
-            foreach (var item in audioSO.audioList)
+            foreach (var item in BGMAudioClipSO.audioList)
+            {
+                RegisterAudioClip(item.audioEnum, item.audioClip);
+            }
+
+            foreach (var item in SEAudioClipSo.audioList)
             {
                 RegisterAudioClip(item.audioEnum, item.audioClip);
             }
@@ -40,7 +57,7 @@ namespace Game.Audio
         public static void Play<T>
         (
             T audioEnum,
-            AudioMixerGroupEnum audioMixerGroupEnum,
+            AMGEnum audioMixerGroupEnum,
             AudioPlayMod audioPlayMod,
             Action<AudioPlayContext> endEventHander = null,
             Action<AudioPlayContext> fixedUpdateEventHander = null
@@ -51,11 +68,29 @@ namespace Game.Audio
                 endEventHander, fixedUpdateEventHander);
         }
 
-        public static void SetAudioVolume(AudioMixerGroupEnum audioMixerEnum, float volume)
+        public static void SetAudioVolume(AMGEnum audioMixerEnum, float volume)
         {
             EnsureRigister();
             AudioMixerGroup entry = audioMixerGroupSO.GetAudioMixerGroup(audioMixerEnum);
             MizukiTool.MiAudio.AudioUtil.SetAudioVolume(audioMixerEnum, volume, entry);
+        }
+
+        internal static float GetAudioMixerGroupValume(AMGEnum audioMixerEnum)
+        {
+            if (audioMixerGroupSO != null)
+            {
+                audioMixerGroupSO.GetAudioMixerGroup(AMGEnum.Master).audioMixer
+                    .GetFloat(audioMixerEnum.ToString(), out float value);
+                return GetPersentageFromValume(value);
+            }
+
+            return 0;
+        }
+
+//获取音量百分比
+        private static float GetPersentageFromValume(float valume)
+        {
+            return (valume - DBMin) / DBRange;
         }
 
         public static void PauseAllLoopAudio()

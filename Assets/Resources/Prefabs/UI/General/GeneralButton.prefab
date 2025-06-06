@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 4388507726484220774}
   - component: {fileID: 8568608474257384021}
   - component: {fileID: 2137592891277524877}
+  - component: {fileID: 5947637500488209664}
   m_Layer: 5
   m_Name: GeneralButton
   m_TagString: Untagged
@@ -254,4 +255,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8568608474257384021}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5947637500488209664}
+        m_TargetAssemblyTypeName: Game.UI.GeneralBtn, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5947637500488209664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7272798344297088687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1972ffcfc39ee3548adf6a4934ec79ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioEnum: 1

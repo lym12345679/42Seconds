@@ -8,7 +8,7 @@ namespace Game.Traps
 {
     public class GuidedMissile : MonoBehaviour
     {
-        private float speed = 3f, duration = 5f, currentTime = 0f, originalRotationZ = 0f;
+        private float speed = 5f, duration = 5f, currentTime = 0f, originalRotationZ = 0f;
 
         private Transform player
         {

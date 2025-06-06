@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113b8f8dd8d0c914583e9317301b07c5, type: 3}
+  m_Name: SEAudioSO
+  m_EditorClassIdentifier: 
+  audioList:
+  - Name: SE_Test_Player_Fail
+    audioEnum: 0
+    audioClip: {fileID: 8300000, guid: 004de50b5f9d8d0409e054ed104ce899, type: 3}
+  - Name: SE_Test_Buttion_Click
+    audioEnum: 1
+    audioClip: {fileID: 8300000, guid: 408f60f0adb269748b86975e53e4c56b, type: 3}
+  - Name: SE_Test_Babel
+    audioEnum: 2
+    audioClip: {fileID: 8300000, guid: 65fe9ab006f170642912c5db237022a3, type: 3}
