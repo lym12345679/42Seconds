@@ -93,6 +93,8 @@ namespace Game.Audio
             return (valume - DBMin) / DBRange;
         }
 
+        #region 循环音频
+
         public static void PauseAllLoopAudio()
         {
             EnsureRigister();
@@ -116,6 +118,74 @@ namespace Game.Audio
             EnsureRigister();
             return MizukiTool.MiAudio.AudioUtil.CheckEnumInLoopAudio(audioEnum);
         }
+
+        /// <summary>
+        ///     根据枚举回收非循环音效
+        /// </summary>
+        /// <param name="audioEnum"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void ReturnLoopAudioByEnum<T>(T audioEnum) where T : Enum
+        {
+            EnsureRigister();
+            MizukiTool.MiAudio.AudioUtil.ReturnLoopAudioByEnum(audioEnum);
+        }
+
+        #endregion
+
+        #region 非循环音频
+
+        /// <summary>
+        ///     暂停所有非循环音频
+        /// </summary>
+        public static void PauseAllNormalAudio()
+        {
+            EnsureRigister();
+            MizukiTool.MiAudio.AudioUtil.PauseAllNormalAudio();
+        }
+
+        /// <summary>
+        ///     继续所有非循环音频
+        /// </summary>
+        public static void ContinueAllNormalAudio()
+        {
+            EnsureRigister();
+            MizukiTool.MiAudio.AudioUtil.ContinueAllNormalAudio();
+        }
+
+        /// <summary>
+        ///     归还所有非循环音频
+        /// </summary>
+        public static void ReturnAllNormalAudio()
+        {
+            EnsureRigister();
+            MizukiTool.MiAudio.AudioUtil.ReturnAllNormalAudio();
+        }
+
+        /// <summary>
+        ///     检查枚举是否在非循环音频中，如果有则返回对应的AudioClip
+        /// </summary>
+        /// <param name="audioEnum"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static AudioClip CheckEnumInNormalAudio<T>(T audioEnum) where T : Enum
+        {
+            EnsureRigister();
+            return MizukiTool.MiAudio.AudioUtil.CheckEnumInNormalAudio(audioEnum);
+        }
+
+        /// <summary>
+        ///     检测是否有指定音效正在播放
+        /// </summary>
+        /// <param name="audioEnum"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static void ReturnNormalAudioByEnum<T>(T audioEnum) where T : Enum
+        {
+            EnsureRigister();
+            MizukiTool.MiAudio.AudioUtil.ReturnNormalAudioByEnum(audioEnum);
+        }
+
+        #endregion
 
         private static void EnsureRigister()
         {

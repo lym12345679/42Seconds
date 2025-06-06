@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.coffee.mizukitool": {
-      "version": "https://github.com/lym12345679/MyUnityTools.git#mizukitool-0.1.27",
+      "version": "https://github.com/lym12345679/MyUnityTools.git#mizukitool-0.1.28",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f2f16284f5025388fb8d9c4b26f0de4e1539a01c"
+      "hash": "ef392477d1e4127c079ef9c3d37811aeb08b3c67"
     },
     "com.unity.2d.animation": {
       "version": "9.1.2",

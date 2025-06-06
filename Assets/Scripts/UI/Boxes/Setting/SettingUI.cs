@@ -17,12 +17,10 @@ namespace Game.UI
         {
             BGMScrollbar.value = AudioUtil.GetAudioMixerGroupValume(AMGEnum.BGM);
             SEScrollbar.value = AudioUtil.GetAudioMixerGroupValume(AMGEnum.SE);
-            /*if (!AudioUtil.CheckEnumInLoopAudio(SEAudioEnum.SE_Test_Babel) ||
-                !AudioUtil.CheckEnumInLoopAudio(BGMAudioEnum.Test_Babel))
+            if (!AudioUtil.CheckEnumInLoopAudio(BGMAudioEnum.Test2))
             {
-                AudioUtil.Play(SEAudioEnum.SE_Test_Babel, AMGEnum.BGM, AudioPlayMod.FadeInThenNormal,
-                    (context) => { AudioUtil.Play(BGMAudioEnum.Test_Babel, AMGEnum.BGM, AudioPlayMod.Loop); });
-            }*/
+                AudioUtil.Play(BGMAudioEnum.Test2, AMGEnum.BGM, AudioPlayMod.Loop);
+            }
 
 
             base.GetParams(param);
@@ -30,8 +28,7 @@ namespace Game.UI
 
         public override void Close()
         {
-            /*AudioUtil.PauseAllLoopAudio();
-            AudioUtil.ReturnAllLoopAudio();*/
+            AudioUtil.ReturnAllLoopAudio();
             base.Close();
         }
 
