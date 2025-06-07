@@ -19,5 +19,17 @@ namespace Game.Plot
         Level4_Begin,
         Level5_Begin,
         Level6_Begin,
+        Level1_Win,
+        Level2_Win,
+        Level3_Win,
+        Level4_Win,
+        Level5_Win,
+        Level6_Win,
+        Level1_Lose,
+        Level2_Lose,
+        Level3_Lose,
+        Level4_Lose,
+        Level5_Lose,
+        Level6_Lose,
     }
 }

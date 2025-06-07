@@ -681,10 +681,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentTime: 0
   CurrentSceneType: 6
-  NextLevel: 0
-  FailedCG: 1
-  WinCG: 2
-  BeginCG: 8
+  NextLevel: 7
+  FailedCG: 20
+  WinCG: 14
+  BeginCG: 3
 --- !u!4 &1854180933
 Transform:
   m_ObjectHideFlags: 0

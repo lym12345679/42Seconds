@@ -57,6 +57,7 @@ namespace Game
 #endif
         }
 
+        //停止所有BGM，播放新的BGM，如果已经在循环播放中，则不再播放
         public static void PlayBGM(BGMAudioEnum audioEnum)
         {
             if (!AudioUtil.CheckEnumInLoopAudio(audioEnum))
@@ -66,6 +67,7 @@ namespace Game
             }
         }
 
+        //播放音效
         public static void PlaySe(SEAudioEnum audioEnum)
         {
             if (!AudioUtil.CheckEnumInLoopAudio(audioEnum))

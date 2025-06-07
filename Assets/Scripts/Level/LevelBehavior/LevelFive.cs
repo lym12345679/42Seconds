@@ -23,7 +23,7 @@ namespace Game.Level
         {
             if (LevelManager.Instance.GetGamePlayingState())
             {
-                level5Behavior.OnFixedUpdate(); // 更新关卡行为树
+                FixedUpdateAction(); // 更新关卡行为树
             }
         }
 

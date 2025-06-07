@@ -40,3 +40,39 @@ MonoBehaviour:
   - Name: Level6_Begin
     EnumValue: 9
     Value2: {fileID: 4900000, guid: 935202b146e638848a590b125114c0eb, type: 3}
+  - Name: Level1_Win
+    EnumValue: 10
+    Value2: {fileID: 4900000, guid: 52b378aee4907a14b8b40e6cc83f6226, type: 3}
+  - Name: Level2_Win
+    EnumValue: 11
+    Value2: {fileID: 4900000, guid: e427519458095e34281f8c11b3699390, type: 3}
+  - Name: Level3_Win
+    EnumValue: 12
+    Value2: {fileID: 4900000, guid: 83b8bfaa0acda704c8681280d16fe3b2, type: 3}
+  - Name: Level4_Win
+    EnumValue: 13
+    Value2: {fileID: 4900000, guid: 3809637c78a9de549b4ee01fe7e9fcc2, type: 3}
+  - Name: Level5_Win
+    EnumValue: 14
+    Value2: {fileID: 4900000, guid: edf886fbb77f33941bcade563ec90a68, type: 3}
+  - Name: Level6_Win
+    EnumValue: 15
+    Value2: {fileID: 4900000, guid: 5cff479850f916646acd0e9754367382, type: 3}
+  - Name: Level1_Lose
+    EnumValue: 16
+    Value2: {fileID: 4900000, guid: e01d0c795d984a44e99c34c9ccd0d69f, type: 3}
+  - Name: Level2_Lose
+    EnumValue: 17
+    Value2: {fileID: 4900000, guid: f35c639fa8e325347af9fccc6abaf76d, type: 3}
+  - Name: Level3_Lose
+    EnumValue: 18
+    Value2: {fileID: 4900000, guid: 40f482769c8a6e94b9fcaf0b7bdc8b25, type: 3}
+  - Name: Level4_Lose
+    EnumValue: 19
+    Value2: {fileID: 4900000, guid: b6c692914500a274da1a30e1673a9bd0, type: 3}
+  - Name: Level5_Lose
+    EnumValue: 20
+    Value2: {fileID: 4900000, guid: 496d28b4b1d02b8439547e0e2c63139f, type: 3}
+  - Name: Level6_Lose
+    EnumValue: 21
+    Value2: {fileID: 4900000, guid: f29183d70f69a254d873ee8bbfc9ffa7, type: 3}

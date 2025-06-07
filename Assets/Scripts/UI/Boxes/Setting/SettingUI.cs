@@ -15,9 +15,9 @@ namespace Game.UI
 
         public override void GetParams(string param)
         {
-            /*BGMScrollbar.value = AudioUtil.GetAudioMixerGroupValume(AMGEnum.BGM);
+            BGMScrollbar.value = AudioUtil.GetAudioMixerGroupValume(AMGEnum.BGM);
             SEScrollbar.value = AudioUtil.GetAudioMixerGroupValume(AMGEnum.SE);
-            if (!AudioUtil.CheckEnumInLoopAudio(BGMAudioEnum.Test2))
+            /*if (!AudioUtil.CheckEnumInLoopAudio(BGMAudioEnum.Test2))
             {
                 AudioUtil.Play(BGMAudioEnum.Test2, AMGEnum.BGM, AudioPlayMod.Loop);
             }*/

@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private readonly int jumpCount = 2; // 可跳跃次数
     public int currentJumpCount = 0; // 当前剩余跳跃次数
     private readonly float jumpSpeed = 10f; // 跳跃速度
-
+    private readonly float moveSpeed = 4f;
     private bool isLeaveGround = false; // 是否离开地面
     private readonly float playerHight = .3f; // 玩家高度
     public LayerMask GroundLayer;
@@ -96,13 +96,15 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Time.deltaTime * 5f * Vector3.left);
+            //transform.Translate(Time.deltaTime * 5f * Vector3.left);
+            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
             ChangeDirection();
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Time.deltaTime * 5f * Vector3.right);
+            //transform.Translate(Time.deltaTime * 5f * Vector3.right);
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
             ChangeDirection();
         }
     }
@@ -226,7 +228,8 @@ public class PlayerController : MonoBehaviour
     {
         if (isSprinting && currentSprintTick < sprintTick)
         {
-            transform.Translate(Time.deltaTime * sprintSpeed * sprintDirection * Vector3.right);
+            //transform.Translate(Time.deltaTime * sprintSpeed * sprintDirection * Vector3.right);
+            rb.velocity = new Vector2(sprintSpeed * sprintDirection, rb.velocity.y);
             currentSprintTick += Time.deltaTime;
             //Debug.Log("Player is sprinting!");
         }
@@ -236,16 +239,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //即时调整冲刺方向
     public void SetSpritDirection(int i)
     {
         sprintDirection = i; // 设置冲刺方向
     }
 
+    //获取冲刺状态
     public bool GetIsSprinting()
     {
         return isSprinting;
     }
 
+    //获取玩家身高
     public float GetPlayerHeight()
     {
         return playerHight;
@@ -281,6 +287,7 @@ public class PlayerController : MonoBehaviour
 
     #region 玩家死亡
 
+//玩家死亡处理
     public void OnPlayerDeath()
     {
         // 这里可以添加玩家死亡的逻辑，比如重置关卡、播放死亡动画等
@@ -317,6 +324,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+// 检测玩家与其他物体的碰撞退出
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Trap"))
@@ -325,6 +333,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // 玩家与陷阱的碰撞进入的处理
     private void OnTrapEnter(Collision2D other, Vector2 collisionPoint)
     {
         Trap trap = other.gameObject.GetComponent<Trap>();
@@ -341,12 +350,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+//玩家与陷阱的碰撞离开的处理
     private void OnTrapExit(Collision2D other)
     {
         Trap trap = other.gameObject.GetComponent<Trap>();
         trap.OnPlayerExit(this);
     }
 
+// 玩家与地面的碰撞进入的处理
     private void OnGroundEnter(Collision2D other, Vector2 collisionPoint)
     {
         //Debug.Log("Player collided with ground at: " + collisionPoint);

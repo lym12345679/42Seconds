@@ -600,10 +600,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentTime: 0
-  CurrentSceneType: 6
+  CurrentSceneType: 7
   NextLevel: 0
-  FailedCG: 1
-  WinCG: 2
+  FailedCG: 21
+  WinCG: 15
   BeginCG: 3
 --- !u!4 &1854180933
 Transform:

@@ -663,8 +663,8 @@ MonoBehaviour:
   CurrentTime: 0
   CurrentSceneType: 2
   NextLevel: 3
-  FailedCG: 0
-  WinCG: 2
+  FailedCG: 16
+  WinCG: 10
   BeginCG: 4
 --- !u!4 &1697637126
 Transform:

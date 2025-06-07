@@ -52,6 +52,7 @@ namespace Game.Level
             GamePlay();
         }
 
+        //检测ESC键是否按下，如果按下则暂停游戏
         private void Pause()
         {
             if (KeyboardSet.IsKeyDown(KeyEnum.ESC))
@@ -77,7 +78,7 @@ namespace Game.Level
             }
         }
 
-
+//游戏运行时，时间会不断增加，直到超过最大时间
         private void GamePlay()
         {
             if (!isGamePlaying)
@@ -101,6 +102,7 @@ namespace Game.Level
             isGamePlaying = true; // 设置游戏为进行中状态
         }
 
+// 当关卡胜利时调用此方法
         public virtual void OnlevelWin()
         {
             if (isGameLose)
@@ -114,6 +116,7 @@ namespace Game.Level
             TextShowUI.Open(new TextShowUIMessage(textAsset, () => { GamePlayManager.LoadScene(NextLevel); }));
         }
 
+// 当关卡失败时调用此方法
         public virtual void OnlevelFailed()
         {
             if (isGameWin)
@@ -132,16 +135,16 @@ namespace Game.Level
         public void OnPlayerDead()
         {
             OnlevelFailed();
-
-            Debug.Log("玩家死亡，游戏暂停！"); // 这里可以添加玩家死亡的逻辑
         }
 
+        // 玩家死亡时调用此方法：延迟打开失败界面
         private IEnumerator PauseDelay()
         {
             yield return new WaitForSeconds(1f); // 等待1秒
             FailedUI.Open("");
         }
 
+        // 注册玩家的Transform
         public void RigisterPlayer(Transform player)
         {
             if (player == null)
@@ -153,6 +156,7 @@ namespace Game.Level
             playerTransform = player; // 注册玩家的Transform
         }
 
+        // 获取玩家的Transform
         public Transform GetPlayerTransform()
         {
             if (ReferenceEquals(playerTransform, null))
