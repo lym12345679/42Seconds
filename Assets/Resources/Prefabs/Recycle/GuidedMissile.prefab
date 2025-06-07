@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c99743da51bed354db04173d99435ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SelfGuideMissileCollider: {fileID: 304848452092984258}
 --- !u!114 &-3065838261489409746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cdebff0a1279ce40a9fe425e1e5d355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutoRecycleTime: 5
+  AutoRecycleTime: -1
   OnReset:
     m_PersistentCalls:
       m_Calls:

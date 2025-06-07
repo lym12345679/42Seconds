@@ -27,7 +27,7 @@ namespace Game.Traps
             originalColor = SelfSprite.color; // 保存初始颜色
             //Debug.Log(originalColor);
             blinkEffectGO = new FadeEffectGO<SpriteRenderer>(SelfSprite)
-                .SetFadeColor(Color.white)
+                .SetFadeColor(new Color(originalColor.r, originalColor.g, originalColor.b, 0.5f)) // 设置目标颜色为半透明
                 .SetOriginalColor(originalColor)
                 .SetFadeMode(FadeMode.Once)
                 .SetFadeTime(0.5f)

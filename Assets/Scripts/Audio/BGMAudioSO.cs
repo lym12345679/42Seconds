@@ -11,6 +11,7 @@ namespace Game.Audio
     public enum BGMAudioEnum
     {
         Test_Babel,
-        Test2
+        Test2,
+        BGM_1
     }
 }

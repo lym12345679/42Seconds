@@ -299,7 +299,7 @@ namespace Game.Level
             SpikeMove(10, 0.5f, 0, 1);
         }
 
-        private void Second6p5Action()
+        protected virtual void Second6p5Action()
         {
             SpikeWarn(6, 0, 1);
             SpikeWarn(8, 0, 1);
@@ -309,7 +309,7 @@ namespace Game.Level
             SpikeMove(11, 0.5f, 0, -1);
         }
 
-        private void Second7Action()
+        protected virtual void Second7Action()
         {
             SpikeWarn(7, 0, 1);
             SpikeMove(6, 0.5f, 0, 1);
@@ -340,14 +340,14 @@ namespace Game.Level
 
         #region 10~13.5s
 
-        private void Second10p5Action()
+        protected virtual void Second10p5Action()
         {
             SpikeWarn(6, 0, 1);
             SpikeWarn(7, 0, 1);
             SpikeWarn(8, 0, 1);
         }
 
-        private void Second11Action()
+        protected virtual void Second11Action()
         {
             SpikeWarn(3, 0, 1);
             SpikeWarn(4, 0, 1);
@@ -358,7 +358,7 @@ namespace Game.Level
             SpikeMove(8, 0.5f, 0, 1);
         }
 
-        private void Second11p5Action()
+        protected virtual void Second11p5Action()
         {
             SpikeWarn(0, 0, 1);
             SpikeWarn(1, 0, 1);
@@ -370,7 +370,7 @@ namespace Game.Level
             SpikeMove(4, 0.5f, 0, 1);
         }
 
-        private void Second12Action()
+        protected virtual void Second12Action()
         {
             SpikeMove(0, 0.5f, 0, 1);
             SpikeMove(1, 0.5f, 0, 1);
@@ -378,7 +378,7 @@ namespace Game.Level
             SpikeMove(14, 0.5f, 0, 1);
         }
 
-        private void Second13Action()
+        protected virtual void Second13Action()
         {
             SpikeMove(0, 1f, 6, 0);
             SpikeMove(1, 1f, 6, 0);
@@ -397,7 +397,7 @@ namespace Game.Level
 
         #region 14~19s
 
-        private void Second14Action()
+        protected virtual void Second14Action()
         {
             SpikeWarn(2, 0, 1);
             SpikeWarn(3, 0, 1);
@@ -409,7 +409,7 @@ namespace Game.Level
             SpikeWarn(12, 0, 1);
         }
 
-        private void Second14p5Action()
+        protected virtual void Second14p5Action()
         {
             SpikeMove(2, 0.5f, 0, 1);
             SpikeMove(3, 0.5f, 0, 1);
@@ -425,7 +425,7 @@ namespace Game.Level
         {
         }
 
-        private void Second16p5Action()
+        protected virtual void Second16p5Action()
         {
             SpikeMove(2, 1f, -2, 0);
             SpikeMove(3, 1f, -2, 0);
@@ -449,7 +449,7 @@ namespace Game.Level
         {
         }
 
-        private void Second18p5Action()
+        protected virtual void Second18p5Action()
         {
             SpikeMove(2, 0.5f, 0, -1);
             SpikeMove(3, 0.5f, 0, -1);
@@ -466,7 +466,7 @@ namespace Game.Level
 
         #region 20~31s
 
-        private void Second20Action()
+        protected virtual void Second20Action()
         {
             SpikeFlash1(0, 0);
             SpikeFlash1(1, 1);
@@ -487,7 +487,7 @@ namespace Game.Level
             SpikeWarn(14, 0, 1);
         }
 
-        private void Second20p5Action()
+        protected virtual void Second20p5Action()
         {
             SpikeWarn(1, 0, 1);
             SpikeWarn(13, 0, 1);
@@ -495,7 +495,7 @@ namespace Game.Level
             SpikeMove(14, 0.5f, 0, 1);
         }
 
-        private void Second21Action()
+        protected virtual void Second21Action()
         {
             SpikeWarn(2, 0, 1);
             SpikeWarn(12, 0, 1);
@@ -503,7 +503,7 @@ namespace Game.Level
             SpikeMove(13, 0.5f, 0, 1);
         }
 
-        private void Second21p5Action()
+        protected virtual void Second21p5Action()
         {
             SpikeWarn(3, 0, 1);
             SpikeWarn(11, 0, 1);
@@ -511,7 +511,7 @@ namespace Game.Level
             SpikeMove(12, 0.5f, 0, 1);
         }
 
-        private void Second22Action()
+        protected virtual void Second22Action()
         {
             SpikeWarn(4, 0, 1);
             SpikeWarn(10, 0, 1);
@@ -521,7 +521,7 @@ namespace Game.Level
             SpikeMove(0, 0.5f, 0, -1);
         }
 
-        private void Second22p5Action()
+        protected virtual void Second22p5Action()
         {
             SpikeWarn(5, 0, 1);
             SpikeWarn(9, 0, 1);
@@ -531,7 +531,7 @@ namespace Game.Level
             SpikeMove(1, 0.5f, 0, -1);
         }
 
-        private void Second23Action()
+        protected virtual void Second23Action()
         {
             SpikeWarn(6, 0, 1);
             SpikeWarn(8, 0, 1);
@@ -541,7 +541,7 @@ namespace Game.Level
             SpikeMove(2, 0.5f, 0, -1);
         }
 
-        private void Second23p5Action()
+        protected virtual void Second23p5Action()
         {
             SpikeWarn(7, 0, 1);
             SpikeMove(6, 0.5f, 0, 1);
@@ -550,7 +550,7 @@ namespace Game.Level
             SpikeMove(3, 0.5f, 0, -1);
         }
 
-        private void Second24Action()
+        protected virtual void Second24Action()
         {
             SpikeWarn(0, 0, 1);
             SpikeWarn(14, 0, 1);
@@ -559,13 +559,13 @@ namespace Game.Level
             SpikeMove(4, 0.5f, 0, -1);
         }
 
-        private void Second24p25Action()
+        protected virtual void Second24p25Action()
         {
             SpikeWarn(1, 0, 1);
             SpikeWarn(13, 0, 1);
         }
 
-        private void Second24p5Action()
+        protected virtual void Second24p5Action()
         {
             SpikeWarn(2, 0, 1);
             SpikeWarn(12, 0, 1);
@@ -575,7 +575,7 @@ namespace Game.Level
             SpikeMove(5, 0.5f, 0, -1);
         }
 
-        private void Second24p75Action()
+        protected virtual void Second24p75Action()
         {
             SpikeWarn(3, 0, 1);
             SpikeWarn(11, 0, 1);
@@ -583,7 +583,7 @@ namespace Game.Level
             SpikeMove(13, .5f, 0, 1);
         }
 
-        private void Second25Action()
+        protected virtual void Second25Action()
         {
             SpikeWarn(4, 0, 1);
             SpikeWarn(10, 0, 1);
@@ -594,7 +594,7 @@ namespace Game.Level
             SpikeMove(14, 0.5f, 0, -1);
         }
 
-        private void Second25p25Action()
+        protected virtual void Second25p25Action()
         {
             SpikeWarn(5, 0, 1);
             SpikeWarn(9, 0, 1);
@@ -602,7 +602,7 @@ namespace Game.Level
             SpikeMove(11, .5f, 0, 1);
         }
 
-        private void Second25p5Action()
+        protected virtual void Second25p5Action()
         {
             SpikeWarn(8, 0, 1);
             SpikeMove(4, .5f, 0, 1);
@@ -610,7 +610,7 @@ namespace Game.Level
             SpikeMove(7, 0.5f, 0, -1);
         }
 
-        private void Second25p75Action()
+        protected virtual void Second25p75Action()
         {
             SpikeWarn(7, 0, 1);
             SpikeMove(5, .5f, 0, 1);
@@ -628,7 +628,7 @@ namespace Game.Level
         }
 
 
-        private void Second29Action()
+        protected virtual void Second29Action()
         {
             SpikeWarn(6, 0, 1);
         }
@@ -660,7 +660,7 @@ namespace Game.Level
 
         #region 31~38s
 
-        private void Second31Action()
+        protected virtual void Second31Action()
         {
             SpikeWarn(5, 0, 1);
             SpikeWarn(6, 0, 1);
@@ -678,7 +678,7 @@ namespace Game.Level
             SpikeMove(9, 0.5f, 0, 1);
         }
 
-        private void Second32Action()
+        protected virtual void Second32Action()
         {
             SpikeWarn(0, 0, 1);
             SpikeWarn(1, 0, 1);
@@ -701,7 +701,7 @@ namespace Game.Level
             SpikeMove(9, 0.5f, 0, -1);
         }
 
-        private void Second33Action()
+        protected virtual void Second33Action()
         {
             SpikeWarn(10, 0, 1);
             SpikeWarn(11, 0, 1);
@@ -724,7 +724,7 @@ namespace Game.Level
             SpikeMove(4, 0.5f, 0, -1);
         }
 
-        private void Second34Action()
+        protected virtual void Second34Action()
         {
             SpikeWarn(5, 0, 1);
             SpikeWarn(6, 0, 1);
@@ -747,7 +747,7 @@ namespace Game.Level
             SpikeMove(14, 0.5f, 0, -1);
         }
 
-        private void Second35Action()
+        protected virtual void Second35Action()
         {
             SpikeWarn(0, 0, 1);
             SpikeWarn(1, 0, 1);
@@ -770,7 +770,7 @@ namespace Game.Level
             SpikeMove(9, 0.5f, 0, -1);
         }
 
-        private void Second36Action()
+        protected virtual void Second36Action()
         {
             SpikeWarn(10, 0, 1);
             SpikeWarn(11, 0, 1);
@@ -806,7 +806,7 @@ namespace Game.Level
 
         #region 38~42s
 
-        private void Second39p5Action()
+        protected virtual void Second39p5Action()
         {
             SpikeWarn(0, 0, 1);
             SpikeWarn(1, 0, 1);

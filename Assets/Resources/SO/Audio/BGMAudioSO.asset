@@ -19,3 +19,6 @@ MonoBehaviour:
   - Name: Test_Babel
     audioEnum: 0
     audioClip: {fileID: 8300000, guid: d101097db4137ae47a11ea52c98ee984, type: 3}
+  - Name: BGM_1
+    audioEnum: 2
+    audioClip: {fileID: 8300000, guid: 82c70b031388c264d88c5453fe66b747, type: 3}

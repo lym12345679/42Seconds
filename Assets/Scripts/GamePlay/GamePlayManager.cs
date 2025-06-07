@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Audio;
 using Game.Scene;
+using MizukiTool.MiAudio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using AudioUtil = Game.Audio.AudioUtil;
 
 namespace Game
 {
@@ -52,6 +55,15 @@ namespace Game
 #else
             Application.Quit(); // 在构建的应用程序中退出
 #endif
+        }
+
+        public static void PlayBGM(BGMAudioEnum audioEnum)
+        {
+            if (!AudioUtil.CheckEnumInLoopAudio(audioEnum))
+            {
+                AudioUtil.ReturnAllLoopAudio();
+                AudioUtil.Play(audioEnum, AMGEnum.BGM, AudioPlayMod.Loop);
+            }
         }
     }
 }

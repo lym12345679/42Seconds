@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Audio;
 using Game.Scene;
+using MizukiTool.MiAudio;
 using UnityEngine;
+using AudioUtil = Game.Audio.AudioUtil;
 
 namespace Game.UI
 {
@@ -9,6 +12,8 @@ namespace Game.UI
     {
         public override void GetParams(string param)
         {
+            GamePlayManager.PlayBGM(BGMAudioEnum.BGM_1);
+
             base.GetParams(param);
         }
 

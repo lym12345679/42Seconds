@@ -73,6 +73,12 @@ namespace Game.Recycle
                     Resources.Load<GameObject>(path + "GuidedMissile"));
                 recyclePool.RigisterOnePrefab(RecycleItemEnum.Boom,
                     Resources.Load<GameObject>(path + "Boom"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.WeakWall1,
+                    Resources.Load<GameObject>(path + "WeakWall1"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.WeakWall2,
+                    Resources.Load<GameObject>(path + "WeakWall2"));
+                recyclePool.RigisterOnePrefab(RecycleItemEnum.WeakWall3,
+                    Resources.Load<GameObject>(path + "WeakWall3"));
             };
             RecyclePoolUtil.SetRigisterAction(action);
         }
@@ -93,6 +99,9 @@ namespace Game.Recycle
         Laser2,
         Bread,
         GuidedMissile,
-        Boom
+        Boom,
+        WeakWall1,
+        WeakWall2,
+        WeakWall3,
     }
 }

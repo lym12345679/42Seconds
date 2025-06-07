@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 950367672801722905}
   - component: {fileID: 3432207201362391128}
   - component: {fileID: -7757385518333940046}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: WeakWall
   m_TagString: Trap
   m_Icon: {fileID: 0}

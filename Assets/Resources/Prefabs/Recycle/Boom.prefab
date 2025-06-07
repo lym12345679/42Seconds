@@ -103,7 +103,7 @@ MonoBehaviour:
   OnReset:
     m_PersistentCalls:
       m_Calls: []
-  MainComponent: {fileID: 0}
+  MainComponent: {fileID: 5445904001280850874}
   id: 
 --- !u!61 &8018005651803086482
 BoxCollider2D:
@@ -162,3 +162,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec96298179069843be226f48be1876c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TrapType: 0

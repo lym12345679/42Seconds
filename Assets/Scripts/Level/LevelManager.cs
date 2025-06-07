@@ -30,6 +30,7 @@ namespace Game.Level
         private void Start()
         {
             LevelUI.Open("");
+            GamePlayManager.PlayBGM(BGMAudioEnum.BGM_1);
         }
 
         private void Update()

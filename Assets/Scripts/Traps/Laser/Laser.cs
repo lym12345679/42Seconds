@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -24,11 +25,11 @@ namespace Game.Traps
             controller.child.transform.localPosition = Vector3.zero; // 初始化子物体的位置
         }
 
-        public void OnTriggerEnter(Collider other)
+        public void OnTriggerStay2D(Collider2D other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            if (other.CompareTag("Player"))
             {
-                Stop();
+                other.GetComponent<PlayerController>().OnPlayerDeath();
             }
         }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Level;
+using Game.Recycle;
 using UnityEngine;
 
 namespace Game.Traps
@@ -44,6 +45,18 @@ namespace Game.Traps
                 transform.rotation = Quaternion.Euler(0, 0, angle); // 设置子物体的旋转
                 currentTime += Time.fixedDeltaTime; // 增加当前时间
             }
+            else
+            {
+                Boom();
+            }
+        }
+
+        public void Boom()
+        {
+            Debug.Log("Boom");
+            RecyclePool.Request(RecycleItemEnum.Boom,
+                (recycleCollection) => { recycleCollection.GameObject.transform.position = transform.position; });
+            RecyclePool.ReturnToPool(transform.gameObject);
         }
     }
 }
