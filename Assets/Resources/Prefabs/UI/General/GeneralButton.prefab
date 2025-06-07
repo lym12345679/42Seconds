@@ -280,4 +280,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1972ffcfc39ee3548adf6a4934ec79ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioEnum: 1
+  audioEnum: 11

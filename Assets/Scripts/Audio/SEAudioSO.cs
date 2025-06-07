@@ -13,5 +13,15 @@ namespace Game.Audio
         SE_Test_Player_Fail,
         SE_Test_Buttion_Click,
         SE_Test_Babel,
+        Win,
+        Lose,
+        EnterGame,
+        Boom,
+        WeakWallBroken,
+        NextLevel,
+        Sprint,
+        Laser,
+        MouseClick,
+        UIClose,
     }
 }

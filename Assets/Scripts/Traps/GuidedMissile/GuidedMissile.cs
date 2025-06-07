@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Audio;
 using Game.Level;
 using Game.Recycle;
 using UnityEngine;
@@ -57,6 +58,7 @@ namespace Game.Traps
             RecyclePool.Request(RecycleItemEnum.Boom,
                 (recycleCollection) => { recycleCollection.GameObject.transform.position = transform.position; });
             RecyclePool.ReturnToPool(transform.gameObject);
+            GamePlayManager.PlaySe(SEAudioEnum.Boom);
         }
     }
 }

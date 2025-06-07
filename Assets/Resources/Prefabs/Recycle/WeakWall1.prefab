@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 27708754047308096}
   - component: {fileID: 6045487894476019604}
-  - component: {fileID: 4601815904159845124}
   - component: {fileID: 950367672801722905}
   - component: {fileID: 3432207201362391128}
   - component: {fileID: -7757385518333940046}
-  - component: {fileID: 8802254647685750776}
+  - component: {fileID: 8852601707841847857}
   m_Layer: 6
   m_Name: WeakWall1
   m_TagString: Trap
@@ -89,51 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4601815904159845124
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3453943530798614083}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.15, y: 3.1666667}
-    newSize: {x: 3.15, y: 3.1666667}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &950367672801722905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,8 +145,8 @@ MonoBehaviour:
         m_CallState: 2
   MainComponent: {fileID: 950367672801722905}
   id: 
---- !u!61 &8802254647685750776
-BoxCollider2D:
+--- !u!60 &8852601707841847857
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -233,6 +187,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.15, y: 3.1666667}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.575, y: 1.5833334}
+      - {x: -1.575, y: -1.5833334}
+      - {x: 1.575, y: -1.5833334}
+      - {x: 1.575, y: 1.5833334}
+    - - {x: -0.4916667, y: 0.5}
+      - {x: 0.5083334, y: 0.5}
+      - {x: 0.5083334, y: -0.5}
+      - {x: -0.4916667, y: -0.5}
+  m_UseDelaunayMesh: 0

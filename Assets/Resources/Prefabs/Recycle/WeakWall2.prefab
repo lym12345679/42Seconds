@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 950367672801722905}
   - component: {fileID: 3432207201362391128}
   - component: {fileID: -7757385518333940046}
-  - component: {fileID: 972741759644140536}
-  - component: {fileID: 7897484539022146269}
+  - component: {fileID: 4371238511240125186}
   m_Layer: 6
   m_Name: WeakWall2
   m_TagString: Trap
@@ -146,8 +145,8 @@ MonoBehaviour:
         m_CallState: 2
   MainComponent: {fileID: 950367672801722905}
   id: 
---- !u!61 &972741759644140536
-BoxCollider2D:
+--- !u!60 &4371238511240125186
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -188,51 +187,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.866667, y: 4.866667}
-  m_EdgeRadius: 0
---- !u!61 &7897484539022146269
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3453943530798614083}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0052769184, y: 0.047839582}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.866667, y: 4.866667}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.0937362, y: 3.0839958}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -2.4333334, y: 2.4333334}
+      - {x: -2.4333334, y: -2.4333334}
+      - {x: 2.4333334, y: -2.4333334}
+      - {x: 2.4333334, y: 2.4333334}
+    - - {x: -1.5000001, y: 1.5333334}
+      - {x: 1.4666667, y: 1.5333334}
+      - {x: 1.4666667, y: -1.45}
+      - {x: -1.5000001, y: -1.45}
+  m_UseDelaunayMesh: 0

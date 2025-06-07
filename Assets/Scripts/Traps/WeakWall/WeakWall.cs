@@ -1,3 +1,4 @@
+using Game.Audio;
 using Game.Recycle;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -51,6 +52,14 @@ namespace Game.Traps
                 playerController.SetSpritDirection(-1);
             }
 
+            GamePlayManager.PlaySe(SEAudioEnum.WeakWallBroken); // 播放弱墙被冲破的音效
+            controller.StartBlink(Color.white, (e) => { RecyclePool.ReturnToPool(this.gameObject); }); // 开始闪烁效果
+            // 在这里添加弱墙被冲破的逻辑
+        }
+
+        public void OnDestroyedByTrap()
+        {
+            GamePlayManager.PlaySe(SEAudioEnum.WeakWallBroken); // 播放弱墙被冲破的音效
             controller.StartBlink(Color.white, (e) => { RecyclePool.ReturnToPool(this.gameObject); }); // 开始闪烁效果
             // 在这里添加弱墙被冲破的逻辑
         }

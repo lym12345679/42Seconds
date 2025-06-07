@@ -71,28 +71,15 @@ namespace Game.Level
             LevelBehavior d3_0 = a3.AddChild().SetDelay(0.5f);
             LevelBehavior a3_0 = d3_0.AddChild().SetAction(Level5_Stage2_6_5).AddChild().SetAction(Level5_Stage2_6_5);
             LevelBehavior d4 = a3_0.AddChild().SetDelay(0.5f);
-            LevelBehavior a4 = d4.AddChild().SetAction(Level5_Stage2_4).SetAction(Level5_Stage2_6_6);
-            ;
-            LevelBehavior d5 = a4.AddChild().SetDelay(0.5f);
+            LevelBehavior a4 = d4.SetAction(Level5_Stage2_6_6);
+            LevelBehavior d4_0 = a4.AddChild().SetDelay(1f);
+            LevelBehavior a4_0 = d4_0.AddChild().SetAction(Level5_Stage2_4);
+            LevelBehavior d5 = a4_0.AddChild().SetDelay(0.5f);
             LevelBehavior a5 = d5.AddChild().SetAction(Level5_Stage2_5);
             LevelBehavior d6 = a5.AddChild().SetDelay(1f);
             LevelBehavior a6 = d6.AddChild().SetAction(Level5_Stage2_6);
-            /*LevelBehavior a6_0 = d6
-            LevelBehavior d6_1 = a6_0.AddChild().SetDelay(0.5f);
-            LevelBehavior a6_1 = d6_1
-            LevelBehavior d6_2 = a6_1.AddChild().SetDelay(0.5f);
-            LevelBehavior a6_2 = d6_2
-            LevelBehavior d6_3 = a6_2.AddChild().SetDelay(0.5f);
-            LevelBehavior a6_3 = d6_3
-            LevelBehavior d6_4 = a6_3.AddChild().SetDelay(0.5f);
-            LevelBehavior a6_4 = d6_4
-            LevelBehavior d6_5 = a6_4.AddChild().SetDelay(0.5f);
-            LevelBehavior a6_5 = d6_5.AddChild().SetAction(Level5_Stage2_6_5);
-            LevelBehavior d6_6 = a6_5.AddChild().SetDelay(0.5f);
-            LevelBehavior a6_6 = d6_6.AddChild();*/
-
             //24.5
-            LevelBehavior d7 = a6.AddChild().SetDelay(2.5f);
+            LevelBehavior d7 = a6.AddChild().SetDelay(1.5f);
             LevelBehavior a7 = d7.AddChild().SetAction(Level5_Stage2_7);
             return a7;
         }
@@ -206,7 +193,7 @@ namespace Game.Level
             CreateGeneratingLaser(new Vector2(12, 24));
             CreateGeneratingLaser(new Vector2(16, 24));
             CreateGeneratingLaser(new Vector2(14, 24));
-            CreateGeneratingLaser1(new Vector2(-1, 9));
+            CreateGeneratingLaser1(new Vector2(-1, 9.2f));
             CreateGeneratingLaser1(new Vector2(-1, 16));
             CreateGeneratingLaser1(new Vector2(-1, 19));
             CreateGeneratingLaser1(new Vector2(-1, 22));
@@ -247,9 +234,9 @@ namespace Game.Level
             GeneralWarn(new Vector2(13, 22));
             GeneralWarn(new Vector2(14, 22));
             GeneralWarn(new Vector2(15, 22));
-            GeneralWarn(new Vector2(1, 8));
-            GeneralWarn(new Vector2(1, 9));
-            GeneralWarn(new Vector2(1, 10));
+            GeneralWarn(new Vector2(1, 8.2f));
+            GeneralWarn(new Vector2(1, 9.2f));
+            GeneralWarn(new Vector2(1, 10.2f));
         }
 
         private void Level5_Stage2_5()

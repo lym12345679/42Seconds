@@ -65,5 +65,13 @@ namespace Game
                 AudioUtil.Play(audioEnum, AMGEnum.BGM, AudioPlayMod.Loop);
             }
         }
+
+        public static void PlaySe(SEAudioEnum audioEnum)
+        {
+            if (!AudioUtil.CheckEnumInLoopAudio(audioEnum))
+            {
+                AudioUtil.Play(audioEnum, AMGEnum.SE, AudioPlayMod.Normal);
+            }
+        }
     }
 }

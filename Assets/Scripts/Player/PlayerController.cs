@@ -1,4 +1,6 @@
 using System;
+using Game;
+using Game.Audio;
 using Game.KeyBoard;
 using Game.Level;
 using Game.Traps;
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private readonly float jumpSpeed = 10f; // 跳跃速度
 
     private bool isLeaveGround = false; // 是否离开地面
-    private readonly float playerHight = .5f; // 玩家高度
+    private readonly float playerHight = .3f; // 玩家高度
     public LayerMask GroundLayer;
 
     void Awake()
@@ -213,7 +215,7 @@ public class PlayerController : MonoBehaviour
             return; // 如果没有剩余冲刺次数，则不执行冲刺
         }
 
-
+        GamePlayManager.PlaySe(SEAudioEnum.Sprint);
         sprintDirection = direction; // 设置冲刺方向
         TrapDe?.Invoke(this);
         SetSprintState(true);

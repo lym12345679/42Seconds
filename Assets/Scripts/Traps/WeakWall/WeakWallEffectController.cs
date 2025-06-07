@@ -30,7 +30,7 @@ namespace Game.Traps
                 .SetFadeColor(new Color(originalColor.r, originalColor.g, originalColor.b, 0.5f)) // 设置目标颜色为半透明
                 .SetOriginalColor(originalColor)
                 .SetFadeMode(FadeMode.Once)
-                .SetFadeTime(0.5f)
+                .SetFadeTime(0.3f)
                 .SetPersentageHander((percentage) =>
                 {
                     if ((int)(percentage * 10) % 2 == 0)

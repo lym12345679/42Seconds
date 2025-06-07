@@ -22,3 +22,33 @@ MonoBehaviour:
   - Name: SE_Test_Babel
     audioEnum: 2
     audioClip: {fileID: 8300000, guid: 65fe9ab006f170642912c5db237022a3, type: 3}
+  - Name: Win
+    audioEnum: 3
+    audioClip: {fileID: 8300000, guid: a3d542d54fcec694693e0cdaf5959ebf, type: 3}
+  - Name: Lose
+    audioEnum: 4
+    audioClip: {fileID: 8300000, guid: a387a7ea45bf7e745aab5b0e6f3a1e7e, type: 3}
+  - Name: EnterGame
+    audioEnum: 5
+    audioClip: {fileID: 8300000, guid: b5dac6b2461ba1a4896ae6cb8790cd35, type: 3}
+  - Name: Boom
+    audioEnum: 6
+    audioClip: {fileID: 8300000, guid: 04cd02ecced42c5439128621f811e921, type: 3}
+  - Name: WeakWallBroken
+    audioEnum: 7
+    audioClip: {fileID: 8300000, guid: cd714997df2d48046b416a7f24499b73, type: 3}
+  - Name: NextLevel
+    audioEnum: 8
+    audioClip: {fileID: 8300000, guid: 597e73f5aa9d95948b2f4f92e2397bda, type: 3}
+  - Name: Sprint
+    audioEnum: 9
+    audioClip: {fileID: 8300000, guid: 060ed113f72500b42a355d0c1d0e9eb7, type: 3}
+  - Name: Laser
+    audioEnum: 10
+    audioClip: {fileID: 8300000, guid: 79fb1f4f3552b6944aea9bde18bba5e0, type: 3}
+  - Name: MouseClick
+    audioEnum: 11
+    audioClip: {fileID: 8300000, guid: f3c3e876f04c5ea44a3bf96e52ac9b2a, type: 3}
+  - Name: UIClose
+    audioEnum: 12
+    audioClip: {fileID: 8300000, guid: a236bc7a565e42b40ba2ad00984275ea, type: 3}

@@ -28,7 +28,7 @@ namespace Game.Traps
         {
             if (trap.TrapType == TrapEnum.WeakWall)
             {
-                RecyclePool.ReturnToPool(trap.gameObject);
+                trap.GetComponent<WeakWall>().OnDestroyedByTrap();
                 SelfGuidedMissile.Boom();
             }
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Audio;
 using Game.Recycle;
 using MizukiTool.UIEffect;
 using UnityEngine;
@@ -45,6 +46,8 @@ namespace Game.Traps
                         laser.Shot(d);
                     }, transform);
             }
+
+            GamePlayManager.PlaySe(SEAudioEnum.Laser);
         }
 
         public void Move(Vector2 vector, float timeToMove,
