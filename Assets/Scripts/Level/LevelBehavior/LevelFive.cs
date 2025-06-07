@@ -10,7 +10,6 @@ namespace Game.Level
     public class LevelFive : LevelFour
     {
         private LevelBehavior level5Behavior = new LevelBehavior();
-        public List<Transform> Masks = new List<Transform>();
         private List<Spike> level5SpikeList = new List<Spike>();
 
         #region 行动
@@ -22,7 +21,10 @@ namespace Game.Level
 
         private void FixedUpdate()
         {
-            FixedUpdateAction();
+            if (LevelManager.Instance.GetGamePlayingState())
+            {
+                level5Behavior.OnFixedUpdate(); // 更新关卡行为树
+            }
         }
 
         protected override void FixedUpdateAction()
@@ -49,7 +51,9 @@ namespace Game.Level
             LevelBehavior s1 = s0.AddChild().SetAction(Level5_Stage0_0);
             LevelBehavior d0 = s1.AddChild().SetDelay(7f);
             LevelBehavior a0 = d0.AddChild().SetAction(Level5_Stage1_0);
-            LevelBehavior d1 = a0.AddChild().SetDelay(9f);
+            LevelBehavior d0_0 = a0.AddChild().SetDelay(3f);
+            LevelBehavior a0_0 = d0_0.AddChild().SetAction(Level5_Stage1_0_0);
+            LevelBehavior d1 = a0_0.AddChild().SetDelay(6f);
             LevelBehavior a1 = d1.AddChild().SetAction(Level5_Stage1_1);
             return a1;
         }
@@ -72,14 +76,14 @@ namespace Game.Level
             LevelBehavior a3_0 = d3_0.AddChild().SetAction(Level5_Stage2_6_5).AddChild().SetAction(Level5_Stage2_6_5);
             LevelBehavior d4 = a3_0.AddChild().SetDelay(0.5f);
             LevelBehavior a4 = d4.SetAction(Level5_Stage2_6_6);
-            LevelBehavior d4_0 = a4.AddChild().SetDelay(1f);
+            LevelBehavior d4_0 = a4.AddChild().SetDelay(2f);
             LevelBehavior a4_0 = d4_0.AddChild().SetAction(Level5_Stage2_4);
             LevelBehavior d5 = a4_0.AddChild().SetDelay(0.5f);
             LevelBehavior a5 = d5.AddChild().SetAction(Level5_Stage2_5);
             LevelBehavior d6 = a5.AddChild().SetDelay(1f);
             LevelBehavior a6 = d6.AddChild().SetAction(Level5_Stage2_6);
             //24.5
-            LevelBehavior d7 = a6.AddChild().SetDelay(1.5f);
+            LevelBehavior d7 = a6.AddChild().SetDelay(0.5f);
             LevelBehavior a7 = d7.AddChild().SetAction(Level5_Stage2_7);
             return a7;
         }
@@ -103,9 +107,13 @@ namespace Game.Level
             LevelBehavior a6 = d6.AddChild().SetAction(Level5_Stage3_6);
             LevelBehavior d7 = a6.AddChild().SetDelay(0.5f);
             LevelBehavior a7 = d7.AddChild().SetAction(Level5_Stage3_7);
+            LevelBehavior d8 = a7.AddChild().SetDelay(4f);
+            LevelBehavior a8 = d8.AddChild().SetAction(Level5_Stage3_8);
+            LevelBehavior d9 = a8.AddChild().SetDelay(0.5f);
+            LevelBehavior a9 = d9.AddChild().SetAction(Level5_Stage3_9);
             //33s
 
-            return d2;
+            return a9;
         }
 
         #endregion
@@ -169,9 +177,15 @@ namespace Game.Level
         private void Level5_Stage1_0()
         {
             CreateGuidedMissile(new Vector2(0, 14)); // 示例位置
+            CreateGuidedMissile(new Vector2(28, 17));
             Spikes[0].gameObject.SetActive(false);
             Spikes[1].gameObject.SetActive(false);
             Spikes[2].gameObject.SetActive(false);
+        }
+
+        private void Level5_Stage1_0_0()
+        {
+            CreateGuidedMissile(new Vector2(17, 23));
         }
 
         private void Level5_Stage1_1()
@@ -361,6 +375,20 @@ namespace Game.Level
         {
             Level5SpikeMove(5, new Vector2(0, 1));
             GeneralWarn(new Vector2(21, 9));
+        }
+
+        private void Level5_Stage3_8()
+        {
+            Level5CreateSpike(new Vector2(16, 17));
+            Level5CreateSpike(new Vector2(18, 17));
+            GeneralWarn(new Vector2(16, 18));
+            GeneralWarn(new Vector2(18, 18));
+        }
+
+        private void Level5_Stage3_9()
+        {
+            Level5SpikeMove(6, new Vector2(0, 1));
+            Level5SpikeMove(7, new Vector2(0, 1));
         }
 
         #endregion
@@ -585,6 +613,21 @@ namespace Game.Level
             Spikes[7].gameObject.SetActive(true);
             SpikeScale(7, 0.5f, 2, 2);
         }
+
+        /*protected override void Second40Action()
+        {
+            SpikeMove(0, 2f, 0, 6);
+            SpikeMove(1, 2f, 0, 6);
+            SpikeMove(2, 2f, 0, 6);
+            SpikeMove(3, 2f, 0, 6);
+            SpikeMove(4, 2f, 0, 6);
+            SpikeMove(7, 2f, 0, 10);
+            SpikeMove(10, 2f, 0, 6);
+            SpikeMove(11, 2f, 0, 6);
+            SpikeMove(12, 2f, 0, 1);
+            SpikeMove(13, 2f, 0, 6);
+            SpikeMove(14, 2f, 0, 1);
+        }*/
 
         #endregion
     }

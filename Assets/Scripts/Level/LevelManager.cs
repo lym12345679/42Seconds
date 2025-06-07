@@ -25,12 +25,21 @@ namespace Game.Level
         public SceneType NextLevel = SceneType.Level2; // 下一个关卡场景类型
         public MainPlotEnum FailedCG;
         public MainPlotEnum WinCG;
+        public MainPlotEnum BeginCG;
         private Transform playerTransform;
 
         private void Start()
         {
             LevelUI.Open("");
             GamePlayManager.PlayBGM(BGMAudioEnum.BGM_1);
+            if (BeginCG != MainPlotEnum.None)
+            {
+                isGamePlaying = false; // 设置游戏为非进行中状态
+                PlotDict.Instance.TryGetPlot(BeginCG, out TextAsset t);
+                TextShowUI.Open(new TextShowUIMessage(t, () =>
+                    isGamePlaying = true
+                ));
+            }
         }
 
         private void Update()
@@ -155,5 +164,10 @@ namespace Game.Level
         }
 
         #endregion
+
+        public bool GetGamePlayingState()
+        {
+            return isGamePlaying; // 返回游戏是否正在进行的状态
+        }
     }
 }

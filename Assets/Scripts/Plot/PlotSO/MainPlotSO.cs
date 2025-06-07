@@ -12,5 +12,12 @@ namespace Game.Plot
         Test1,
         Test2,
         Test3,
+        None,
+        Level1_Begin,
+        Level2_Begin,
+        Level3_Begin,
+        Level4_Begin,
+        Level5_Begin,
+        Level6_Begin,
     }
 }

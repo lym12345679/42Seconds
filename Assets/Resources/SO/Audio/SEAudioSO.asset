@@ -24,31 +24,31 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 65fe9ab006f170642912c5db237022a3, type: 3}
   - Name: Win
     audioEnum: 3
-    audioClip: {fileID: 8300000, guid: a3d542d54fcec694693e0cdaf5959ebf, type: 3}
+    audioClip: {fileID: 8300000, guid: 12cc75fe29b8b924c8a616ce60c6c896, type: 3}
   - Name: Lose
     audioEnum: 4
-    audioClip: {fileID: 8300000, guid: a387a7ea45bf7e745aab5b0e6f3a1e7e, type: 3}
+    audioClip: {fileID: 8300000, guid: 831b76e0a806dff4cb886fc0a316a466, type: 3}
   - Name: EnterGame
     audioEnum: 5
-    audioClip: {fileID: 8300000, guid: b5dac6b2461ba1a4896ae6cb8790cd35, type: 3}
+    audioClip: {fileID: 8300000, guid: 6d629b0b4a6f6924a815eb134c251c5c, type: 3}
   - Name: Boom
     audioEnum: 6
-    audioClip: {fileID: 8300000, guid: 04cd02ecced42c5439128621f811e921, type: 3}
+    audioClip: {fileID: 8300000, guid: 404509a45e264aa469a9838e106d08ee, type: 3}
   - Name: WeakWallBroken
     audioEnum: 7
-    audioClip: {fileID: 8300000, guid: cd714997df2d48046b416a7f24499b73, type: 3}
+    audioClip: {fileID: 8300000, guid: 13196815ad8f81d48b31e83d2b1c7ba6, type: 3}
   - Name: NextLevel
     audioEnum: 8
-    audioClip: {fileID: 8300000, guid: 597e73f5aa9d95948b2f4f92e2397bda, type: 3}
+    audioClip: {fileID: 8300000, guid: 9f692bd3d54feea4ca0a8f80475e415e, type: 3}
   - Name: Sprint
     audioEnum: 9
-    audioClip: {fileID: 8300000, guid: 060ed113f72500b42a355d0c1d0e9eb7, type: 3}
+    audioClip: {fileID: 8300000, guid: d9b6cfbad0c8be54b9ce7a540425559d, type: 3}
   - Name: Laser
     audioEnum: 10
-    audioClip: {fileID: 8300000, guid: 79fb1f4f3552b6944aea9bde18bba5e0, type: 3}
+    audioClip: {fileID: 8300000, guid: 1e59af3e053c5c04c8df2121d51c8107, type: 3}
   - Name: MouseClick
     audioEnum: 11
-    audioClip: {fileID: 8300000, guid: f3c3e876f04c5ea44a3bf96e52ac9b2a, type: 3}
+    audioClip: {fileID: 8300000, guid: 8bbca82be759ca842806cf9657b93bd5, type: 3}
   - Name: UIClose
     audioEnum: 12
-    audioClip: {fileID: 8300000, guid: a236bc7a565e42b40ba2ad00984275ea, type: 3}
+    audioClip: {fileID: 8300000, guid: ffb937c370de7b046a909914d5402a9d, type: 3}

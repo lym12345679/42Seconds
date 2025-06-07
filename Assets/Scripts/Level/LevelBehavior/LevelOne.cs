@@ -20,7 +20,10 @@ namespace Game.Level
 
         private void FixedUpdate()
         {
-            levelBehavior.OnFixedUpdate(); // 更新关卡行为树
+            if (LevelManager.Instance.GetGamePlayingState())
+            {
+                levelBehavior.OnFixedUpdate(); // 更新关卡行为树
+            }
         }
 
         public void Initialize()

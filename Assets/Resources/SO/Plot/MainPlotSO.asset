@@ -22,3 +22,21 @@ MonoBehaviour:
   - Name: Test3
     EnumValue: 2
     Value2: {fileID: 4900000, guid: 42065baddd8bed844ae7568c758b6cc2, type: 3}
+  - Name: Level1_Begin
+    EnumValue: 4
+    Value2: {fileID: 4900000, guid: ff0ff81a99c322945b327584d1ff9ee6, type: 3}
+  - Name: Level2_Begin
+    EnumValue: 5
+    Value2: {fileID: 4900000, guid: 74fff5e7475027d459f5f3f531556567, type: 3}
+  - Name: Level3_Begin
+    EnumValue: 6
+    Value2: {fileID: 4900000, guid: bdf8bf351688e074a822fef537ce1fe3, type: 3}
+  - Name: Level4_Begin
+    EnumValue: 7
+    Value2: {fileID: 4900000, guid: c96bd8fd4e7e78b4fb626eefbbe0d781, type: 3}
+  - Name: Level5_Begin
+    EnumValue: 8
+    Value2: {fileID: 4900000, guid: 5e4a81a5e48af174d8cc8ff71f5e44f8, type: 3}
+  - Name: Level6_Begin
+    EnumValue: 9
+    Value2: {fileID: 4900000, guid: 935202b146e638848a590b125114c0eb, type: 3}

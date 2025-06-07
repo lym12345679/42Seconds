@@ -24,7 +24,10 @@ namespace Game.Level
 
         private void FixedUpdate()
         {
-            FixedUpdateAction();
+            if (LevelManager.Instance.GetGamePlayingState())
+            {
+                level3Behavior.OnFixedUpdate(); // 更新关卡行为树
+            }
         }
 
         protected override void FixedUpdateAction()

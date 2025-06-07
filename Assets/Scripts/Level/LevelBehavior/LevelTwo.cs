@@ -25,7 +25,10 @@ namespace Game.Level
 
         protected virtual void FixedUpdateAction()
         {
-            levelBehavior.OnFixedUpdate(); // 更新关卡行为树
+            if (LevelManager.Instance.GetGamePlayingState())
+            {
+                levelBehavior.OnFixedUpdate(); // 更新关卡行为树
+            }
         }
 
         protected virtual void Init()
@@ -822,7 +825,7 @@ namespace Game.Level
             SpikeScale(7, 0.5f, 2, 2);
         }
 
-        private void Second40Action()
+        protected virtual void Second40Action()
         {
             SpikeMove(0, 2f, 0, 6);
             SpikeMove(1, 2f, 0, 6);

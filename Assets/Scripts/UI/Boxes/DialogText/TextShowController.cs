@@ -50,6 +50,7 @@ namespace Game.UI
             }
         }
 
+
         private void ShowOneWord()
         {
             if (wordStack.Count > 0)
