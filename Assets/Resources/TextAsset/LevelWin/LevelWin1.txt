@@ -1,2 +1,3 @@
-<#background=(BlackBackground,fadein)>你输在了<#color=(178,34,34)>第一关;
-你输在了<#color=(178,34,34)>第一关(这是第二行文本)
+<#background=(BlackBackground,fadein)>少校的第3条记录：
+这小家伙终于展现出最重要的了预测危害的能力。
+民族几百年的屈辱与压迫啊，终于是为前线惨烈的战事带来了一线希望啊!

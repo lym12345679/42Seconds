@@ -1,1 +1,3 @@
-<#background=(BlackBackground,fadein)>冲刺可以撞碎一些墙体
+<#background=(BlackBackground,fadein)>你已经靠强大的预测能力通过了一项又一项实验。
+接下来，直觉告诉你，如果不想被<#color=(178,34,34)>“那个东西”<#default>困住的话
+尽情的通过<#color=(178,34,34)>左shift/鼠标右键<#default>带来的冲刺撞碎它吧

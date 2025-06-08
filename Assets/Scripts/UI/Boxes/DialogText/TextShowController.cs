@@ -27,6 +27,9 @@ namespace Game.UI
         private Stack<TextLineWord> wordStack = new Stack<TextLineWord>();
         private string nextId;
         private bool isShowing = true;
+        private readonly int LineWordCount = 28;
+
+        private int currentWordCount = 0;
 
         ///是否正在展示文本
         private Action onTextOver;
@@ -56,11 +59,35 @@ namespace Game.UI
             if (wordStack.Count > 0)
             {
                 TextLineWord word = wordStack.Pop();
-                Recycle.RecyclePool.Request(RecycleItemEnum.TextItem, r =>
+                if (word.GetWords() == "\r")
                 {
-                    r.GetMainComponent<TextMeshProUGUI>().text = word.GetWords();
-                    word.ShowWord(r.GetMainComponent<TextMeshProUGUI>());
-                }, Panel);
+                    int n = LineWordCount - currentWordCount;
+                    while (n < 0)
+                    {
+                        n += LineWordCount;
+                    }
+
+                    for (int i = 0; i < n; i++)
+                    {
+                        Recycle.RecyclePool.Request(RecycleItemEnum.TextItem, r =>
+                        {
+                            r.GetMainComponent<TextMeshProUGUI>().text = word.GetWords();
+                            word.ShowWord(r.GetMainComponent<TextMeshProUGUI>());
+                        }, Panel);
+                    }
+
+                    currentWordCount = 0;
+                }
+                else
+                {
+                    Recycle.RecyclePool.Request(RecycleItemEnum.TextItem, r =>
+                    {
+                        r.GetMainComponent<TextMeshProUGUI>().text = word.GetWords();
+                        word.ShowWord(r.GetMainComponent<TextMeshProUGUI>());
+                    }, Panel);
+                    currentWordCount++;
+                }
+
                 onOneWordShown?.Invoke();
             }
             else
@@ -202,6 +229,7 @@ namespace Game.UI
                 return;
             }
 
+            currentWordCount = 0;
             showInterval = originalShowInterval;
             isShowing = true;
             //在此处添加对话框的显示效果

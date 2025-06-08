@@ -1,2 +1,3 @@
-<#background=(BlackBackground,fadein)>你输在了<#color=(178,34,34)>第一关;
-你输在了<#color=(178,34,34)>第一关(这是第二行文本)
+<#background=(BlackBackground,fadein)>少校的第9条记录：
+事态已经到了最危险的时侯，敌人近在咫尺，最多两小时
+我命令你跳过实验最终阶段投放它！否则先死的会是你！

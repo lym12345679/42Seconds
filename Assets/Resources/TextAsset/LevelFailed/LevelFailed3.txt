@@ -1,2 +1,4 @@
-<#background=(BlackBackground,fadein)>你输在了<#color=(178,34,34)>第一关;
-你输在了<#color=(178,34,34)>第一关(这是第二行文本)
+<#background=(BlackBackground,fadein)>你做出了艰难的选择
+哪怕成为他们眼中的罪人
+   
+(这次的预测有误,换一种思路来吧)

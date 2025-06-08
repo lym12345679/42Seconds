@@ -1,1 +1,3 @@
-<#background=(BlackBackground,fadein)>操作介绍<#color=(178,34,34)>AD移动 空格跳跃 右shift冲刺
+<#background=(BlackBackground,fadein)>虽然你现在还一无所知
+但直觉告诉你，按照<#color=(178,34,34)>A&D的方式移动<#default>起来吧
+以及在接下来的<#color=(178,34,34)>42秒<#default>千万别碰到<#color=(178,34,34)>“那些东西”

@@ -392,7 +392,7 @@ namespace Game.UI
         private Action<TextMeshProUGUI> defaultWordHander = (t) =>
         {
             t.color = Color.white;
-            t.fontSize = 60;
+            t.fontSize = 30;
             t.fontStyle = FontStyles.Normal;
         };
 

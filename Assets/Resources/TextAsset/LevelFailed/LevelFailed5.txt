@@ -1,2 +1,4 @@
-<#background=(BlackBackground,fadein)>你输在了<#color=(178,34,34)>第一关;
-你输在了<#color=(178,34,34)>第一关(这是第二行文本)
+<#background=(BlackBackground,fadein)>你果断按下了你一直留有的按钮
+除实验数据外，一切都消失于世，以及你的才华和年轻的生命
+   
+(这次的预测有误,换一种思路来吧)
