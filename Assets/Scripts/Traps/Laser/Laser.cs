@@ -10,7 +10,7 @@ namespace Game.Traps
     public class Laser : Trap
     {
         public LaserEffectController controller; // 控制激光效果的脚本
-        private readonly float maxLength = 100f; // 激光的最大长度
+        private readonly float maxLength = 50f; // 激光的最大长度
         private readonly float maxDuration = 0.25f; // 激光的最大持续时间
         private Vector3 originalScale;
 

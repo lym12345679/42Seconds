@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8267896370609877623}
   - component: {fileID: 7045634842645372399}
-  - component: {fileID: 5000661891675937647}
   - component: {fileID: 304848452092984258}
+  - component: {fileID: 6442071220593982788}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Trap
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 747164639, guid: 385fe921abd9c7d42bd65ced54182af1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,7 +86,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &5000661891675937647
+--- !u!114 &304848452092984258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2795828587349318226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671d05a4dac63ca45b487cccf0403177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrapType: 0
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  SelfGuidedMissile: {fileID: 5023700466949536837}
+--- !u!60 &6442071220593982788
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,8 +138,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6333333, y: 2.3666666}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -130,27 +147,25 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
+    - - {x: 0.7166667, y: 0.016666668}
+      - {x: 0.75000006, y: 0.4666667}
+      - {x: 0.6166667, y: 0.8000001}
+      - {x: 0.36666667, y: 1.1}
+      - {x: 0.20000002, y: 1.1833334}
+      - {x: -0.23333335, y: 1.1833334}
+      - {x: -0.5666667, y: 0.9333334}
+      - {x: -0.7666667, y: 0.55}
+      - {x: -0.7166667, y: -0.13333334}
+      - {x: -0.5833334, y: -0.33333334}
+      - {x: -0.8166667, y: -0.5166667}
+      - {x: -0.8166667, y: -0.7666667}
+      - {x: -0.8000001, y: -0.85}
+      - {x: -0.43333337, y: -1.1833334}
+      - {x: 0.40000004, y: -1.1833334}
+      - {x: 0.8166667, y: -0.75000006}
+      - {x: 0.8166667, y: -0.55}
+      - {x: 0.65000004, y: -0.3166667}
   m_UseDelaunayMesh: 0
---- !u!114 &304848452092984258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2795828587349318226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671d05a4dac63ca45b487cccf0403177, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrapType: 0
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  SelfGuidedMissile: {fileID: 5023700466949536837}
 --- !u!1 &4173425586376538567
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +196,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.91, y: 16.89, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8267896370609877623}
@@ -199,7 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c99743da51bed354db04173d99435ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelfGuideMissileCollider: {fileID: 304848452092984258}
 --- !u!114 &-3065838261489409746
 MonoBehaviour:
   m_ObjectHideFlags: 0

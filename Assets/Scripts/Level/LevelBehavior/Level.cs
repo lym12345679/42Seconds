@@ -11,7 +11,7 @@ namespace Game.Level
         private List<LevelBehavior> children = new List<LevelBehavior>();
         private LevelBehaviorType type = LevelBehaviorType.Action;
         private Action action;
-        private bool condition = true;
+        private Func<bool> condition;
         private bool isFinish = false;
         private float Delay;
 
@@ -37,7 +37,7 @@ namespace Game.Level
 
         private LevelBehavior OnCondition()
         {
-            if (!condition)
+            if (!condition.Invoke())
             {
                 return null;
             }
@@ -112,7 +112,7 @@ namespace Game.Level
             return child;
         }
 
-        public LevelBehavior SetCondition(bool condition)
+        public LevelBehavior SetCondition(Func<bool> condition)
         {
             this.type = LevelBehaviorType.Condition;
             this.condition = condition;

@@ -260,7 +260,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u83DC"
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 80988efe4175f3f4390fea451ebe5f8f, type: 2}
   m_sharedMaterial: {fileID: 8560835766001425689, guid: 80988efe4175f3f4390fea451ebe5f8f, type: 2}
@@ -451,7 +453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2802841946512357328, guid: 8ce641218d5794d41876161386fab7a3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 268
+      value: 322
       objectReference: {fileID: 0}
     - target: {fileID: 2802841946512357328, guid: 8ce641218d5794d41876161386fab7a3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -477,6 +479,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSelector
       objectReference: {fileID: 0}
+    - target: {fileID: 8568608474257384021, guid: 8ce641218d5794d41876161386fab7a3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568608474257384021, guid: 8ce641218d5794d41876161386fab7a3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 564176543, guid: 25810f270b0e0194da758a3887995e1a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -620,7 +630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2802841946512357328, guid: 8ce641218d5794d41876161386fab7a3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -370
+      value: -316
       objectReference: {fileID: 0}
     - target: {fileID: 2802841946512357328, guid: 8ce641218d5794d41876161386fab7a3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -650,6 +660,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Restart
       objectReference: {fileID: 0}
+    - target: {fileID: 8568608474257384021, guid: 8ce641218d5794d41876161386fab7a3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8568608474257384021, guid: 8ce641218d5794d41876161386fab7a3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 564176543, guid: 25810f270b0e0194da758a3887995e1a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -34,13 +34,13 @@ namespace Game.UI
         public override void GetParams(string param)
         {
             base.GetParams(param);
-            Debug.Log("LevelUI GetParams: " + param);
+            //Debug.Log("LevelUI GetParams: " + param);
         }
 
         public override void Close()
         {
             base.Close();
-            Debug.Log("LevelUI Closed");
+            //Debug.Log("LevelUI Closed");
         }
     }
 }

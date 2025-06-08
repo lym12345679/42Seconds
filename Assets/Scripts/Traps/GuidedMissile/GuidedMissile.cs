@@ -54,7 +54,6 @@ namespace Game.Traps
 
         public void Boom()
         {
-            Debug.Log("Boom");
             RecyclePool.Request(RecycleItemEnum.Boom,
                 (recycleCollection) => { recycleCollection.GameObject.transform.position = transform.position; });
             RecyclePool.ReturnToPool(transform.gameObject);

@@ -10,5 +10,10 @@ namespace Game.Traps
         {
             playerController.OnPlayerDeath();
         }
+
+        public override void OnPlayerEnter(PlayerController playerController, Vector2 position)
+        {
+            playerController.OnPlayerDeath();
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace Game.Traps
             Vector2 d = GetShotDirection();
             if (direction == ShotDirectionEnum.left || direction == ShotDirectionEnum.right)
             {
-                Debug.Log("GeneratingLaser.Shot: " + direction);
+                //Debug.Log("GeneratingLaser.Shot: " + direction);
                 RecyclePool.Request(RecycleItemEnum.Laser2,
                     (recycleCollection) =>
                     {

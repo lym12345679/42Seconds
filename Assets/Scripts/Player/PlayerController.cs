@@ -86,6 +86,11 @@ public class PlayerController : MonoBehaviour
         {
             OnPlayerSprintInputed();
         }
+
+        if (KeyboardSet.IsKeyUp(KeyEnum.Right) || KeyboardSet.IsKeyUp(KeyEnum.Left))
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y); // 停止水平移动
+        }
     }
 
     #endregion
@@ -291,7 +296,7 @@ public class PlayerController : MonoBehaviour
     public void OnPlayerDeath()
     {
         // 这里可以添加玩家死亡的逻辑，比如重置关卡、播放死亡动画等
-        Debug.Log("Player has died!");
+        //Debug.Log("Player has died!");
         // 玩家不可见
         this.gameObject.SetActive(false);
         LevelManager.Instance.OnPlayerDead(); // 通知关卡管理器玩家死亡

@@ -25,13 +25,13 @@ namespace Game.UI
         public override void GetParams(string param)
         {
             base.GetParams(param);
-            Debug.Log("LevelSelectorUI GetParams: " + param);
+            //Debug.Log("LevelSelectorUI GetParams: " + param);
         }
 
         public override void Close()
         {
             base.Close();
-            Debug.Log("LevelSelectorUI Closed");
+            //Debug.Log("LevelSelectorUI Closed");
         }
 
         public void GoToLevel(SceneType scene)

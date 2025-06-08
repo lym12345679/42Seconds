@@ -32,8 +32,9 @@ namespace Game.Level
         {
             LevelUI.Open("");
             GamePlayManager.PlayBGM(BGMAudioEnum.BGM_1);
-            if (BeginCG != MainPlotEnum.None)
+            if (BeginCG != MainPlotEnum.None && !StaticData.PlotData[BeginCG])
             {
+                StaticData.PlotData[BeginCG] = true; // 设置开始剧情已播放
                 isGamePlaying = false; // 设置游戏为非进行中状态
                 PlotDict.Instance.TryGetPlot(BeginCG, out TextAsset t);
                 TextShowUI.Open(new TextShowUIMessage(t, () =>
@@ -172,6 +173,11 @@ namespace Game.Level
         public bool GetGamePlayingState()
         {
             return isGamePlaying; // 返回游戏是否正在进行的状态
+        }
+
+        public bool IsGameWin()
+        {
+            return isGameWin;
         }
     }
 }
