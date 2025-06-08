@@ -1,4 +1,2 @@
 <#background=(BlackBackground,fadein)>没有后悔，哪怕你将会失去一切
 但你带来了全人类的希望
-    
-(这次的预测有误,换一种思路来吧)

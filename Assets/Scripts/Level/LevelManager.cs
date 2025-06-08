@@ -111,7 +111,15 @@ namespace Game.Level
                 return;
             }
 
-            AudioUtil.Play(SEAudioEnum.Win, AMGEnum.SE, AudioPlayMod.Normal);
+            if (CurrentSceneType == SceneType.Level6)
+            {
+                GamePlayManager.PlaySe(SEAudioEnum.FinalWin);
+            }
+            else
+            {
+                GamePlayManager.PlaySe(SEAudioEnum.Win); // 播放胜利音效
+            }
+
             isGameWin = true; // 设置游戏为胜利状态
             PlotDict.Instance.TryGetPlot(WinCG, out TextAsset textAsset);
             TextShowUI.Open(new TextShowUIMessage(textAsset, () => { GamePlayManager.LoadScene(NextLevel); }));

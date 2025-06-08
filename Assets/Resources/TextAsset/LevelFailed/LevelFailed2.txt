@@ -1,4 +1,2 @@
 <#background=(BlackBackground,fadein)>还好虚惊一场……
 你的选择是正确的
-   
-(这次的预测有误,换一种思路来吧)

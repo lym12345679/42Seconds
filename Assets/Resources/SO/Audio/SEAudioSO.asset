@@ -49,6 +49,9 @@ MonoBehaviour:
   - Name: MouseClick
     audioEnum: 11
     audioClip: {fileID: 8300000, guid: 8bbca82be759ca842806cf9657b93bd5, type: 3}
+  - Name: FinalWin
+    audioEnum: 13
+    audioClip: {fileID: 8300000, guid: 75c7bc62881a160489361ec94fd64ceb, type: 3}
   - Name: UIClose
     audioEnum: 12
     audioClip: {fileID: 8300000, guid: ffb937c370de7b046a909914d5402a9d, type: 3}

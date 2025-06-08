@@ -23,5 +23,6 @@ namespace Game.Audio
         Laser,
         MouseClick,
         UIClose,
+        FinalWin
     }
 }

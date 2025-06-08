@@ -15,3 +15,5 @@ MonoBehaviour:
   imgSavers:
   - name: BlackBackground
     sprite: {fileID: 21300000, guid: 07aa622adbdda524890a001146c2ec62, type: 3}
+  - name: Title
+    sprite: {fileID: -623411892, guid: 4940325d13ca8e7449fabd1d64755a0f, type: 3}

@@ -1,4 +1,2 @@
 <#background=(BlackBackground,fadein)>感谢你！
 间接拯救了亿万的生灵的英雄啊……
-     
-(这次的预测有误,换一种思路来吧)

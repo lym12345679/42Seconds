@@ -47,7 +47,7 @@ namespace Game.Traps
         public void Shot(Vector2 direction)
         {
             Vector2 targetScale = new Vector2(Mathf.Abs(direction.x), Mathf.Abs(direction.y)) * maxLength; // 计算激光的目标放大值
-            Debug.Log(targetScale);
+            //Debug.Log(targetScale);
             controller.SetGeneralScaleEffect(targetScale, maxDuration);
             controller.StartScaleEffect(transform.position + (Vector3)direction / 2); // 启动位置和缩放效果
         }
