@@ -10,7 +10,8 @@ namespace Game.Plot
     public class PlotDict : GeneralInstance<PlotDict>
     {
         //用字典存储所有的剧情,格式为(枚举类型+枚举值,TextAsset)
-        private readonly Dictionary<string, TextAsset> plotDict = new Dictionary<string, TextAsset>();
+        private Dictionary<string, TextAsset> plotDict = new Dictionary<string, TextAsset>();
+        private Dictionary<string, string> UIDict = new Dictionary<string, string>();
         private EnumIdentifier enumIdentifier = new EnumIdentifier();
 
         public PlotDict()
@@ -21,7 +22,16 @@ namespace Game.Plot
         //在这里注册所有的剧情SO
         public void RigisterPlot()
         {
-            RigisterOnePlotSO<MainPlotEnum, MainPlotSO>(Resources.Load<MainPlotSO>("SO/Plot/MainPlotSO"));
+            string path = "SO/Plot/";
+            string finalPath = "MainPlotSO";
+            switch (StaticData.CurrentLanguage)
+            {
+                case LanguageEnum.Chinese: finalPath = "MainPlotSO"; break;
+                case LanguageEnum.English: finalPath = "En_MainPlotSO"; break;
+                default: break;
+            }
+
+            RigisterOnePlotSO<MainPlotEnum, MainPlotSO>(Resources.Load<MainPlotSO>(path + finalPath));
         }
 
         public void RigisterOnePlotSO<T1, T2>(T2 plotSO) where T2 : PlotSO<T1> where T1 : Enum

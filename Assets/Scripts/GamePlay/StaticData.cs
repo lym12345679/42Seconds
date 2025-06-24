@@ -5,6 +5,8 @@ using UnityEngine;
 
 public static class StaticData
 {
+    public static LanguageEnum CurrentLanguage = LanguageEnum.English;
+
     public static Dictionary<MainPlotEnum, bool> PlotData = new Dictionary<MainPlotEnum, bool>()
     {
         { MainPlotEnum.Level1_Begin, false },
@@ -26,4 +28,10 @@ public static class StaticData
         { MainPlotEnum.Level5_Win, false },
         { MainPlotEnum.Level6_Win, false }
     };
+}
+
+public enum LanguageEnum
+{
+    English,
+    Chinese,
 }

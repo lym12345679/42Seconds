@@ -1,0 +1,10 @@
+<#background=(BlackBackground,fadein) #centerimg=(Title,fadein)>;
+<#centerimg=(,fadeout)>Many years later, from a torn page of a 
+shattered poetry book:
+  The moment the Kingdom of Douglas fell, the war helped the demons break through 
+their world—one that could only last 42
+seconds—and enter ours.
+  Unrestricted slaughter spread across the
+land, no living thing was spared.
+  Sigh... humanity, why did you open the 
+gates to hell?

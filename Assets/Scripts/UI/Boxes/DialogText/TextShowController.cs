@@ -27,7 +27,7 @@ namespace Game.UI
         private Stack<TextLineWord> wordStack = new Stack<TextLineWord>();
         private string nextId;
         private bool isShowing = true;
-        private readonly int LineWordCount = 28;
+        private readonly int LineWordCount = 42;
 
         private int currentWordCount = 0;
 

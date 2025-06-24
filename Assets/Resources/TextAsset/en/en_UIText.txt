@@ -1,0 +1,10 @@
+Play:Play
+Options:Options
+Exit:Exit
+Music:Music
+SFX:SFX
+Back:Back
+Main Menu:Main Menu
+Lab Report:Lab Report
+Restart:Restart
+Level Select:Level Select

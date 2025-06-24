@@ -1,0 +1,7 @@
+<#background=(BlackBackground,fadein)>Major’s Log #9:
+  We’re at the brink—the enemy is 
+closing in. Two hours at most.
+  I’m ordering you to skip the final 
+phase and deploy it now!
+  If you don’t... you’ll be the first to 
+die.

@@ -1,0 +1,10 @@
+Play:开始游戏
+Options:设置
+Exit:退出游戏
+Music:音乐音量
+SFX:音效音量
+Back:返回
+Main Menu:返回主界面
+Lab Report:实验报告
+Restart:重新开始
+Level Select:选择关卡

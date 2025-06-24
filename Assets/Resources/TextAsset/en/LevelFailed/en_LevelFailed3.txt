@@ -1,0 +1,3 @@
+<#background=(BlackBackground,fadein)>  You made a tough choice—
+  even if it means becoming a villain in
+their eyes.
