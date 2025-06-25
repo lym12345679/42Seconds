@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Game.Audio;
+using Game.Plot;
 using Game.Scene;
 using MizukiTool.MiAudio;
 using UnityEngine;
@@ -11,6 +14,8 @@ namespace Game
 {
     public static class GamePlayManager
     {
+        public static event Action OnChangeLanguage;
+
         public static void LoadSceneAsync(SceneType sceneName)
         {
             // 异步加载场景逻辑
@@ -74,6 +79,25 @@ namespace Game
             {
                 AudioUtil.Play(audioEnum, AMGEnum.SE, AudioPlayMod.Normal);
             }
+        }
+
+        public static void SetLanguage()
+        {
+            switch (StaticData.CurrentLanguage)
+            {
+                case LanguageEnum.Chinese:
+                    StaticData.CurrentLanguage = LanguageEnum.English;
+                    break;
+                case LanguageEnum.English:
+                    StaticData.CurrentLanguage = LanguageEnum.Chinese;
+                    break;
+                default:
+                    StaticData.CurrentLanguage = LanguageEnum.Chinese;
+                    break;
+            }
+
+            OnChangeLanguage?.Invoke();
+            PlotDict.Instance.ResetPlotDict();
         }
     }
 }

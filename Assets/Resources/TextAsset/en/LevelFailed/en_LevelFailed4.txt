@@ -1,0 +1,3 @@
+<#background=(BlackBackground,fadein)>  No regrets—even if you lose everything.
+  Because you brought hope to all of
+humanity.

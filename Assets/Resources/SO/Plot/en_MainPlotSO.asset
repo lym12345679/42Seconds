@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27775c78ed33cae4c9c395806f330cd3, type: 3}
+  m_Name: en_MainPlotSO
+  m_EditorClassIdentifier: 
+  SelfList:
+  - Name: Test1
+    EnumValue: 0
+    Value2: {fileID: 4900000, guid: 2fbb8d49225bd4e44a1b279febaeef7c, type: 3}
+  - Name: Test2
+    EnumValue: 1
+    Value2: {fileID: 4900000, guid: ecca66cd9d44a3b409288c1eb388f532, type: 3}
+  - Name: Test3
+    EnumValue: 2
+    Value2: {fileID: 4900000, guid: 42065baddd8bed844ae7568c758b6cc2, type: 3}
+  - Name: Level1_Begin
+    EnumValue: 4
+    Value2: {fileID: 4900000, guid: d4e3a77dac16e2c43a510a19556f5edb, type: 3}
+  - Name: Level2_Begin
+    EnumValue: 5
+    Value2: {fileID: 4900000, guid: 74fff5e7475027d459f5f3f531556567, type: 3}
+  - Name: Level3_Begin
+    EnumValue: 6
+    Value2: {fileID: 4900000, guid: b4b5d74d305636246bec2f7e29f8d2b9, type: 3}
+  - Name: Level4_Begin
+    EnumValue: 7
+    Value2: {fileID: 4900000, guid: c96bd8fd4e7e78b4fb626eefbbe0d781, type: 3}
+  - Name: Level5_Begin
+    EnumValue: 8
+    Value2: {fileID: 4900000, guid: 5e4a81a5e48af174d8cc8ff71f5e44f8, type: 3}
+  - Name: Level6_Begin
+    EnumValue: 9
+    Value2: {fileID: 4900000, guid: 935202b146e638848a590b125114c0eb, type: 3}
+  - Name: Level1_Win
+    EnumValue: 10
+    Value2: {fileID: 4900000, guid: 4fb67702d7b49f44c97afc17b58aba67, type: 3}
+  - Name: Level2_Win
+    EnumValue: 11
+    Value2: {fileID: 4900000, guid: f3973aba65a0e9144bac7bc398635cf6, type: 3}
+  - Name: Level3_Win
+    EnumValue: 12
+    Value2: {fileID: 4900000, guid: 56abe5098641f5b4abf1a89ed1b17454, type: 3}
+  - Name: Level4_Win
+    EnumValue: 13
+    Value2: {fileID: 4900000, guid: e8e57080d783e9d41af0b8008f5e7b8f, type: 3}
+  - Name: Level5_Win
+    EnumValue: 14
+    Value2: {fileID: 4900000, guid: 0bade083b0ec36b4ba83630116ed81b9, type: 3}
+  - Name: Level6_Win
+    EnumValue: 15
+    Value2: {fileID: 4900000, guid: 743cbc5c557ac514a93b672cbbe03fc1, type: 3}
+  - Name: Level1_Lose
+    EnumValue: 16
+    Value2: {fileID: 4900000, guid: 2a735d1762f30d44c9e4c778e8d2fac0, type: 3}
+  - Name: Level2_Lose
+    EnumValue: 17
+    Value2: {fileID: 4900000, guid: 644e8a2fc3c8fea44b4d4930060a911f, type: 3}
+  - Name: Level3_Lose
+    EnumValue: 18
+    Value2: {fileID: 4900000, guid: 537f5e8c47662de428a776b6915529e9, type: 3}
+  - Name: Level4_Lose
+    EnumValue: 19
+    Value2: {fileID: 4900000, guid: af71dd27e0995b14dbeeea79d0d17bbd, type: 3}
+  - Name: Level5_Lose
+    EnumValue: 20
+    Value2: {fileID: 4900000, guid: c8e84db6fd3d0574d842b1047099025d, type: 3}
+  - Name: Level6_Lose
+    EnumValue: 21
+    Value2: {fileID: 4900000, guid: 465871cdf7dab534daf9375cb2596277, type: 3}
+  - Name: UI
+    EnumValue: 22
+    Value2: {fileID: 4900000, guid: ee5c67bded1027d42bffb60fc7d769e1, type: 3}

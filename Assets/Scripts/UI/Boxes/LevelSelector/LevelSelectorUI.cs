@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Plot;
 using Game.Scene;
+using TMPro;
 using UnityEngine;
 
 namespace Game.UI
@@ -9,6 +12,7 @@ namespace Game.UI
     {
         public static LevelSelectorUI Instance { get; private set; }
         public List<LevelSelectorUIBtn> LevelSelectorUIBtns = new List<LevelSelectorUIBtn>();
+        public TextMeshProUGUI BackToMenuBtnText, ReportText;
 
         private void Awake()
         {
@@ -20,6 +24,12 @@ namespace Game.UI
             {
                 Destroy(gameObject);
             }
+        }
+
+        private void Start()
+        {
+            BackToMenuBtnText.text = PlotDict.Instance.GetUIDict("Main Menu");
+            ReportText.text = PlotDict.Instance.GetUIDict("Lab Report");
         }
 
         public override void GetParams(string param)

@@ -1,0 +1,5 @@
+<#background=(BlackBackground,fadein)>  You decisively pressed the button you’d
+been holding onto all along.
+  Everything except the experiment data
+vanished—along with your talent and your
+youth.

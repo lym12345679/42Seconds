@@ -31,5 +31,6 @@ namespace Game.Plot
         Level4_Lose,
         Level5_Lose,
         Level6_Lose,
+        UI
     }
 }

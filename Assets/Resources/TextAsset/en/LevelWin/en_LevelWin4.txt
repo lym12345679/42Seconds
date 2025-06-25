@@ -1,0 +1,5 @@
+<#background=(BlackBackground,fadein)>Dr.’s Experiment Report #243:
+  Subject 0721’s predictive abilities are growing fast—this time, it even broke 
+through the containment layer.
+  At this rate, it’s only a matter of time before it breaks free from the selection protocol’s chains.
+<#color=(178,34,34)>  Humanity... beware.

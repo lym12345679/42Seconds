@@ -171,7 +171,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 30, y: 30}
+  m_CellSize: {x: 20, y: 30}
   m_Spacing: {x: 0, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -303,6 +303,7 @@ MonoBehaviour:
   CenterImg: {fileID: 7587449660313712005}
   Background: {fileID: 4908851702000911453}
   SelfTextShowUIEffect: {fileID: 2080870802719331026}
+  SelfGrid: {fileID: 9096452007003444845}
 --- !u!114 &7079103867652056201
 MonoBehaviour:
   m_ObjectHideFlags: 0

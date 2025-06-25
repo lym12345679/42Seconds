@@ -1,0 +1,6 @@
+<#background=(BlackBackground,fadein)>  You have no idea what's going on—
+  But your gut says: <#color=(178,34,3 move with A & D, double-tap Space <#default>to jump higher, and 
+<#color=(178,34,34)>Shift or Right-Click <#default>to dash.
+  Oh, and for the next <#color=(178,34,34)>42 seconds,
+<#default>whatever you do... <#color=(178,34,34)>don’t touch those
+things.
