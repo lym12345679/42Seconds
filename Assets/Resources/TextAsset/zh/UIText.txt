@@ -1,10 +1,13 @@
-Play:开始游戏
-Options:设置
-Exit:退出游戏
-Music:音乐音量
-SFX:音效音量
-Back:返回
-Main Menu:返回主界面
-Lab Report:实验报告
-Restart:重新开始
-Level Select:选择关卡
+Play:开始游戏:Play
+Options:设置:Options
+Exit:退出游戏:Exit
+Music:音乐音量:Music
+SFX:音效音量:SFX
+Back:返回:Back
+Language:中文:English
+Main Menu:返回主界面:Main Menu
+Lab Report:实验报告:Lab Report
+Restart:重新开始:Restart
+Level Select:选择关卡:Level Select
+General False:这次的预测有误,换一种思路来吧:That prediction was off this time. Try a different approach.
+Final False:你真的要犹豫再来一次吗？它可能会带来难以想象的后果:Are you really going to hesitate and try again? It could have unimaginable consequences.

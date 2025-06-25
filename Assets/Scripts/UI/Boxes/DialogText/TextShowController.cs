@@ -18,6 +18,7 @@ namespace Game.UI
         public Image CenterImg;
         public Image Background;
         public TextShowUIEffect SelfTextShowUIEffect;
+        public GridLayoutGroup SelfGrid;
         private static float originalShowInterval = 0.05f;
         private static float correctedShowInterval = 0f;
         private static float showInterval = originalShowInterval;
@@ -27,7 +28,7 @@ namespace Game.UI
         private Stack<TextLineWord> wordStack = new Stack<TextLineWord>();
         private string nextId;
         private bool isShowing = true;
-        private readonly int LineWordCount = 42;
+        private readonly int LineWordCount = StaticData.CurrentLanguage == LanguageEnum.Chinese ? 28 : 42;
 
         private int currentWordCount = 0;
 
@@ -39,6 +40,11 @@ namespace Game.UI
 
         ///文本输出一个字符后的回调函数
         private Action onOneWordShown;
+
+        private void Start()
+        {
+            LanguageAdaption();
+        }
 
         void FixedUpdate()
         {
@@ -53,6 +59,18 @@ namespace Game.UI
             }
         }
 
+        private void LanguageAdaption()
+        {
+            switch (StaticData.CurrentLanguage)
+            {
+                case LanguageEnum.Chinese:
+                    SelfGrid.cellSize = new Vector2(30, 30);
+                    break;
+                case LanguageEnum.English:
+                    SelfGrid.cellSize = new Vector2(20, 30);
+                    break;
+            }
+        }
 
         private void ShowOneWord()
         {

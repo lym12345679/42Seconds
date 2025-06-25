@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27775c78ed33cae4c9c395806f330cd3, type: 3}
-  m_Name: MainPlotSO
+  m_Name: zh_MainPlotSO
   m_EditorClassIdentifier: 
   SelfList:
   - Name: Test1

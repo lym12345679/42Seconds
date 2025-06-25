@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Audio;
+using Game.Plot;
 using Game.Scene;
 using MizukiTool.MiAudio;
+using TMPro;
 using UnityEngine;
 using AudioUtil = Game.Audio.AudioUtil;
 
@@ -10,6 +13,21 @@ namespace Game.UI
 {
     public class MenuUI : UIGeneralBox<MenuUI, string, string>
     {
+        public TextMeshProUGUI BeginBtnText, SettingBtnText, ExitBtnText;
+
+        private void Start()
+        {
+            SetLanguage();
+            GamePlayManager.OnChangeLanguage += SetLanguage;
+        }
+
+        private void SetLanguage()
+        {
+            BeginBtnText.text = PlotDict.Instance.GetUIDict("Play");
+            SettingBtnText.text = PlotDict.Instance.GetUIDict("Options");
+            ExitBtnText.text = PlotDict.Instance.GetUIDict("Exit");
+        }
+
         public override void GetParams(string param)
         {
             GamePlayManager.PlayBGM(BGMAudioEnum.BGM_1);
@@ -19,8 +37,9 @@ namespace Game.UI
 
         public override void Close()
         {
+            Debug.Log("close");
+            GamePlayManager.OnChangeLanguage -= SetLanguage;
             base.Close();
-            Debug.Log("MenuUI Closed");
         }
 
         public void GoToLevelSelector()
